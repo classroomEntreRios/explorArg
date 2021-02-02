@@ -1,0 +1,38 @@
+Historias de usuario app ExplorarArg
+
+// usuario no registrado
+US# 1  
+ -  como usuario necesito obtener información desde una página web
+sobre las principales atracciones turísticas de la provincia de Entre Ríos, además,
+me gustaría conocer cuales son los principales sitios culturales y monumentos
+de la localidad seleccionada.
+
+US# 2 
+- como usuario necesito obtener informacion desde una sección de la página web
+sobre el estado del clima, en la localidad seleccionada, a partir de la fecha en la que accedo a la web hasta los siguientes tres días. Además en caso de no seleccionar ninguna localidad,
+necesito obtener la misma informacion sobre la capital de la provincia.
+
+US# 3 
+- como usuario me gustaría entrar a una sección de la página web en donde pueda tener acceso
+a un chat, brindando mi dirección de email, para poder realizar diferentes consultas en relación a mi experiencia en la web.
+
+US# 4
+- como usuario necesito poder acceder a la posibilidad de registrarme dentro de la web para obtener
+acceso a un perfil personal, en donde se guarde mi nombre de usuario, email y contraseña, para luego poder editarlos de ser necesario.
+
+US# 5
+- como usuario necesito poder acceder a la posibilidad de registrarme dentro de la web para obtener
+acceso al foro y a los temas/discusiones que surjan en él.
+
+
+
+// usuario registrado
+US# 6
+- como usuario registrado necesito contar con la capacidad para poder crear temas/discusiones dentro
+del foro, así como con la capacidad de realizar comentarios en temas creados por otras personas, o de modificar los mismos.
+
+US# 7
+- como usuario registrado necesario contar con la capacidad para poder cerrar la sesión de mi cuenta.
+
+US# 8
+- como usuario registrado necesito contar con la capacidad para consultar el historial del clima, dentro de un período seleccionado, consultado previamente.
