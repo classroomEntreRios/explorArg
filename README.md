@@ -1,3 +1,10 @@
-Proyecto final del curso de Desarrollo Full Stack - ExplorArg
+**Proyecto Grupo 2C - ExplorArg**
 
-La idea principal de esta web es la de concentrar la atencion principalmente en los diferentes itinerarios y rutas relacionados a los diferentesmonumentos, sitios culturales y atracciones del sector de la provincia de Entre Ríos.
+Miembros:
+- Lacognata, Virginia
+- Larrondo, Guillermo Fernando
+- Levrand, Sebastián Alberto
+- Londero, Bruno Sebastián
+- López Berón, Diego Sebastián
+- Ortiz, Jose Luis 
+- Pedron, Victor Raul
