@@ -1,50 +1,52 @@
-// Usuario no registrado
+// TEMA - Historias de usuario
 
-US# 1  
+// EPIC 1 - Usuario no registrado
+
+US# 1.1
 - Como usuario necesito obtener información desde una página web sobre las principales atracciones turísticas de la provincia de Entre Ríos, además, me gustaría conocer cuales son los principales sitios culturales y monumentos de la localidad seleccionada.
 
-US# 2 
+US# 1.2
 - Como usuario necesito obtener informacion desde una sección de la página web
 sobre el estado del clima, en la localidad seleccionada, a partir de la fecha en la que accedo a la web hasta los siguientes tres días. Además en caso de no seleccionar ninguna localidad, necesito obtener la misma informacion sobre la capital de la provincia.
 
-US# 3 
+US# 1.3
 - Como usuario me gustaría entrar a una sección de la página web en donde pueda tener acceso a un chat, brindando mi dirección de email, para poder realizar diferentes consultas en relación a mi experiencia en la web.
 
-US# 4
+US# 1.4
 - Como usuario necesito poder acceder a la posibilidad de registrarme dentro de la web para obtener acceso a un perfil personal, en donde se guarde mi nombre de usuario, email y contraseña.
 
-US# 5
+US# 1.5
 - Como usuario necesito poder acceder a la posibilidad de registrarme dentro de la web para obtener acceso al foro y a los temas/discusiones que surjan en él.
 
 
 	~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~
 
 
-// Usuario registrado
+// EPIC 2 - Usuario registrado
 
-US# 6
+US# 2.1
 - Como usuario registrado necesito contar con la capacidad para poder crear temas/discusiones dentro del foro, así como con la capacidad de realizar comentarios en temas creados por otras personas, o de modificar los mismos.
 
-US# 7
+US# 2.2
 - Como usuario registrado necesito contar con la acción de consultar el historial del clima de una localidad particular dentro de un período seleccionado.
 
-US# 8
+US# 2.3
 - Como usuario registrado necesito permisos para modificar de mi perfil de usuario los datos allí contenidos: nombre, email, contraseña y foto de perfil.
 
-US# 9
+US# 2.4
 - Como usuario registrado necesario contar con la acción de cerrar la sesión de mi cuenta.
 
 
 	~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~
 
 
-// Administrador
+// EPIC 3 - Administrador
 
-US #10
+US #3.1
 - Como administrador requiero acceso a un panel diferenciado que me permita realizar modificaciones en la base de datos del sitio web.
 
-US #11
+US #3.2
 - Como administrador requiero acceso a un panel diferenciado que me permita dar respuesta a las distintas consultas efectuadas a través del chat de consulta.
 
-US #12
+US #3.3
 - Como administrador requiero acceso a un panel diferenciado que me permita editar tópicos y comentarios de usuarios registrados dentro de la sección de Foro.
