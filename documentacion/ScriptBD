@@ -1,6 +1,6 @@
 USE [master]
 GO
-/****** Object:  Database [ExplorARG]    Script Date: 10/2/2021 21:27:58 ******/
+/****** Object:  Database [ExplorARG]    Script Date: 11/2/2021 20:24:35 ******/
 CREATE DATABASE [ExplorARG]
  CONTAINMENT = NONE
  ON  PRIMARY 
@@ -80,7 +80,7 @@ ALTER DATABASE [ExplorARG] SET QUERY_STORE = OFF
 GO
 USE [ExplorARG]
 GO
-/****** Object:  Table [dbo].[Admin]    Script Date: 10/2/2021 21:27:58 ******/
+/****** Object:  Table [dbo].[Admin]    Script Date: 11/2/2021 20:24:35 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -91,7 +91,7 @@ CREATE TABLE [dbo].[Admin](
 	[email] [varchar](50) NOT NULL
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Chat]    Script Date: 10/2/2021 21:27:58 ******/
+/****** Object:  Table [dbo].[Chat]    Script Date: 11/2/2021 20:24:35 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -104,7 +104,7 @@ CREATE TABLE [dbo].[Chat](
 	[mensaje] [varchar](500) NOT NULL
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Clima]    Script Date: 10/2/2021 21:27:58 ******/
+/****** Object:  Table [dbo].[Clima]    Script Date: 11/2/2021 20:24:35 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -117,7 +117,7 @@ CREATE TABLE [dbo].[Clima](
 	[tempMin] [int] NULL
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Foro]    Script Date: 10/2/2021 21:27:58 ******/
+/****** Object:  Table [dbo].[Foro]    Script Date: 11/2/2021 20:24:35 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -134,7 +134,7 @@ CREATE TABLE [dbo].[Foro](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Localidad]    Script Date: 10/2/2021 21:27:58 ******/
+/****** Object:  Table [dbo].[Localidad]    Script Date: 11/2/2021 20:24:35 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -142,14 +142,14 @@ GO
 CREATE TABLE [dbo].[Localidad](
 	[idLocalidad] [int] IDENTITY(1,1) NOT NULL,
 	[nombreLocalidad] [varchar](50) NOT NULL,
-	[infoLocalidad] [varchar](500) NULL,
+	[infoLocalidad] [varchar](max) NULL,
  CONSTRAINT [PK_Localidad] PRIMARY KEY CLUSTERED 
 (
 	[idLocalidad] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
-) ON [PRIMARY]
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Usuario]    Script Date: 10/2/2021 21:27:58 ******/
+/****** Object:  Table [dbo].[Usuario]    Script Date: 11/2/2021 20:24:35 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -162,7 +162,7 @@ CREATE TABLE [dbo].[Usuario](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[UsuarioRegistrado]    Script Date: 10/2/2021 21:27:58 ******/
+/****** Object:  Table [dbo].[UsuarioRegistrado]    Script Date: 11/2/2021 20:24:35 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
