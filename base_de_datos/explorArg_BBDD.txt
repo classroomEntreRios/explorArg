@@ -1,0 +1,54 @@
+create database ExplorArg
+
+use ExplorArg
+
+create table Usuario (
+	id_usuario int
+)
+
+create table UsuarioRegistrado (
+	id_usuarioReg int identity primary key,
+	nombre varchar(30) not null,
+	contraseña varchar(30) not null,
+	email varchar(30) not null
+)
+
+create table Destino (
+	id_destino int identity primary key,
+	nombreDestino varchar(30) not null,
+	infoDestino varchar(900)
+)
+
+create table Chat (
+	fk_id_usuarioReg int,
+	foreign key(fk_id_usuarioReg) references UsuarioRegistrado(id_usuarioReg),
+	fechaChat date,
+	usuarioChat varchar(30),
+	emailChat varchar(30) not null,
+	mensajeChat varchar(250) not null
+)
+
+create table Foro (
+	id_topico int identity primary key,
+	fk_id_usuarioReg int,
+	foreign key(fk_id_usuarioReg) references UsuarioRegistrado(id_usuarioReg),
+	nombreTopico varchar(30) not null,
+	fechaTopico date,
+	contenidoTopico varchar(900) not null
+)
+
+create table Clima (
+	fk_id_destino int,
+	foreign key(fk_id_destino) references Destino(id_destino),
+	fechaClima date,
+	tempMax int,
+	tempMin int,
+	condicionClima varchar(30)
+)
+
+create table Admin (
+	id_admin int identity primary key,
+	nombre varchar(30) not null,
+	contraseña varchar(30) not null,
+	email varchar(30) not null
+)
