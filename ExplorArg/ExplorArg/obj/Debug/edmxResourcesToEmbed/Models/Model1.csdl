@@ -1,0 +1,128 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="ExplorArgModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Admin">
+    <Key>
+      <PropertyRef Name="id_admin" />
+    </Key>
+    <Property Name="id_admin" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="nombre" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="contraseña" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="email" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Chat">
+    <Key>
+      <PropertyRef Name="usuarioChat" />
+    </Key>
+    <Property Name="fk_id_usuarioReg" Type="Int32" />
+    <Property Name="fechaChat" Type="DateTime" Precision="0" />
+    <Property Name="usuarioChat" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="emailChat" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="mensajeChat" Type="String" MaxLength="250" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="Usuario" Relationship="Self.FK__Chat__fk_id_usua__3A81B327" FromRole="Chat" ToRole="Usuario" />
+  </EntityType>
+  <EntityType Name="Clima">
+    <Key>
+      <PropertyRef Name="condicionClima" />
+    </Key>
+    <Property Name="fk_id_destino" Type="Int32" />
+    <Property Name="fechaClima" Type="DateTime" Precision="0" />
+    <Property Name="tempMax" Type="Int32" />
+    <Property Name="tempMin" Type="Int32" />
+    <Property Name="condicionClima" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="Destino" Relationship="Self.FK__Clima__fk_id_des__3F466844" FromRole="Clima" ToRole="Destino" />
+  </EntityType>
+  <EntityType Name="Destino">
+    <Key>
+      <PropertyRef Name="id_destino" />
+    </Key>
+    <Property Name="id_destino" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="nombreDestino" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="infoDestino" Type="String" MaxLength="900" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Clima" Relationship="Self.FK__Clima__fk_id_des__3F466844" FromRole="Destino" ToRole="Clima" />
+  </EntityType>
+  <EntityType Name="Foro">
+    <Key>
+      <PropertyRef Name="id_topico" />
+    </Key>
+    <Property Name="id_topico" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="fk_id_usuarioReg" Type="Int32" />
+    <Property Name="nombreTopico" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="fechaTopico" Type="DateTime" Precision="0" />
+    <Property Name="contenidoTopico" Type="String" MaxLength="900" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="Usuario" Relationship="Self.FK__Foro__fk_id_usua__3D5E1FD2" FromRole="Foro" ToRole="Usuario" />
+  </EntityType>
+  <EntityType Name="Usuario">
+    <Key>
+      <PropertyRef Name="id_usuarioReg" />
+    </Key>
+    <Property Name="id_usuarioReg" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Nombre" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Password" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Email" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="Chat" Relationship="Self.FK__Chat__fk_id_usua__3A81B327" FromRole="Usuario" ToRole="Chat" />
+    <NavigationProperty Name="Foro" Relationship="Self.FK__Foro__fk_id_usua__3D5E1FD2" FromRole="Usuario" ToRole="Foro" />
+  </EntityType>
+  <EntityType Name="UsuarioVisitante">
+    <Key>
+      <PropertyRef Name="id_usuario" />
+    </Key>
+    <Property Name="id_usuario" Type="Int32" Nullable="false" />
+  </EntityType>
+  <Association Name="FK__Chat__fk_id_usua__3A81B327">
+    <End Role="Usuario" Type="Self.Usuario" Multiplicity="0..1" />
+    <End Role="Chat" Type="Self.Chat" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Usuario">
+        <PropertyRef Name="id_usuarioReg" />
+      </Principal>
+      <Dependent Role="Chat">
+        <PropertyRef Name="fk_id_usuarioReg" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Clima__fk_id_des__3F466844">
+    <End Role="Destino" Type="Self.Destino" Multiplicity="0..1" />
+    <End Role="Clima" Type="Self.Clima" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Destino">
+        <PropertyRef Name="id_destino" />
+      </Principal>
+      <Dependent Role="Clima">
+        <PropertyRef Name="fk_id_destino" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Foro__fk_id_usua__3D5E1FD2">
+    <End Role="Usuario" Type="Self.Usuario" Multiplicity="0..1" />
+    <End Role="Foro" Type="Self.Foro" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Usuario">
+        <PropertyRef Name="id_usuarioReg" />
+      </Principal>
+      <Dependent Role="Foro">
+        <PropertyRef Name="fk_id_usuarioReg" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="ExplorArgEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Admin" EntityType="Self.Admin" />
+    <EntitySet Name="Chat" EntityType="Self.Chat" />
+    <EntitySet Name="Clima" EntityType="Self.Clima" />
+    <EntitySet Name="Destino" EntityType="Self.Destino" />
+    <EntitySet Name="Foro" EntityType="Self.Foro" />
+    <EntitySet Name="Usuario" EntityType="Self.Usuario" />
+    <EntitySet Name="UsuarioVisitante" EntityType="Self.UsuarioVisitante" />
+    <AssociationSet Name="FK__Chat__fk_id_usua__3A81B327" Association="Self.FK__Chat__fk_id_usua__3A81B327">
+      <End Role="Usuario" EntitySet="Usuario" />
+      <End Role="Chat" EntitySet="Chat" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Clima__fk_id_des__3F466844" Association="Self.FK__Clima__fk_id_des__3F466844">
+      <End Role="Destino" EntitySet="Destino" />
+      <End Role="Clima" EntitySet="Clima" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Foro__fk_id_usua__3D5E1FD2" Association="Self.FK__Foro__fk_id_usua__3D5E1FD2">
+      <End Role="Usuario" EntitySet="Usuario" />
+      <End Role="Foro" EntitySet="Foro" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

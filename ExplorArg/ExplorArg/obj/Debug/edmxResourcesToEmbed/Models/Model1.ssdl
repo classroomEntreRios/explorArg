@@ -1,0 +1,122 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="ExplorArgModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Admin">
+    <Key>
+      <PropertyRef Name="id_admin" />
+    </Key>
+    <Property Name="id_admin" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="nombre" Type="varchar" MaxLength="30" Nullable="false" />
+    <Property Name="contraseña" Type="varchar" MaxLength="30" Nullable="false" />
+    <Property Name="email" Type="varchar" MaxLength="30" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Chat">
+    <Key>
+      <PropertyRef Name="usuarioChat" />
+    </Key>
+    <Property Name="fk_id_usuarioReg" Type="int" />
+    <Property Name="fechaChat" Type="date" />
+    <Property Name="usuarioChat" Type="varchar" MaxLength="30" Nullable="false" />
+    <Property Name="emailChat" Type="varchar" MaxLength="30" Nullable="false" />
+    <Property Name="mensajeChat" Type="varchar" MaxLength="250" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Clima">
+    <Key>
+      <PropertyRef Name="condicionClima" />
+    </Key>
+    <Property Name="fk_id_destino" Type="int" />
+    <Property Name="fechaClima" Type="date" />
+    <Property Name="tempMax" Type="int" />
+    <Property Name="tempMin" Type="int" />
+    <Property Name="condicionClima" Type="varchar" MaxLength="30" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Destino">
+    <Key>
+      <PropertyRef Name="id_destino" />
+    </Key>
+    <Property Name="id_destino" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="nombreDestino" Type="varchar" MaxLength="30" Nullable="false" />
+    <Property Name="infoDestino" Type="varchar" MaxLength="900" />
+  </EntityType>
+  <EntityType Name="Foro">
+    <Key>
+      <PropertyRef Name="id_topico" />
+    </Key>
+    <Property Name="id_topico" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="fk_id_usuarioReg" Type="int" />
+    <Property Name="nombreTopico" Type="varchar" MaxLength="30" Nullable="false" />
+    <Property Name="fechaTopico" Type="date" />
+    <Property Name="contenidoTopico" Type="varchar" MaxLength="900" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Usuario">
+    <Key>
+      <PropertyRef Name="id_usuarioReg" />
+    </Key>
+    <Property Name="id_usuarioReg" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Nombre" Type="varchar" MaxLength="30" Nullable="false" />
+    <Property Name="Password" Type="varchar" MaxLength="30" Nullable="false" />
+    <Property Name="Email" Type="varchar" MaxLength="30" Nullable="false" />
+  </EntityType>
+  <EntityType Name="UsuarioVisitante">
+    <Key>
+      <PropertyRef Name="id_usuario" />
+    </Key>
+    <Property Name="id_usuario" Type="int" Nullable="false" />
+  </EntityType>
+  <Association Name="FK__Chat__fk_id_usua__3A81B327">
+    <End Role="Usuario" Type="Self.Usuario" Multiplicity="0..1" />
+    <End Role="Chat" Type="Self.Chat" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Usuario">
+        <PropertyRef Name="id_usuarioReg" />
+      </Principal>
+      <Dependent Role="Chat">
+        <PropertyRef Name="fk_id_usuarioReg" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Clima__fk_id_des__3F466844">
+    <End Role="Destino" Type="Self.Destino" Multiplicity="0..1" />
+    <End Role="Clima" Type="Self.Clima" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Destino">
+        <PropertyRef Name="id_destino" />
+      </Principal>
+      <Dependent Role="Clima">
+        <PropertyRef Name="fk_id_destino" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Foro__fk_id_usua__3D5E1FD2">
+    <End Role="Usuario" Type="Self.Usuario" Multiplicity="0..1" />
+    <End Role="Foro" Type="Self.Foro" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Usuario">
+        <PropertyRef Name="id_usuarioReg" />
+      </Principal>
+      <Dependent Role="Foro">
+        <PropertyRef Name="fk_id_usuarioReg" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="ExplorArgModelStoreContainer">
+    <EntitySet Name="Admin" EntityType="Self.Admin" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Chat" EntityType="Self.Chat" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Clima" EntityType="Self.Clima" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Destino" EntityType="Self.Destino" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Foro" EntityType="Self.Foro" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Usuario" EntityType="Self.Usuario" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="UsuarioVisitante" EntityType="Self.UsuarioVisitante" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK__Chat__fk_id_usua__3A81B327" Association="Self.FK__Chat__fk_id_usua__3A81B327">
+      <End Role="Usuario" EntitySet="Usuario" />
+      <End Role="Chat" EntitySet="Chat" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Clima__fk_id_des__3F466844" Association="Self.FK__Clima__fk_id_des__3F466844">
+      <End Role="Destino" EntitySet="Destino" />
+      <End Role="Clima" EntitySet="Clima" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Foro__fk_id_usua__3D5E1FD2" Association="Self.FK__Foro__fk_id_usua__3D5E1FD2">
+      <End Role="Usuario" EntitySet="Usuario" />
+      <End Role="Foro" EntitySet="Foro" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
