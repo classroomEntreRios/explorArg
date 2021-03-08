@@ -31,23 +31,25 @@ export class RegistroComponent implements OnInit {
 
   registro(registroForm : FormGroup){
      this.nuevoUsuario = this.registroForm.value;
-    let promesa = new Promise((datos, error) => {
+
+     return new Promise((datos, error) => {
       this.registroS.registrarNuevoUsuario(this.nuevoUsuario).toPromise()
       .then(
         datos => {
-          console.log(this.nuevoUsuario)
+          console.log(datos)
         },
         error => {
           this.mensaje = error;
           console.log(this.mensaje.error)
         }
-      )
+      ).catch((error) => {
+        console.log(error)
+      }) 
     })
-    return promesa;
   }
 
   verUsuarios(){
-    let promesa = new Promise((datos, error) => {
+    return new Promise((datos, error) => {
       this.registroS.obtenerUsuarios().toPromise()
       .then(
         datos => {
@@ -58,8 +60,6 @@ export class RegistroComponent implements OnInit {
         }
       )
     })
-    return promesa;
-
   }
 
 }
