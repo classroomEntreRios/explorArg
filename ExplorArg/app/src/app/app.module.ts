@@ -1,9 +1,16 @@
-import { RegistroComponent } from './components/registro/registro.component';
+import { RegistroService } from './services/registro.service';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
+import {  ReactiveFormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { InicioComponent } from './components/inicio/inicio.component';
+import { RegistroComponent } from './components/registro/registro.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+
+
+
 
 
 @NgModule({
@@ -14,9 +21,13 @@ import { InicioComponent } from './components/inicio/inicio.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    NgbModule,
+    NgbModule,
+    ReactiveFormsModule,
+    HttpClientModule
   ],
-  providers: [],
+  providers: [HttpClient],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

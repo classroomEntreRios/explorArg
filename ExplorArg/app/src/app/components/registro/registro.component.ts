@@ -1,4 +1,10 @@
+import { RegistroService } from './../../services/registro.service';
+import { Usuario } from './../../models/usuario';
 import { Component, OnInit } from '@angular/core';
+import { FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
+import { resolve } from '@angular/compiler-cli/src/ngtsc/file_system';
+
+
 
 @Component({
   selector: 'app-registro',
@@ -7,9 +13,53 @@ import { Component, OnInit } from '@angular/core';
 })
 export class RegistroComponent implements OnInit {
 
-  constructor() { }
+  registroForm = new FormGroup({
+    Nombre: new FormControl(""),
+      Password: new FormControl(""),
+      Email: new FormControl("")
+  });
+  nuevoUsuario: Usuario = new Usuario;
+  mensaje : any;
+
+  
+  constructor(private registroS: RegistroService) { }
 
   ngOnInit(): void {
+    this.verUsuarios();
+  }
+
+
+  registro(registroForm : FormGroup){
+     this.nuevoUsuario = this.registroForm.value;
+    let promesa = new Promise((datos, error) => {
+      this.registroS.registrarNuevoUsuario(this.nuevoUsuario).toPromise()
+      .then(
+        datos => {
+          console.log(this.nuevoUsuario)
+        },
+        error => {
+          this.mensaje = error;
+          console.log(this.mensaje.error)
+        }
+      )
+    })
+    return promesa;
+  }
+
+  verUsuarios(){
+    let promesa = new Promise((datos, error) => {
+      this.registroS.obtenerUsuarios().toPromise()
+      .then(
+        datos => {
+          console.log(datos);
+        },
+        error => {
+          console.log(error)
+        }
+      )
+    })
+    return promesa;
+
   }
 
 }
