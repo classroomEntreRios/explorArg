@@ -37,13 +37,16 @@
 
 
   <!-- Ventana modal -->
-<div class="modal fade" id="modalRegistro" tabindex="-1" role="dialog" aria-labelledby="modalRegistroLabel"
+<div class="container">
+  <div class="row">
+    <div class="col col-sm col-md col-lg col-xl">
+      <div class="modal fade" id="modalRegistro" tabindex="-1" role="dialog" aria-labelledby="modalRegistroLabel"
 aria-hidden="true">
 <div class="modal-dialog" role="document">
   <div class="modal-content">
     <div class="modal-header">
       <h5 class="modal-title" id="modalRegistroLabel">Ingrese los siguientes datos:</h5>
-      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+      <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="cerrarModal()">
         <span aria-hidden="true">&times;</span>
       </button>
     </div>
@@ -55,6 +58,9 @@ aria-hidden="true">
   </div>
 </div>
 </div>
-<!-- Falta: validaciones y funcionalidad para cerrar el modal -->
+    </div>
+  </div>
+</div>
+
 
 

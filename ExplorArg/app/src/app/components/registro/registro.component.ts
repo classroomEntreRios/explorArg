@@ -1,9 +1,7 @@
 import { RegistroService } from './../../services/registro.service';
 import { Usuario } from './../../models/usuario';
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
-import { resolve } from '@angular/compiler-cli/src/ngtsc/file_system';
-
 
 
 @Component({
@@ -20,6 +18,9 @@ export class RegistroComponent implements OnInit {
   });
   nuevoUsuario: Usuario = new Usuario;
   mensaje : any;
+  usuarioCreado: boolean = false;
+  mensajeError: any;
+  usuarioExiste: boolean = false;
 
   
   constructor(private registroS: RegistroService) { }
@@ -37,10 +38,16 @@ export class RegistroComponent implements OnInit {
       .then(
         datos => {
           console.log(datos)
+          this.usuarioExiste = false;
+          this.usuarioCreado = true;
         },
         error => {
           this.mensaje = error;
           console.log(this.mensaje.error)
+          this.usuarioExiste = true;
+          if (this.mensaje.error){
+            this.mensajeError = 'El usuario ya existe!'
+          }
         }
       ).catch((error) => {
         console.log(error)
@@ -60,6 +67,10 @@ export class RegistroComponent implements OnInit {
         }
       )
     })
+  }
+
+  cerrarModal(){
+    window.location.reload();
   }
 
 }

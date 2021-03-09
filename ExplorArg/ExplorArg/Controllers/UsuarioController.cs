@@ -14,7 +14,6 @@ namespace ExplorArg.Controllers
 
 
         [HttpGet]
-
         public IHttpActionResult  ObtenerUsuarios(){
             var usuarios = db.Usuario.ToList();
             return Ok(usuarios);
@@ -34,8 +33,6 @@ namespace ExplorArg.Controllers
             {
                 nombreUsRegistrado = "";
             }
-            
-
             if (var.Nombre == "" || var.Password == "" || var.Email == "")
             {
                 return BadRequest("Complete todos los campos");
