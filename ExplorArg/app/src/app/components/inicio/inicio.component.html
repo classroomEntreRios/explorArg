@@ -1,27 +1,83 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Explor Arg</title>  
-    <link rel="stylesheet" href="inicio.component.css">  
-
-
-
-
+    <title>Explor Arg</title>
+    <link rel="stylesheet" href="inicio.component.css">
 </head>
-<body>
-<header> 
-<div class="container"> 
-     <img src="img/logo EXPLORARG.png"> 
-     <br><br> <br>
-    <p>Te ofrecemos una guía de los lugares que no podés perderte 
-    cuando visites Entre Ríos.</p>
-</div>
-</header>
 
-
- 
 
 <body>
-</head>
+    <header>
+        <div class="container">
+            <img src="img/logo EXPLORARG.png">
+            <br><br> <br>
+            <p>Te ofrecemos una guía de los lugares que no podés perderte
+                cuando visites Entre Ríos.</p>
+        </div>
+    </header>
+
+    <!-- Boton que activa el modal, deberia estar en el navbar -->
+    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalRegistro">
+        Registro
+    </button>
+
+</body>
+    <!-- Ventana modal -->
+    <div class="container">
+        <div class="row">
+            <div class="col col-sm col-md col-lg col-xl">
+                <div class="modal fade" id="modalRegistro" tabindex="-1" role="dialog"
+                    aria-labelledby="modalRegistroLabel" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="modalRegistroLabel">Ingrese los siguientes datos:</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close"
+                                    (click)="cerrarModal()">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <div class="container">
+                                    <app-registro></app-registro>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
