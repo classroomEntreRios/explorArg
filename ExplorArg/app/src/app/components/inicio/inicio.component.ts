@@ -12,4 +12,7 @@ export class InicioComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  cerrarModal(){
+    location.reload();
+  }
 }

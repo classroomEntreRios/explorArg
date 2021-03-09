@@ -14,6 +14,26 @@
    placeholder="ejemplo@ejemplo.com" required><br>
   
     <!-- Botón -->
+<div class="container">
   <hr>
-  <button type="submit" class="btn btn-primary" (click)="registro(registroForm.value)" [disabled]="registroForm.invalid"> Registrarse </button>
+  <div class="row">
+    <div class="col">
+      <button type="submit" class="btn btn-primary" (click)="registro(registroForm.value)" [disabled]="registroForm.invalid" style="float: right;"> Registrarse </button>
+      <button class="btn btn-danger" style="float: left;" (click)="cerrarModal()"> Cancelar </button>
+    </div>
+  </div>
+  <hr>
+</div>
 </form>
+ 
+
+<!-- cartelito de éxito -->
+  <small *ngIf="usuarioCreado" class="alert alert-success" role="alert" alert-dismissible>
+    Usuario creado correctamente!
+  </small>
+
+
+<!-- cartelito de error -->
+  <small *ngIf="usuarioExiste"  class="alert alert-danger" role="alert" alert-dismissible >
+    {{ mensajeError }} 
+    <span class="close" data-dismiss="alert"></span></small>
