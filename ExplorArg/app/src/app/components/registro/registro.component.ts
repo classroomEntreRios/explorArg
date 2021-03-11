@@ -2,6 +2,7 @@ import { RegistroService } from './../../services/registro.service';
 import { Usuario } from './../../models/usuario';
 import { Component, Input, OnInit } from '@angular/core';
 import { FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
+import { formatCurrency } from '@angular/common';
 
 
 @Component({
@@ -32,6 +33,7 @@ export class RegistroComponent implements OnInit {
 
   registro(registroForm : FormGroup){
      this.nuevoUsuario = this.registroForm.value;
+     this.registroForm.reset();
 
      return new Promise((datos, error) => {
       this.registroS.registrarNuevoUsuario(this.nuevoUsuario).toPromise()
@@ -72,5 +74,6 @@ export class RegistroComponent implements OnInit {
   cerrarModal(){
     window.location.reload();
   }
+
 
 }
