@@ -1,4 +1,5 @@
 ﻿using ExplorArg.Models;
+using ExplorArg.Models.Login;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -48,5 +49,38 @@ namespace ExplorArg.Controllers
                 return Ok("Usuario creado correctamente");
             }
         }
+
+        [HttpPost]
+        public Respuesta AutenticarUsuario(string Email, string Password)
+        {
+            Respuesta oRespuesta = new Respuesta();
+
+            try
+            {
+              var usuarioRegistrado = db.Usuario.Where(a => a.Email == Email && a.Password == Password).ToList();
+
+                if (usuarioRegistrado.Count > 0)
+                {
+                    oRespuesta.Resultado = 1;
+                    oRespuesta.Mensaje = "Login correcto";
+                } 
+                else
+                {
+                    oRespuesta.Resultado = 0;
+                    oRespuesta.Mensaje = "Ocurrió un error";
+                }
+                return oRespuesta;
+            }
+            catch (Exception ex)
+            {
+
+                oRespuesta.Mensaje = "Ocurrió un error. Intente más tarde. Detalles del error:" + ex.Message;
+                return oRespuesta;
+            }
+
+            
+            
+        }
+
     }
 }
