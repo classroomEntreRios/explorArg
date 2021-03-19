@@ -43,7 +43,7 @@
                       <div class="col">
                         <button type="submit" class="btn btn-primary" (click)="registro(registroForm.value)"
                           [disabled]="registroForm.invalid" style="float: right;"> Registrarse </button>
-                        <button class="btn btn-danger" style="float: left;" (click)="cerrarModal()"> Cancelar </button>
+                        <button class="btn btn-danger" data-dismiss="modal" aria-label="Close" style="float: left;" > Cancelar </button>
                       </div>
                     </div>
                     <hr>

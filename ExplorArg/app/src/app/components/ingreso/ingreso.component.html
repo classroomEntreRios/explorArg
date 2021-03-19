@@ -1,0 +1,53 @@
+<button type="button" class="btn ingresar" data-toggle="modal" data-target="#modalIngreso">
+    ingresar
+</button>
+
+
+<!-- Ventana modal -->
+<div class="container">
+    <div class="row">
+      <div class="col col-sm col-md col-lg col-xl">
+        <div class="modal fade" id="modalIngreso" tabindex="-1" role="dialog" aria-labelledby="modalIngresoLabel"
+          aria-hidden="true">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="modalIngresoLabel">Ingrese los siguientes datos:</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="cerrarModal()">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <div class="container">
+                  <form [formGroup]="ingresoForm" class="was-validated">
+                    <!-- Campo Email -->
+                    <label for="emailU"> Email</label>
+                    <input type="email" id="emailU" class="form-control" formControlName="Email" minlength="8"
+                      pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" placeholder="ejemplo@ejemplo.com" required><br>
+
+                    <!-- Campo password -->
+                    <label for="passU"> Contraseña </label>
+                    <input type="password" id="passU" class="form-control" formControlName="Password" minlength="8"
+                      required placeholder="Debe tener al menos 8 caracteres"><br>
+  
+                    
+                    <!-- Botón -->
+                    <div class="container">
+                      <hr>
+                      <div class="row">
+                        <div class="col">
+                          <button type="submit" class="btn btn-primary" (click)="ingreso(ingresoForm.value)"
+                            [disabled]="ingresoForm.invalid" style="float: right;"> Ingresar </button>
+                          <button class="btn btn-danger" data-dismiss="modal" aria-label="Close" style="float: left;" > Cancelar </button>
+                        </div>
+                      </div>
+                      <hr>
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>

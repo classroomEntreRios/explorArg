@@ -8,6 +8,7 @@ import { AppComponent } from './app.component';
 import { InicioComponent } from './components/inicio/inicio.component';
 import { RegistroComponent } from './components/registro/registro.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { IngresoComponent } from './components/ingreso/ingreso.component';
 
 
 
@@ -17,7 +18,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
   declarations: [
     AppComponent,
     InicioComponent,
-    RegistroComponent
+    RegistroComponent,
+    IngresoComponent
   ],
   imports: [
     BrowserModule,
