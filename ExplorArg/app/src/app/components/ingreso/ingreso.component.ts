@@ -1,3 +1,5 @@
+import { Usuario } from './../../models/usuario';
+import { IngresoService } from './../../services/ingreso.service';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 
@@ -8,18 +10,33 @@ import { FormControl, FormGroup } from '@angular/forms';
 })
 export class IngresoComponent implements OnInit {
 
-  constructor() { }
+  constructor(private login: IngresoService) { }
+
+  usuario : Usuario = new Usuario;
+  usuarioAutenticado = false;
 
   ngOnInit(): void {
   }
 
   ingresoForm = new FormGroup({
-    Email: new FormControl(""),
-      Password: new FormControl("")
+    emailLogin: new FormControl(""),
+    passwLogin: new FormControl("")
   });
 
-  ingreso(form: FormGroup){
+  ingreso(form : FormGroup){
 
+     return new Promise((resolve,reject) => {
+      this.usuario.Email = this.ingresoForm.value.emailLogin;
+      this.usuario.Password = this.ingresoForm.value.passwLogin;
+        this.login.autenticarUsuario(this.usuario).toPromise()
+        .then(resolve => {
+          console.log(resolve);
+          this.usuarioAutenticado = true;
+          // hacer algo con esto
+        }, reject => {
+          console.log(reject)
+        })
+     })
   }
 
   cerrarModal(){
