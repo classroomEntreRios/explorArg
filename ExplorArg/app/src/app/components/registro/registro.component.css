@@ -3,3 +3,29 @@
     font-size: 1em;
     margin-top: -7px;
   }
+
+  label {
+    color: cornflowerblue;
+    text-align: center;
+  }
+
+  div.modal-header {
+  color: black;
+  }
+
+  div.modal-body {
+    display: flex;
+  }
+
+  div.container {
+    justify-content: center;
+  }
+
+  input {
+    width: 350px;
+    justify-content: center;
+  }
+
+  div.col {
+    width: 250px;
+  }

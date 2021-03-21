@@ -9,7 +9,3 @@ li {
 li .nav-link, li button {
     font-size: 1.5em;
 }
-
-nav div div ul li button:hover {
-    text-shadow: 5px 5px 4px #56271A;
-}
