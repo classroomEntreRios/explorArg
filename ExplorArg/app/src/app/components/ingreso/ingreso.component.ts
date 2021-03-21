@@ -33,6 +33,7 @@ export class IngresoComponent implements OnInit {
           console.log(resolve);
           this.usuarioAutenticado = true;
           // hacer algo con esto
+          
         }, reject => {
           console.log(reject)
         })

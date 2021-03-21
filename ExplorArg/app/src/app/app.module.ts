@@ -1,3 +1,4 @@
+import { Routes, RouterModule } from '@angular/router';
 import { RegistroService } from './services/registro.service';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import {  ReactiveFormsModule } from '@angular/forms';
@@ -14,7 +15,10 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
 
 
 
-
+const Routes: Routes =[
+  { path: '', component: InicioComponent },
+  { path: 'dashboard', component: DashboardComponent}
+];
 
 @NgModule({
   declarations: [
@@ -31,7 +35,8 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
     NgbModule,
     NgbModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    RouterModule.forRoot(Routes)
   ],
   providers: [HttpClient],
   bootstrap: [AppComponent]
