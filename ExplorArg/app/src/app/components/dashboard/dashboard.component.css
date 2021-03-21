@@ -1,5 +1,7 @@
 body {
     background-image: url(../../../assets/img/home_background.png);
+    width: 100vw;
+    height: 100vh;
 }
 
 li {
