@@ -51,13 +51,14 @@ namespace ExplorArg.Controllers
         }
 
         [HttpPost]
-        public Respuesta AutenticarUsuario(string Email, string Password)
+        [Route("api/usuario/login")]
+        public Respuesta AutenticarUsuario(Usuario val)
         {
             Respuesta oRespuesta = new Respuesta();
 
             try
             {
-              var usuarioRegistrado = db.Usuario.Where(a => a.Email == Email && a.Password == Password).ToList();
+              var usuarioRegistrado = db.Usuario.Where(a => a.Email == val.Email && a.Password == val.Password).ToList();
 
                 if (usuarioRegistrado.Count > 0)
                 {

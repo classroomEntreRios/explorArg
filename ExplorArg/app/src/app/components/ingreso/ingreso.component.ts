@@ -13,6 +13,7 @@ export class IngresoComponent implements OnInit {
   constructor(private login: IngresoService) { }
 
   usuario : Usuario = new Usuario;
+  usuarioAutenticado = false;
 
   ngOnInit(): void {
   }
@@ -24,15 +25,16 @@ export class IngresoComponent implements OnInit {
 
   ingreso(form : FormGroup){
 
-     return new Promise((resp,error) => {
+     return new Promise((resolve,reject) => {
       this.usuario.Email = this.ingresoForm.value.emailLogin;
       this.usuario.Password = this.ingresoForm.value.passwLogin;
-      // setear nueva ruta controlador login
         this.login.autenticarUsuario(this.usuario).toPromise()
-        .then(resp => {
-          console.log(resp)
-        }, error => {
-          console.log(error)
+        .then(resolve => {
+          console.log(resolve);
+          this.usuarioAutenticado = true;
+          // hacer algo con esto
+        }, reject => {
+          console.log(reject)
         })
      })
   }
