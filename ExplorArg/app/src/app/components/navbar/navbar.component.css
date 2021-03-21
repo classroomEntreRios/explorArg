@@ -6,7 +6,7 @@ li {
     padding: 15px;   
 }
 
-li .nav-link {
+li .nav-link, li button {
     font-size: 1.5em;
 }
 
