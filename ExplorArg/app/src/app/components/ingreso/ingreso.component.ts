@@ -2,6 +2,7 @@ import { Usuario } from './../../models/usuario';
 import { IngresoService } from './../../services/ingreso.service';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-ingreso',
@@ -10,7 +11,7 @@ import { FormControl, FormGroup } from '@angular/forms';
 })
 export class IngresoComponent implements OnInit {
 
-  constructor(private login: IngresoService) { }
+  constructor(private login: IngresoService, private router: Router) { }
 
   usuario : Usuario = new Usuario;
   usuarioAutenticado = false;
@@ -33,7 +34,8 @@ export class IngresoComponent implements OnInit {
           console.log(resolve);
           this.usuarioAutenticado = true;
           // hacer algo con esto
-          
+          this.router.navigate(['dashboard']);
+          this.cerrarModal;
         }, reject => {
           console.log(reject)
         })
