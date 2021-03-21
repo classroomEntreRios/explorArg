@@ -1,118 +1,45 @@
-* {
-  margin: 0px;
-  padding: 0px;
-  box-sizing: border-box;
+body {
+  background-image: url(../../../assets/img/home_background.png);
+  width: 100vw;
+  height: 100vh;
 }
 
-main {
-    position: absolute;
-    background-image: url(../../../assets/img/background.png);
-    width: 100vw;
-    height: 100vh;
-  }
-  
-  h1 {
-    color: rgb(255, 145, 0);
-    text-align: center;
-    font-family: verdana;
-    font-size: 40px;
-  }
-  
-  p {
-    position: absolute;
-    margin: 500px 162px;
-    color: rgb(255, 255, 255);
-    font-family: verdana;
-    font-size: 22px; 
-    text-shadow: 2px 2px 5px rgb(77, 4, 4);
-    text-align: center;
-    z-index: 10;
+/* LOGO Y FRASE EN HOME */
+
+.logo {
+  margin: 80px 150px;
+}
+
+.frase {
+  margin: 260px 150px;
+}
+
+.frase p {
+  color: white;
+  font-size: 1.2em;
+}
+
+
+/* MEDIA QUERIES */
+
+@media screen and (max-width: 990px){
+  body {
+      /* background-image: url(../../../assets/img/home_background.png); */
+      width: 100vw;
+      height: 100vh;
+      min-width: 420px;
+      min-height: 990px;
   }
 
+  .frase {
+      display: none;
+  }
+  
   .logo {
-    position: fixed;
-    margin: 200px 147px;
-  }
-
-            /* ESTILO DE IMAGEN CIRCULAR */
-  .circle {
-    position: relative;
-  }
-
-  #circle {
-    /* position: absolute;
-    width: 450px;
-    height: 450px;
-    right: 0px;
-    bottom: -755px; */
-
-    margin: 0px;
-    display: block;
-    width: 450px;
-    height: 450px;
-    right: 0px;
-    bottom: 0px;
-    position: fixed; 
-  }
-
-
-            /* ESTILO DE BANDAS DE COLORES */
-  .banda {
-    width: 100%;
-    position: absolute;
-    bottom: 0;
-  }
-
-  .band_position {
-    position: absolute;
-    width: 100vw;
-    bottom: 0px;
-    height: 43vh;
-  }
-
-  .band_position_first {
-    position: absolute;
-    width: 100vw;
-    bottom: 0px;
-    height: 60vh;
+      margin: 120px 15px 0px 15px;
   }
   
-  .band_position_mid {
-    position: absolute;
-    width: 100vw;
-    bottom: 0px;
-    height: 48vh;
+  .logo img {
+      width: 400px;
   }
-
-
-            /* ESTILO DE BOTONES REGISTRARSE E INGRESAR */
-
-  .registrarse {
-    position: fixed;
-    color: white;
-    font-size: 19px;
-    margin: 30px 280px;
-  }
-
-  .ingresar {
-    position: fixed;
-    color: white;
-    font-size: 19px;
-    margin: 30px 160px;
-  }
-
-             /* ESTILO DE BOTONES DESTINOS Y CONTACTANOS */
-  
-.destinos, .contactanos {
-  color: white;;
-  position: fixed;
-  font-size: 25px;
-  margin: 229px 78%;
-  border-radius: 50px;
-  padding: 5px 15px;
-  background-color: rgba(122, 108, 108, 0.685);
-}
-
-.contactanos {
-  margin: 229px 87%;
 }

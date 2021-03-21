@@ -3,59 +3,35 @@
 
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Explor Arg</title>
     <link rel="stylesheet" href="inicio.component.css">
+    <title>ExplorArg</title>
 </head>
 <body>
 
-<div class="container">
-    <main>
+    <!-- <app-navbar></app-navbar> -->
+    <app-dashboard></app-dashboard>
 
-        <header>
-            <div class="container fondo">
-                <img class="logo" src="./../../../assets/img/logo.png">
-            </div>
 
-            <p>Te ofrecemos una guía de los lugares<br>
-            que no podés perderte<br>
-            cuando visites Entre Ríos</p>
-
-        </header>
+    <div class="logo">
+        <a href="">
+            <img src="../../../assets/img/logo.png" alt="Logo de ExplorArg.com">
+        </a>
+     </div>
+         
+     <div class="frase">
+         <p>Te ofrecemos una guía de los lugares</p>
+         <p>que no podés perderte</p>
+         <p>cuando visites Entre Ríos</p>
+     </div>        
 
         <!-- Boton que activa el modal, debería estar en el navbar -->
-            <app-registro></app-registro>
+            <!-- <app-registro></app-registro> -->
 
 
-        <div class="bandas">
-            <div class="banda banda1">
-                <img class="band_position_first" src="../../../assets/img/band_up.png" alt="banda superior">
-            </div>
-            <div class="banda banda3">
-                <img class="band_position" src="../../../assets/img/band_down.png" alt="banda inferior">
-            </div>
-            <div class="banda banda2">
-                <img class="band_position_mid" src="../../../assets/img/band_middle.png" alt="banda intermedia">
-            </div>
-        </div>
+        <!-- <app-ingreso></app-ingreso> -->
 
-
-        <app-ingreso></app-ingreso>
-
-        <button type="button" class="btn destinos" data-target="#">
-            Destinos
-        </button>
-
-        <button type="button" class="btn contactanos" data-target="#">
-            Contactanos
-        </button>
-
-        <div class="circle">
-            <img id="circle" src="../../../assets/img/background_circle.png" alt="Mujer disfrutando del sol">
-        </div>
-
-    </main>
-</div>
 </body>
 
 
@@ -84,3 +60,5 @@
                 </div>
             </div>
         </div> -->
+
+</html>

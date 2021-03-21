@@ -9,6 +9,8 @@ import { InicioComponent } from './components/inicio/inicio.component';
 import { RegistroComponent } from './components/registro/registro.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { IngresoComponent } from './components/ingreso/ingreso.component';
+import { NavbarComponent } from './components/navbar/navbar.component';
+import { DashboardComponent } from './components/dashboard/dashboard.component';
 
 
 
@@ -19,7 +21,9 @@ import { IngresoComponent } from './components/ingreso/ingreso.component';
     AppComponent,
     InicioComponent,
     RegistroComponent,
-    IngresoComponent
+    IngresoComponent,
+    NavbarComponent,
+    DashboardComponent
   ],
   imports: [
     BrowserModule,
