@@ -15,6 +15,7 @@ export class IngresoComponent implements OnInit {
 
   usuario : Usuario = new Usuario;
   usuarioAutenticado = false;
+  respuesta: any;
 
   ngOnInit(): void {
   }
@@ -31,13 +32,17 @@ export class IngresoComponent implements OnInit {
       this.usuario.Password = this.ingresoForm.value.passwLogin;
         this.login.autenticarUsuario(this.usuario).toPromise()
         .then(resolve => {
-          console.log(resolve);
-          this.usuarioAutenticado = true;
-          // hacer algo con esto
-          this.router.navigate(['dashboard']);
-          this.cerrarModal;
+          this.respuesta = resolve;
+          if (this.respuesta.Resultado == 1){
+            this.router.navigate(['dashboard']);
+            this.usuarioAutenticado = true;
+          }
+          else {
+            this.router.navigate(['']);
+            }
         }, reject => {
-          console.log(reject)
+          console.log('Ocurrió un error desconocido')
+          
         })
      })
   }
