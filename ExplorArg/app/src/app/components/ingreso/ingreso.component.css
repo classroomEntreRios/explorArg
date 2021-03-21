@@ -1,6 +1,30 @@
 .ingresar {
-    position: fixed;
     color: white;
-    font-size: 19px;
-    margin: 30px 160px;
+    font-size: 1em;
   }
+
+  label {
+    color: cornflowerblue;
+    text-align: center;
+  }
+
+  div.modal-header {
+  color: black;
+  }
+
+  div.modal-body {
+    display: flex;
+  }
+
+  div.container {
+    justify-content: center;
+  }
+
+  input {
+    width: 350px;
+    justify-content: center;
+  }
+
+  div.col {
+    width: 250px;
+  }  
