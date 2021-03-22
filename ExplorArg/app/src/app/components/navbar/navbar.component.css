@@ -6,6 +6,26 @@ li {
     padding: 15px;   
 }
 
-li .nav-link, li button {
+li .btn {
     font-size: 1.5em;
+}
+
+.nav-item {
+    display: flex;
+}
+
+app-ingreso, app-registro {
+    text-align: center;
+    padding: 5px 5px;
+    font-size: 1.5em;
+}
+
+app-registro {
+    padding: 5px 65px 0px 0px;
+}
+
+app-destinos {
+    /* border: 1px solid yellow; */
+    text-align: center;
+    padding: 0px 60px ;
 }
