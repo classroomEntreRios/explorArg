@@ -3,12 +3,14 @@ body {
 }
 
 li {
-    padding: 15px;   
+    padding: 10px;  
 }
 
 li .btn {
     font-size: 1.5em;
 }
+<<<<<<< HEAD
+=======
 
 .nav-item {
     display: flex;
@@ -29,3 +31,4 @@ app-destinos {
     text-align: center;
     padding: 0px 60px ;
 }
+>>>>>>> ffc1a6369a44087ee9327255490c1578a785a1a4

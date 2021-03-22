@@ -32,12 +32,17 @@ li .nav-link {
     display: flex;
     justify-content: flex-end;
     position: relative;
-    color: coral;
 }
 
 .dashboard p {
     text-align: end;
     margin: 15px 0px;
+    color: rgb(243, 145, 53);
+    font-size: 1.3em;
+}
+.dashboard a{
+    text-decoration: none;
+    color: rgb(243, 145, 53);
 }
 
 .dashboard .perfil {

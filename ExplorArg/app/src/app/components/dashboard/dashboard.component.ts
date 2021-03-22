@@ -24,5 +24,9 @@ export class DashboardComponent implements OnInit {
   buscarDatos(){
     this.usuario = this.datos.mostrarDatos();
   }
+
+  alerta(){
+    alert("Funcionalidad no implementada");
+  }
  
 }
