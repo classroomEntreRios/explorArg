@@ -18,7 +18,7 @@ import { ContactoComponent } from './components/contacto/contacto.component';
 
 
 const Routes: Routes =[
-  { path: '', component: InicioComponent },
+  { path: '', component: InicioComponent }, 
   { path: 'dashboard', component: DashboardComponent}
 ];
 

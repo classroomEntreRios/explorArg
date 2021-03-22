@@ -20,6 +20,13 @@ namespace ExplorArg.Controllers
             return Ok(usuarios);
         }
 
+        [HttpGet]
+        public IHttpActionResult ObtenerUsuarios(string email)
+        {
+            var usuario = db.Usuario.Where(u => u.Email == email).FirstOrDefault();
+            return Ok(usuario);
+        }
+
 
         [HttpPost]
         public IHttpActionResult RegistrarUsuario(Usuario var)

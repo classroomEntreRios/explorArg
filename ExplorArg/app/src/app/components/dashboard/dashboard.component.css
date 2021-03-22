@@ -32,6 +32,7 @@ li .nav-link {
     display: flex;
     justify-content: flex-end;
     position: relative;
+    color: coral;
 }
 
 .dashboard p {
