@@ -12,10 +12,6 @@ li .nav-link {
     font-size: 1.5em;
 }
 
-nav div div ul li button:hover {
-    text-shadow: 5px 5px 4px #56271A;
-}
-
 .logo {
     margin: 20px 150px;
 }

@@ -12,6 +12,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { IngresoComponent } from './components/ingreso/ingreso.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
+import { DestinosComponent } from './components/destinos/destinos.component';
+import { ContactoComponent } from './components/contacto/contacto.component';
 
 
 
@@ -27,7 +29,9 @@ const Routes: Routes =[
     RegistroComponent,
     IngresoComponent,
     NavbarComponent,
-    DashboardComponent
+    DashboardComponent,
+    DestinosComponent,
+    ContactoComponent
   ],
   imports: [
     BrowserModule,
