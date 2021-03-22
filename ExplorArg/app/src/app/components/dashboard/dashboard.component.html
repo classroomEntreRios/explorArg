@@ -15,9 +15,13 @@
     <div class="container-fluid dashboard">
 
         <p>
-           <b>
-               {{usuario[0].Nombre}}
-           </b>
+            <b>
+                <u>
+                    <a href="#" (click)="alerta()">
+                        {{usuario[0].Nombre}}
+                    </a>
+                </u>
+            </b>
         </p>
             <a href="#">
                 <img src="../../../assets/img/user.png" alt="Foto de perfil" class="perfil">
@@ -36,10 +40,13 @@
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mx-auto">
           <li class="nav-item px-5">
-              <button class="nav-link btn btn-outline-alert text-white" aria-current="page" href="#">Destinos</button>
+              <button class="nav-link btn btn-outline-alert text-white" aria-current="page" href="#" (click)="alerta()">Destinos</button>
           </li>
           <li class="nav-item px-5">
-              <button class="nav-link btn btn-outline-alert text-white" aria-current="page" href="#">Contactanos</button>
+            <button class="nav-link btn btn-outline-alert text-white" aria-current="page" href="#" (click)="alerta()">Foro</button>
+        </li>
+          <li class="nav-item px-5">
+              <button class="nav-link btn btn-outline-alert text-white" aria-current="page" href="#" (click)="alerta()">Contactanos</button>
           </li>
          </ul>
       </div>

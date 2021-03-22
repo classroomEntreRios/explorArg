@@ -29,6 +29,9 @@ body {
       height: 100vh;
       min-width: 420px;
       min-height: 990px;
+      /* background-size: cover;
+      background-position: center center;
+      background-attachment: fixed; */
   }
 
   .frase {
