@@ -15,4 +15,8 @@ export class IngresoService {
   autenticarUsuario(datos: Usuario){
     return this.http.post(this.url.urlLogin, datos);
   }
+
+  obtenerUsuario(email: string){
+    return this.http.get(this.url.urlRegistro + '?Email=' + email)
+  }
 }

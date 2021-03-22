@@ -1,4 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Usuario } from './../../models/usuario';
+import { DatosService } from './../../services/datos.service';
+import { Component, OnInit, NgModule } from '@angular/core';
+import { FormsModule, NgModel } from '@angular/forms';
+
 
 @Component({
   selector: 'app-dashboard',
@@ -7,9 +11,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DashboardComponent implements OnInit {
 
-  constructor() { }
+  usuario: any;
+  nombreDeUsuario: string= '';
+  
+
+  constructor(private datos: DatosService) { }
 
   ngOnInit(): void {
+    this.buscarDatos();
   }
 
+  buscarDatos(){
+    this.usuario = this.datos.mostrarDatos();
+  }
+ 
 }

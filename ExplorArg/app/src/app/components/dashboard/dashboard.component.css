@@ -36,6 +36,7 @@ nav div div ul li button:hover {
     display: flex;
     justify-content: flex-end;
     position: relative;
+    color: coral;
 }
 
 .dashboard p {
