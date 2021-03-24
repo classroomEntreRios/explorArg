@@ -13,13 +13,13 @@ namespace ExplorArg.Controllers
     {
         ExplorArgEntities db = new ExplorArgEntities();
 
-
+        // obtener lista de todos los usuarios
         [HttpGet]
         public IHttpActionResult  ObtenerUsuarios(){
             var usuarios = db.Usuario.ToList();
             return Ok(usuarios);
         }
-
+        // busca usuario segun el email
         [HttpGet]
         public IHttpActionResult ObtenerUsuarios(string email)
         {
@@ -27,12 +27,14 @@ namespace ExplorArg.Controllers
             return Ok(usuario);
         }
 
-
+        // registra un usuario si es que no existe previamente y si todos los campos están llenos.
         [HttpPost]
         public IHttpActionResult RegistrarUsuario(Usuario var)
         {
+            // pasa el nombre del usuario a string para comparar
             string nombreU = var.Nombre.ToString();
-            var usuarioRegistrado = db.Usuario.Where(x => x.Nombre == var.Nombre).FirstOrDefault();
+            // busca un usuario en la bd segun datos ingresados
+            var usuarioRegistrado = db.Usuario.Where(x => x.Nombre == var.Nombre).FirstOrDefault(); 
             string nombreUsRegistrado;
             if (usuarioRegistrado != null)
             {
@@ -45,7 +47,8 @@ namespace ExplorArg.Controllers
             {
                 return BadRequest("Complete todos los campos");
             }
-            else if (nombreU == nombreUsRegistrado)
+            // si el nombre de usuario ingresado ya existe devuelve un error
+            else if (nombreU == nombreUsRegistrado) 
             {
                 return BadRequest("El nombre de usuario ya existe");
             }
@@ -57,6 +60,7 @@ namespace ExplorArg.Controllers
             }
         }
 
+        //chequea si existe un usuario registrado con esos datos y devuelve 1 o 0 dependiendo de si existe o no
         [HttpPost]
         [Route("api/usuario/login")]
         public Respuesta AutenticarUsuario(Usuario val)
