@@ -1,7 +1,7 @@
 body {
   background-image: url(../../../assets/img/home_background.png);
-  width: 100vw;
-  height: 100vh;
+  max-width: 100%;
+  height: 100%;
 }
 
 /* LOGO Y FRASE EN HOME */
@@ -24,24 +24,24 @@ body {
 
 @media screen and (max-width: 990px){
   body {
-      /* background-image: url(../../../assets/img/home_background.png); */
+       background-image: url(../../../assets/img/home_background.png);
       width: 100vw;
       height: 100vh;
       min-width: 420px;
       min-height: 990px;
-      /* background-size: cover;
+       background-size: cover;
       background-position: center center;
-      background-attachment: fixed; */
+      background-attachment: fixed;
   }
 
   .frase {
       display: none;
   }
-  
+
   .logo {
       margin: 120px 15px 0px 15px;
   }
-  
+
   .logo img {
       width: 400px;
   }

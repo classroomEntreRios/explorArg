@@ -73,4 +73,5 @@ export class IngresoComponent implements OnInit {
   guardarDatosUsuario(val: Usuario){
     this.datos.agregarDatos(val);
   }
+
 }
