@@ -8,7 +8,7 @@ import { ContactoComponent } from './contacto/contacto.component';
 
 
 @NgModule({
-  declarations: [DashboardComponent, DestinosComponent, ContactoComponent],
+  declarations: [DestinosComponent, ContactoComponent],
   imports: [
     CommonModule
   ],
