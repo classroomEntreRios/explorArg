@@ -14,13 +14,14 @@ namespace ExplorArg.Controllers
     {
         ExplorArgEntities db = new ExplorArgEntities();
 
-
+        // Obtener lista de todos los usuarios registrados (testing)
         [HttpGet]
         public IHttpActionResult  ObtenerUsuarios(){
             var usuarios = db.Usuario.ToList();
             return Ok(usuarios);
         }
 
+        // Obtener info. de un usuario en particular (dashboard)
         [HttpGet]
         public IHttpActionResult ObtenerUsuarios(string email)
         {
@@ -28,15 +29,19 @@ namespace ExplorArg.Controllers
             return Ok(usuario);
         }
 
-
+        // Registro de nuevos usuarios
         [HttpPost]
         public IHttpActionResult RegistrarUsuario(Usuario var)
         {
+            // encripta y actualiza el valor del password introducido por el usuario
             string oVarPass = Encrypt.GetSHA256(var.Password);
             var.Password = oVarPass;
+
+            // variables para revisar que el usuario no existe y que todos los campos esten completos
             string nombreU = var.Nombre.ToString();
             var usuarioRegistrado = db.Usuario.Where(x => x.Nombre == var.Nombre).FirstOrDefault();
             string nombreUsRegistrado;
+
             if (usuarioRegistrado != null)
             {
                  nombreUsRegistrado = usuarioRegistrado.Nombre.ToString();
@@ -54,20 +59,28 @@ namespace ExplorArg.Controllers
             }
             else
             {
+                // si se pasan todos los chequeos se agrega el nuevo usuario
                 db.Usuario.Add(var);
                 db.SaveChanges();
                 return Ok("Usuario creado correctamente");
             }
         }
 
+
+        // Login o autenticación de usuario
         [HttpPost]
         [Route("api/usuario/login")]
         public Respuesta AutenticarUsuario(Usuario val)
         {
             Respuesta oRespuesta = new Respuesta();
 
+            // encripta la passw ingresada por el usuario para revisar si coincide con la password encriptada anteriormente
+            string oValPass = Encrypt.GetSHA256(val.Password);
+            val.Password = oValPass;
+
             try
             {
+                // revisa si existe un usuario que coincida con los datos aportados como parametro
               var usuarioRegistrado = db.Usuario.Where(a => a.Email == val.Email && a.Password == val.Password).ToList();
 
                 if (usuarioRegistrado.Count > 0)

@@ -201,3 +201,4 @@ E:\[Full-Stack Web Developer]\[ISPC]\project\explorArg\ExplorArg\ExplorArg\obj\D
 E:\[Full-Stack Web Developer]\[ISPC]\project\explorArg\ExplorArg\ExplorArg\obj\Debug\ExplorArg.csproj.CopyComplete
 E:\[Full-Stack Web Developer]\[ISPC]\project\explorArg\ExplorArg\ExplorArg\obj\Debug\ExplorArg.dll
 E:\[Full-Stack Web Developer]\[ISPC]\project\explorArg\ExplorArg\ExplorArg\obj\Debug\ExplorArg.pdb
+D:\Programación\ISPC\proyecto-g2c\ExplorArg\ExplorArg\obj\Debug\ExplorArg.csprojAssemblyReference.cache
