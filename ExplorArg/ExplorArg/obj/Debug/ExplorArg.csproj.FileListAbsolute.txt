@@ -96,7 +96,6 @@ D:\Programación\ISPC\proyecto-g2c\ExplorArg\ExplorArg\bin\EntityFramework.dll
 D:\Programación\ISPC\proyecto-g2c\ExplorArg\ExplorArg\bin\EntityFramework.SqlServer.dll
 D:\Programación\ISPC\proyecto-g2c\ExplorArg\ExplorArg\bin\EntityFramework.xml
 D:\Programación\ISPC\proyecto-g2c\ExplorArg\ExplorArg\bin\EntityFramework.SqlServer.xml
-D:\Programación\ISPC\proyecto-g2c\ExplorArg\ExplorArg\obj\Debug\ExplorArg.csprojAssemblyReference.cache
 D:\Programación\ISPC\proyecto-g2c\ExplorArg\ExplorArg\bin\System.Web.Cors.dll
 D:\Programación\ISPC\proyecto-g2c\ExplorArg\ExplorArg\bin\System.Web.Http.Cors.dll
 D:\Programación\ISPC\proyecto-g2c\ExplorArg\ExplorArg\bin\System.Web.Http.Cors.xml

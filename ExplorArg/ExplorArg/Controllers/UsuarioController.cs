@@ -1,5 +1,6 @@
 ﻿using ExplorArg.Models;
 using ExplorArg.Models.Login;
+using ExplorArg.Models.Registro;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -31,6 +32,8 @@ namespace ExplorArg.Controllers
         [HttpPost]
         public IHttpActionResult RegistrarUsuario(Usuario var)
         {
+            string oVarPass = Encrypt.GetSHA256(var.Password);
+            var.Password = oVarPass;
             string nombreU = var.Nombre.ToString();
             var usuarioRegistrado = db.Usuario.Where(x => x.Nombre == var.Nombre).FirstOrDefault();
             string nombreUsRegistrado;

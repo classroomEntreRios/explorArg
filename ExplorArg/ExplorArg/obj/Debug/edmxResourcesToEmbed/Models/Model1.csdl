@@ -57,7 +57,7 @@
     </Key>
     <Property Name="id_usuarioReg" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="Nombre" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="Password" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Password" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="Email" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
     <NavigationProperty Name="Chat" Relationship="Self.FK__Chat__fk_id_usua__3A81B327" FromRole="Usuario" ToRole="Chat" />
     <NavigationProperty Name="Foro" Relationship="Self.FK__Foro__fk_id_usua__3D5E1FD2" FromRole="Usuario" ToRole="Foro" />

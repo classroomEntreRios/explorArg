@@ -53,7 +53,7 @@
     </Key>
     <Property Name="id_usuarioReg" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Nombre" Type="varchar" MaxLength="30" Nullable="false" />
-    <Property Name="Password" Type="varchar" MaxLength="30" Nullable="false" />
+    <Property Name="Password" Type="varchar" MaxLength="255" Nullable="false" />
     <Property Name="Email" Type="varchar" MaxLength="30" Nullable="false" />
   </EntityType>
   <EntityType Name="UsuarioVisitante">
