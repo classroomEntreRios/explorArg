@@ -40,10 +40,10 @@ li .nav-link {
     color: rgb(243, 145, 53);
     font-size: 1.3em;
 }
-.dashboard a{
+/* .dashboard a{
     text-decoration: none;
     color: rgb(243, 145, 53);
-}
+} */
 
 .dashboard .perfil {
     border: 1px solid black;
