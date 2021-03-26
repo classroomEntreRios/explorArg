@@ -1,66 +1,45 @@
-<!-- Boton que activa el modal, debería estar en el navbar -->
-<button type="button" class="btn registrarse" data-toggle="modal" data-target="#modalRegistro">
-  Registrarse
-</button>
-
-
-<!-- Ventana modal -->
+<app-navbar></app-navbar>
 <div class="container">
-  <div class="row">
-    <div class="col col-sm col-md col-lg col-xl">
-      <div class="modal fade" id="modalRegistro" tabindex="-1" role="dialog" aria-labelledby="modalRegistroLabel"
-        aria-hidden="true">
-        <div class="modal-dialog" role="document">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title" id="modalRegistroLabel">Ingrese los siguientes datos:</h5>
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="cerrarModal()">
-                <span aria-hidden="true">&times;</span>
-              </button>
-            </div>
-            <div class="modal-body">
-              <div class="container">
-                <form [formGroup]="registroForm" class="was-validated">
-                  <!-- Campo usuario -->
-                  <label for="nombreU"> Nombre de usuario</label>
-                  <input type="text" id="nombreU" class="form-control" formControlName="Nombre" minlength="5" required
-                    placeholder="Debe tener al menos 5 caracteres"><br>
+  <div class="row registroRow">
+    <div class="col-sm col-md col-lg col-xl">
+          <form [formGroup]="registroForm" class="was-validated">
+            <!-- Campo usuario -->
+            <label for="nombreU"> Nombre de usuario</label>
+            <input type="text" id="nombreU" class="form-control" formControlName="Nombre" minlength="5" required
+              placeholder="Debe tener al menos 5 caracteres"><br>
 
-                  <!-- Campo password -->
-                  <label for="passU"> Contraseña </label>
-                  <input type="password" id="passU" class="form-control" formControlName="Password" minlength="8"
-                    required placeholder="Debe tener al menos 8 caracteres"><br>
+            <!-- Campo password -->
+            <label for="passU"> Contraseña </label>
+            <input type="password" id="passU" class="form-control" formControlName="Password" minlength="8"
+              required placeholder="Debe tener al menos 8 caracteres"><br>
 
-                  <!-- Campo Email -->
-                  <label for="emailU"> Email</label>
-                  <input type="email" id="emailU" class="form-control" formControlName="Email" minlength="8"
-                    pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" placeholder="ejemplo@ejemplo.com" required><br>
+            <!-- Campo Email -->
+            <label for="emailU"> Email</label>
+            <input type="email" id="emailU" class="form-control" formControlName="Email" minlength="8"
+              pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" placeholder="ejemplo@ejemplo.com" required><br>
 
-                  <!-- Botón -->
-                  <div class="container">
-                    <hr>
-                    <div class="row">
-                      <div class="col">
-                        <button type="submit" class="btn btn-primary" (click)="registro(registroForm.value)"
-                          [disabled]="registroForm.invalid" style="float: right;"> Registrarse </button>
-                        <button class="btn btn-danger" data-dismiss="modal" aria-label="Close" style="float: left;" > Cancelar </button>
-                      </div>
-                    </div>
-                    <hr>
-                  </div>
-                </form>
-                <!-- cartelito de éxito -->
-                <small *ngIf="usuarioCreado" class="alert alert-success" role="alert" alert-dismissible>
-                  Usuario creado correctamente!
-                </small>
-                <!-- cartelito de error -->
-                <small *ngIf="usuarioExiste" class="alert alert-danger" role="alert" alert-dismissible>
-                  {{ mensajeError }}
-                  <span class="close" data-dismiss="alert"></span></small>
+            <!-- Botón -->
+            <div class="container">
+              <hr>
+              <div class="row">
+                <div class="col">
+                  <button type="submit" class="btn btn-primary" (click)="registro(registroForm.value)"
+                    [disabled]="registroForm.invalid" style="float: right;"> Registrarse </button>
+                  <button class="btn btn-danger" routerLink="" style="float: left;" > Cancelar </button>
+                </div>
               </div>
+              <hr>
             </div>
-          </div>
+          </form>
+          <!-- cartelito de éxito -->
+          <small *ngIf="usuarioCreado" class="alert alert-success" role="alert" alert-dismissible>
+            Usuario creado correctamente!
+          </small>
+          <!-- cartelito de error -->
+          <small *ngIf="usuarioExiste" class="alert alert-danger" role="alert" alert-dismissible>
+            {{ mensajeError }}
+            <span class="close" data-dismiss="alert"></span></small>
         </div>
-      </div>
+        </div>
     </div>
-  </div>
+
