@@ -1,30 +1,30 @@
-.ingresar {
-    color: white;
-    font-size: 1em;
-  }
 
   label {
-    color: cornflowerblue;
+    color:black;
     text-align: center;
+    font-family: Verdana;
+    font-weight: 700;
   }
 
-  div.modal-header {
-  color: black;
-  }
-
-  div.modal-body {
-    display: flex;
-  }
-
-  div.container {
-    justify-content: center;
-  }
 
   input {
-    width: 350px;
+    width: 100%;
+    height: 100%;
     justify-content: center;
   }
 
-  div.col {
-    width: 250px;
-  }  
+
+  .ingresoRow{
+    font-family: Verdana;
+    font-weight: 700;
+    border: rgb(238, 170, 56);
+    border-style: solid;
+    border-radius: 3em;
+    padding: 5px;
+    background: rgb(237,162,49);
+    background: linear-gradient(90deg, rgba(238,179,125,1)  0%, rgb(247, 178, 75) 100%);
+  }
+
+  .sinotienecuenta{
+    text-align: center;
+  }

@@ -66,8 +66,9 @@ export class IngresoComponent implements OnInit {
   }
 
 
-  cerrarModal(){
-    this.ingresoForm.reset();
+
+  registrate(){
+    window.location.href = 'registro'
   }
 
   guardarDatosUsuario(val: Usuario){

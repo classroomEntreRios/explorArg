@@ -1,5 +1,11 @@
 ﻿CREATE DATABASE [ExplorArg]
-
+ CONTAINMENT = NONE
+ ON  PRIMARY 
+( NAME = N'ExplorArg', FILENAME = N'C:\Program Files\Microsoft SQL Server\MSSQL15.MSSQLSERVER\MSSQL\DATA\ExplorArg.mdf' , SIZE = 8192KB , MAXSIZE = UNLIMITED, FILEGROWTH = 65536KB )
+ LOG ON 
+( NAME = N'ExplorArg_log', FILENAME = N'C:\Program Files\Microsoft SQL Server\MSSQL15.MSSQLSERVER\MSSQL\DATA\ExplorArg_log.ldf' , SIZE = 8192KB , MAXSIZE = 2048GB , FILEGROWTH = 65536KB )
+ WITH CATALOG_COLLATION = DATABASE_DEFAULT
+GO
 ALTER DATABASE [ExplorArg] SET COMPATIBILITY_LEVEL = 150
 GO
 IF (1 = FULLTEXTSERVICEPROPERTY('IsFullTextInstalled'))
@@ -71,7 +77,7 @@ ALTER DATABASE [ExplorArg] SET QUERY_STORE = OFF
 GO
 USE [ExplorArg]
 GO
-/****** Object:  Table [dbo].[Admin]    Script Date: 04/03/2021 12:41:59 ******/
+/****** Object:  Table [dbo].[Admin]    Script Date: 26/03/2021 19:03:32 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -87,7 +93,7 @@ PRIMARY KEY CLUSTERED
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Chat]    Script Date: 04/03/2021 12:41:59 ******/
+/****** Object:  Table [dbo].[Chat]    Script Date: 26/03/2021 19:03:32 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -104,7 +110,7 @@ CREATE TABLE [dbo].[Chat](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Clima]    Script Date: 04/03/2021 12:41:59 ******/
+/****** Object:  Table [dbo].[Clima]    Script Date: 26/03/2021 19:03:32 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -121,7 +127,7 @@ CREATE TABLE [dbo].[Clima](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Destino]    Script Date: 04/03/2021 12:41:59 ******/
+/****** Object:  Table [dbo].[Destino]    Script Date: 26/03/2021 19:03:32 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -136,7 +142,7 @@ PRIMARY KEY CLUSTERED
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Foro]    Script Date: 04/03/2021 12:41:59 ******/
+/****** Object:  Table [dbo].[Foro]    Script Date: 26/03/2021 19:03:32 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -153,7 +159,7 @@ PRIMARY KEY CLUSTERED
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Usuario]    Script Date: 04/03/2021 12:41:59 ******/
+/****** Object:  Table [dbo].[Usuario]    Script Date: 26/03/2021 19:03:32 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -161,15 +167,15 @@ GO
 CREATE TABLE [dbo].[Usuario](
 	[id_usuarioReg] [int] IDENTITY(1,1) NOT NULL,
 	[Nombre] [varchar](30) NOT NULL,
-	[Password] [varchar](30) NOT NULL,
+	[Password] [varchar](255) NOT NULL,
 	[Email] [varchar](30) NOT NULL,
-PRIMARY KEY CLUSTERED 
+ CONSTRAINT [PK__UsuarioR__F1D4FDF0234205A7] PRIMARY KEY CLUSTERED 
 (
 	[id_usuarioReg] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[UsuarioVisitante]    Script Date: 04/03/2021 12:41:59 ******/
+/****** Object:  Table [dbo].[UsuarioVisitante]    Script Date: 26/03/2021 19:03:32 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -192,8 +198,10 @@ REFERENCES [dbo].[Destino] ([id_destino])
 GO
 ALTER TABLE [dbo].[Clima] CHECK CONSTRAINT [FK__Clima__fk_id_des__3F466844]
 GO
-ALTER TABLE [dbo].[Foro]  WITH CHECK ADD FOREIGN KEY([fk_id_usuarioReg])
+ALTER TABLE [dbo].[Foro]  WITH CHECK ADD  CONSTRAINT [FK__Foro__fk_id_usua__3D5E1FD2] FOREIGN KEY([fk_id_usuarioReg])
 REFERENCES [dbo].[Usuario] ([id_usuarioReg])
+GO
+ALTER TABLE [dbo].[Foro] CHECK CONSTRAINT [FK__Foro__fk_id_usua__3D5E1FD2]
 GO
 USE [master]
 GO
