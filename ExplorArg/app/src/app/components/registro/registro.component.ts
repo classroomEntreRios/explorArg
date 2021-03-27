@@ -23,11 +23,11 @@ export class RegistroComponent implements OnInit {
   mensajeError: any;
   usuarioExiste: boolean = false;
 
-  
+
   constructor(private registroS: RegistroService) { }
 
   ngOnInit(): void {
-    this.verUsuarios();
+
   }
 
 
@@ -35,41 +35,36 @@ export class RegistroComponent implements OnInit {
      this.nuevoUsuario = this.registroForm.value;
      this.registroForm.reset();
 
-     return new Promise((datos, error) => {
-      this.registroS.registrarNuevoUsuario(this.nuevoUsuario).toPromise()
-      .then(
-        datos => {
-          console.log(datos)
-          this.usuarioExiste = false;
-          this.usuarioCreado = true;
-        },
-        error => {
-          this.mensaje = error;
-          console.log(this.mensaje.error)
-          this.usuarioExiste = true;
-          if (this.mensaje.error){
-            this.mensajeError = 'El usuario ya existe!'
-          }
-        }
-      ).catch((error) => {
-        console.log(error)
-      }) 
-    })
+     this.registroS.registrarNuevoUsuario(this.nuevoUsuario).subscribe(resp =>{
+      console.log(resp);
+      this.usuarioExiste = false;
+      this.usuarioCreado = true;
+     })
+
+
+    //  return new Promise((datos, error) => {
+    //   this.registroS.registrarNuevoUsuario(this.nuevoUsuario).toPromise()
+    //   .then(
+    //     datos => {
+    //       console.log(datos)
+    //       this.usuarioExiste = false;
+    //       this.usuarioCreado = true;
+    //     },
+    //     error => {
+    //       this.mensaje = error;
+    //       console.log(this.mensaje.error)
+    //       this.usuarioExiste = true;
+    //       if (this.mensaje.error){
+    //         this.mensajeError = 'El usuario ya existe!'
+    //       }
+    //     }
+    //   ).catch((error) => {
+    //     console.log(error)
+    //   })
+    // })
   }
 
-  verUsuarios(){
-    return new Promise((datos, error) => {
-      this.registroS.obtenerUsuarios().toPromise()
-      .then(
-        datos => {
-          console.log(datos);
-        },
-        error => {
-          console.log(error)
-        }
-      )
-    })
-  }
+
 
   cerrarModal(){
     window.location.reload();

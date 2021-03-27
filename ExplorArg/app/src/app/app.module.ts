@@ -33,7 +33,8 @@ const Routes: Routes =[
     NavbarComponent,
     DashboardComponent,
     DestinosComponent,
-    ContactoComponent
+    ContactoComponent,
+
   ],
   imports: [
     BrowserModule,
