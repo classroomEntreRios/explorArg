@@ -31,38 +31,30 @@ export class IngresoComponent implements OnInit {
 
 
   ingreso(form : FormGroup){
-      return new Promise((resolve,reject) => {
-    //    // pasar los inputs del form al objeto usuario
-       this.usuario.Email = this.ingresoForm.value.emailLogin;
-       this.usuario.Password = this.ingresoForm.value.passwLogin;
+    // pasar los inputs del form al objeto usuario
+    this.usuario.Email = this.ingresoForm.value.emailLogin;
+    this.usuario.Password = this.ingresoForm.value.passwLogin;
 
-       // promesa login
-         this.login.autenticarUsuario(this.usuario).toPromise()
-         //si la api devuelve 1 como resultado: redirige al dashboard y modifica valor del bool
-         .then(resolve => {
-           this.respuesta = resolve;
-           if (this.respuesta.Resultado == 1){
-             this.login.obtenerUsuario(this.usuario.Email.toString()).toPromise()
-             .then(res => {
-               this.datosU = res;
-               this.datos.agregarDatos(this.datosU);
-             })
-             // redirige al dashboard
-             this.router.navigate(['dashboard']);
-             this.usuarioAutenticado = true;
-
-           }
-           // si el resultado es 0, emite alerta y redirige a la página de inicio
-           else {
-             alert('El usuario ingresado no existe');
-             this.router.navigate(['']);
-             }
-
-         }, reject => {
-           alert('Ocurrió un error inesperado, por favor intente nuevamente más tarde')
-         })
-      })
-
+    this.login.autenticarUsuario(this.usuario).subscribe(resp =>{
+      this.respuesta = resp;
+      if (this.respuesta.Resultado == 1){
+        this.login.obtenerUsuario(this.usuario.Email.toString())
+        .subscribe(resp => {
+          this.datosU = resp;
+          this.datos.agregarDatos(this.datosU);
+          this.router.navigate(['dashboard']);
+          this.usuarioAutenticado = true;
+        })
+      }
+      // si el resultado es 0, emite alerta y redirige a la página de inicio
+      else {
+        alert('El usuario ingresado no existe');
+        this.router.navigate(['']);
+        }
+    }, err =>{
+      console.log(err)
+      alert('Ocurrió un error inesperado, por favor intente nuevamente más tarde');
+    })
   }
 
 

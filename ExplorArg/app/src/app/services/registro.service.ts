@@ -14,12 +14,12 @@ export class RegistroService {
 
   obtenerUsuarios(){
     return this.http.get(this.url.urlRegistro);
-  
+
   }
 
-  registrarNuevoUsuario<Usuario>(datos: Usuario){
+  registrarNuevoUsuario(datos: Usuario){
     return this.http.post(this.url.urlRegistro, datos)
   }
 
-  
+
 }

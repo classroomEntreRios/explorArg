@@ -1,3 +1,4 @@
+import { RegistroService } from './../../services/registro.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -7,12 +8,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class InicioComponent implements OnInit {
 
-  constructor() { }
+  constructor(private registroS: RegistroService) { }
 
   ngOnInit(): void {
+    this.verUsuarios();
   }
 
   cerrarModal(){
     location.reload();
+  }
+
+  verUsuarios(){
+    this.registroS.obtenerUsuarios().subscribe(data =>{
+      console.log(data)
+    })
   }
 }
