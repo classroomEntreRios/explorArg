@@ -4,11 +4,12 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { DestinosComponent } from './destinos/destinos.component';
 import { ContactoComponent } from './contacto/contacto.component';
+import { DashboardpanelComponent } from './dashboardpanel/dashboardpanel.component';
 
 
 
 @NgModule({
-  declarations: [DestinosComponent, ContactoComponent],
+  declarations: [DestinosComponent, ContactoComponent, DashboardpanelComponent],
   imports: [
     CommonModule
   ],
