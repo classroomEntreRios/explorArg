@@ -1,0 +1,75 @@
+body {
+    background: linear-gradient(to left, #F37335, #FDC830);
+    }
+    
+    .user-title {
+        text-shadow: 2px 4px 4px #B22222;
+    }
+    
+    .x-align {
+        text-align: center;
+    }
+    
+    .x-border {
+        display: flex;
+        border-radius: 50px;
+        text-align: center;
+        box-shadow: 3px 3px 8px #F1843C;
+    }
+    
+    .fotoPerfil {
+        width: 150px;
+        height: 150px;
+        border-radius: 50%;
+    }
+    
+    .x-file {
+        color: white;
+        display: flex;
+        justify-content: center;
+        padding: 7px;
+        background: #DC3545;
+        width: 110px;
+        height: 40px;
+        position: relative;
+        border-radius: 5px;
+        margin-top: 5%;
+    }
+    
+    .x-file:hover {
+        background: #BB2D3B;
+        transition: .3s ease;
+    }
+    
+    #profileFile {
+        display: flex;
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        width: 100%;
+        height: 100%;
+        opacity: 0;
+        border: 1px solid blue;
+    }
+    
+    .x-weight {
+        font-weight: bold;
+    }
+    
+    .x-cont {
+    /*    border: 1px solid red;*/
+        border-radius: 5px;
+        box-shadow: 2px 2px 6px #B22222;
+    }
+    
+    .bording {
+    /*    border: 1px solid yellow;*/
+        box-shadow: 3px 3px 8px #F1843C;
+    }
+    
+    .minimum {
+        width: 600px;
+        }
+    
