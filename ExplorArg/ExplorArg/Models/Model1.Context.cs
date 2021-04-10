@@ -25,12 +25,10 @@ namespace ExplorArg.Models
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<Admin> Admin { get; set; }
         public virtual DbSet<Chat> Chat { get; set; }
         public virtual DbSet<Clima> Clima { get; set; }
         public virtual DbSet<Destino> Destino { get; set; }
         public virtual DbSet<Foro> Foro { get; set; }
         public virtual DbSet<Usuario> Usuario { get; set; }
-        public virtual DbSet<UsuarioVisitante> UsuarioVisitante { get; set; }
     }
 }

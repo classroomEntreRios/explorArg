@@ -14,12 +14,10 @@ namespace ExplorArg.Models
     
     public partial class Clima
     {
-        public Nullable<int> fk_id_destino { get; set; }
-        public Nullable<System.DateTime> fechaClima { get; set; }
-        public Nullable<int> tempMax { get; set; }
-        public Nullable<int> tempMin { get; set; }
-        public string condicionClima { get; set; }
-    
-        public virtual Destino Destino { get; set; }
+        public int Id { get; set; }
+        public System.DateTime Fecha { get; set; }
+        public int TempMax { get; set; }
+        public int TempMin { get; set; }
+        public string Condicion { get; set; }
     }
 }

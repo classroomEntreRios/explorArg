@@ -174,9 +174,6 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\Admin.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
-    </Compile>
     <Compile Include="Models\Chat.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
@@ -207,9 +204,6 @@
     </Compile>
     <Compile Include="Models\Registro\Encrypt.cs" />
     <Compile Include="Models\Usuario.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\UsuarioVisitante.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />

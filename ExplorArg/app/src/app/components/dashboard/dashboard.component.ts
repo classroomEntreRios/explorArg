@@ -12,7 +12,7 @@ import { FormsModule, NgModel } from '@angular/forms';
 export class DashboardComponent implements OnInit {
 
   usuario: any;
-  nombreDeUsuario: string= '';
+
 
 
   constructor(private datos: DatosService) { }
@@ -28,5 +28,6 @@ export class DashboardComponent implements OnInit {
   alerta(){
     alert("Funcionalidad no implementada");
   }
+
 
 }

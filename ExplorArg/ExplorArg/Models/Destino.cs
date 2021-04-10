@@ -14,17 +14,8 @@ namespace ExplorArg.Models
     
     public partial class Destino
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Destino()
-        {
-            this.Clima = new HashSet<Clima>();
-        }
-    
-        public int id_destino { get; set; }
-        public string nombreDestino { get; set; }
-        public string infoDestino { get; set; }
-    
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Clima> Clima { get; set; }
+        public int Id { get; set; }
+        public string Nombre { get; set; }
+        public string Info { get; set; }
     }
 }
