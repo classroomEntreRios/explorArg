@@ -5,16 +5,15 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="03f8cda183684f7292e3939060039069" Name="Diagram1">
-        <EntityTypeShape EntityType="ExplorArgModel.Admin" Width="1.5" PointX="5.75" PointY="4.75" IsExpanded="true" />
         <EntityTypeShape EntityType="ExplorArgModel.Chat" Width="1.5" PointX="3" PointY="1.125" IsExpanded="true" />
         <EntityTypeShape EntityType="ExplorArgModel.Clima" Width="1.5" PointX="8" PointY="0.875" IsExpanded="true" />
         <EntityTypeShape EntityType="ExplorArgModel.Destino" Width="1.5" PointX="5.75" PointY="1.125" IsExpanded="true" />
         <EntityTypeShape EntityType="ExplorArgModel.Foro" Width="1.5" PointX="3" PointY="4" IsExpanded="true" />
         <EntityTypeShape EntityType="ExplorArgModel.Usuario" Width="1.5" PointX="0.75" PointY="2.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="ExplorArgModel.UsuarioVisitante" Width="1.5" PointX="0.75" PointY="7.75" IsExpanded="true" />
         <AssociationConnector Association="ExplorArgModel.FK__Chat__fk_id_usua__3A81B327" ManuallyRouted="false" />
         <AssociationConnector Association="ExplorArgModel.FK__Clima__fk_id_des__3F466844" ManuallyRouted="false" />
         <AssociationConnector Association="ExplorArgModel.FK__Foro__fk_id_usua__3D5E1FD2" ManuallyRouted="false" />
+        <AssociationConnector Association="ExplorArgModel.FK__Clima__fk_id_des__3F4668441" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
