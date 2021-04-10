@@ -2,21 +2,41 @@
 <div class="container">
   <div class="row registroRow">
     <div class="col-sm col-md col-lg col-xl">
-          <form [formGroup]="registroForm" class="was-validated">
+          <form [formGroup]="registroForm">
+
+            <div>
             <!-- Campo usuario -->
             <label for="nombreU"> Nombre de usuario</label>
-            <input type="text" id="nombreU" class="form-control" formControlName="Nombre" minlength="5" required
-              placeholder="Debe tener al menos 5 caracteres"><br>
+            <input type="text" id="nombreU" class="form-control" formControlName="Nombre"
+              placeholder="Debe tener al menos 5 caracteres">
+              <small class="form-text text-danger"
+              *ngIf="CampoValido('Nombre')">
+               <p> Dato requerido </p>
+              </small>
+            </div><br>
 
+            <div>
             <!-- Campo password -->
             <label for="passU"> Contraseña </label>
-            <input type="password" id="passU" class="form-control" formControlName="Password" minlength="8"
-              required placeholder="Debe tener al menos 8 caracteres"><br>
+            <input type="password" id="passU" class="form-control" formControlName="Password"
+               placeholder="Debe tener al menos 8 caracteres">
+               <small class="form-text text-danger"
+              *ngIf="CampoValido('Password')">
+               <p> Dato requerido </p>
+              </small>
+            </div><br>
 
+            <div>
             <!-- Campo Email -->
             <label for="emailU"> Email</label>
-            <input type="email" id="emailU" class="form-control" formControlName="Email" minlength="8"
-              pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" placeholder="ejemplo@ejemplo.com" required><br>
+            <input type="email" id="emailU" class="form-control" formControlName="Email"
+               placeholder="ejemplo@ejemplo.com">
+               <small class="form-text text-danger"
+              *ngIf="CampoValido('Email')">
+               <p> Dato requerido </p>
+              </small>
+            </div><br>
+
 
             <!-- Botón -->
             <div class="container">

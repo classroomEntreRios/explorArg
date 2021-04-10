@@ -13,6 +13,12 @@
     justify-content: center;
   }
 
+  input.ng-invalid{
+    border-left: 5px solid red;
+  }
+  input.ng-valid{
+    border-left: 5px solid rgb(45, 230, 45);
+  }
 
   .ingresoRow{
     font-family: Verdana;

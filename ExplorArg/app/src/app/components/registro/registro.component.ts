@@ -1,7 +1,7 @@
 import { RegistroService } from './../../services/registro.service';
 import { Usuario } from './../../models/usuario';
 import { Component, Input, OnInit } from '@angular/core';
-import { FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { formatCurrency } from '@angular/common';
 
 
@@ -12,11 +12,16 @@ import { formatCurrency } from '@angular/common';
 })
 export class RegistroComponent implements OnInit {
 
-  registroForm = new FormGroup({
-    Nombre: new FormControl(""),
-      Password: new FormControl(""),
-      Email: new FormControl("")
+  constructor(
+    private registroS: RegistroService,
+    private fb: FormBuilder) { }
+
+  registroForm : FormGroup = this.fb.group({
+      Nombre: ["", [Validators.required, Validators.minLength(4)]],
+      Password: ["", [Validators.required, Validators.minLength(8)]],
+      Email: ["", [Validators.required, Validators.pattern('^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,}$')]],
   });
+
   nuevoUsuario: Usuario = new Usuario;
   mensaje : any;
   usuarioCreado: boolean = false;
@@ -24,12 +29,8 @@ export class RegistroComponent implements OnInit {
   usuarioExiste: boolean = false;
 
 
-  constructor(private registroS: RegistroService) { }
-
   ngOnInit(): void {
-
   }
-
 
   registro(registroForm : FormGroup){
      this.nuevoUsuario = this.registroForm.value;
@@ -40,31 +41,13 @@ export class RegistroComponent implements OnInit {
       this.usuarioExiste = false;
       this.usuarioCreado = true;
      })
-
-
-    //  return new Promise((datos, error) => {
-    //   this.registroS.registrarNuevoUsuario(this.nuevoUsuario).toPromise()
-    //   .then(
-    //     datos => {
-    //       console.log(datos)
-    //       this.usuarioExiste = false;
-    //       this.usuarioCreado = true;
-    //     },
-    //     error => {
-    //       this.mensaje = error;
-    //       console.log(this.mensaje.error)
-    //       this.usuarioExiste = true;
-    //       if (this.mensaje.error){
-    //         this.mensajeError = 'El usuario ya existe!'
-    //       }
-    //     }
-    //   ).catch((error) => {
-    //     console.log(error)
-    //   })
-    // })
   }
 
 
+  CampoValido(campo: string){
+    return this.registroForm.controls[campo].errors &&
+           this.registroForm.controls[campo].touched;
+  }
 
   cerrarModal(){
     window.location.reload();
