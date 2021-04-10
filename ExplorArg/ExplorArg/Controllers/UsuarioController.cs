@@ -60,6 +60,9 @@ namespace ExplorArg.Controllers
             else
             {
                 // si se pasan todos los chequeos se agrega el nuevo usuario
+
+                var.isAdmin = false;
+
                 db.Usuario.Add(var);
                 db.SaveChanges();
                 return Ok("Usuario creado correctamente");

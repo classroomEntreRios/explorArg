@@ -17,21 +17,21 @@
         </EntityType>
         <EntityType Name="Clima">
           <Key>
-            <PropertyRef Name="condicionClima" />
+            <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="int" />
-          <Property Name="fechaClima" Type="date" />
-          <Property Name="tempMax" Type="int" />
-          <Property Name="tempMin" Type="int" />
-          <Property Name="condicionClima" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="Fecha" Type="date" Nullable="false" />
+          <Property Name="TempMax" Type="int" Nullable="false" />
+          <Property Name="TempMin" Type="int" Nullable="false" />
+          <Property Name="Condicion" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
         </EntityType>
         <EntityType Name="Destino">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Nombre" Type="varchar" MaxLength="30" Nullable="false" />
-          <Property Name="Info" Type="varchar" MaxLength="900" />
+          <Property Name="Nombre" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Info" Type="varchar(max)" Nullable="false" />
         </EntityType>
         <EntityType Name="Foro">
           <Key>
@@ -110,21 +110,21 @@
         </EntityType>
         <EntityType Name="Clima">
           <Key>
-            <PropertyRef Name="condicionClima" />
+            <PropertyRef Name="Id" />
           </Key>
-          <Property Name="fechaClima" Type="DateTime" Precision="0" />
-          <Property Name="tempMax" Type="Int32" />
-          <Property Name="tempMin" Type="Int32" />
-          <Property Name="condicionClima" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="Id" Type="Int32" />
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Fecha" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="TempMax" Type="Int32" Nullable="false" />
+          <Property Name="TempMin" Type="Int32" Nullable="false" />
+          <Property Name="Condicion" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="Destino">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Nombre" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
-          <Property Name="Info" Type="String" MaxLength="900" FixedLength="false" Unicode="false" />
+          <Property Name="Nombre" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Info" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
         </EntityType>
         <EntityType Name="Foro">
           <Key>
@@ -162,16 +162,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Clima__fk_id_des__3F466844">
-          <End Role="Destino" Type="Self.Destino" Multiplicity="0..1" />
-          <End Role="Clima" Type="Self.Clima" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Destino">
-            </Principal>
-            <Dependent Role="Clima">
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK__Foro__fk_id_usua__3D5E1FD2">
           <End Role="Usuario" Type="Self.Usuario" Multiplicity="0..1" />
           <End Role="Foro" Type="Self.Foro" Multiplicity="*" />
@@ -194,31 +184,11 @@
             <End Role="Usuario" EntitySet="Usuario" />
             <End Role="Chat" EntitySet="Chat" />
           </AssociationSet>
-          <AssociationSet Name="FK__Clima__fk_id_des__3F466844" Association="Self.FK__Clima__fk_id_des__3F466844">
-            <End Role="Destino" EntitySet="Destino" />
-            <End Role="Clima" EntitySet="Clima" />
-          </AssociationSet>
           <AssociationSet Name="FK__Foro__fk_id_usua__3D5E1FD2" Association="Self.FK__Foro__fk_id_usua__3D5E1FD2">
             <End Role="Usuario" EntitySet="Usuario" />
             <End Role="Foro" EntitySet="Foro" />
           </AssociationSet>
-          <AssociationSet Name="FK__Clima__fk_id_des__3F4668441" Association="ExplorArgModel.FK__Clima__fk_id_des__3F4668441">
-            <End Role="Destino" EntitySet="Destino" />
-            <End Role="Clima" EntitySet="Clima" />
-          </AssociationSet>
         </EntityContainer>
-        <Association Name="FK__Clima__fk_id_des__3F4668441">
-          <End Type="ExplorArgModel.Destino" Role="Destino" Multiplicity="0..1" />
-          <End Type="ExplorArgModel.Clima" Role="Clima" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Destino">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="Clima">
-              <PropertyRef Name="Id" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -239,12 +209,12 @@
           <EntitySetMapping Name="Clima">
             <EntityTypeMapping TypeName="ExplorArgModel.Clima">
               <MappingFragment StoreEntitySet="Clima">
+                <ScalarProperty Name="Condicion" ColumnName="Condicion" />
+                <ScalarProperty Name="TempMin" ColumnName="TempMin" />
+                <ScalarProperty Name="TempMax" ColumnName="TempMax" />
+                <ScalarProperty Name="Fecha" ColumnName="Fecha" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="fechaClima" ColumnName="fechaClima" />
-                <ScalarProperty Name="tempMax" ColumnName="tempMax" />
-                <ScalarProperty Name="tempMin" ColumnName="tempMin" />
-                <ScalarProperty Name="condicionClima" ColumnName="condicionClima" />
-              </MappingFragment>
+                </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Destino">
