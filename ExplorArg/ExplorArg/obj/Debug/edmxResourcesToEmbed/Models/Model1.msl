@@ -1,16 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
   <EntityContainerMapping StorageEntityContainer="ExplorArgModelStoreContainer" CdmEntityContainer="ExplorArgEntities">
-    <EntitySetMapping Name="Admin">
-      <EntityTypeMapping TypeName="ExplorArgModel.Admin">
-        <MappingFragment StoreEntitySet="Admin">
-          <ScalarProperty Name="id_admin" ColumnName="id_admin" />
-          <ScalarProperty Name="nombre" ColumnName="nombre" />
-          <ScalarProperty Name="contraseña" ColumnName="contraseña" />
-          <ScalarProperty Name="email" ColumnName="email" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
     <EntitySetMapping Name="Chat">
       <EntityTypeMapping TypeName="ExplorArgModel.Chat">
         <MappingFragment StoreEntitySet="Chat">
@@ -25,20 +15,20 @@
     <EntitySetMapping Name="Clima">
       <EntityTypeMapping TypeName="ExplorArgModel.Clima">
         <MappingFragment StoreEntitySet="Clima">
-          <ScalarProperty Name="fk_id_destino" ColumnName="fk_id_destino" />
-          <ScalarProperty Name="fechaClima" ColumnName="fechaClima" />
-          <ScalarProperty Name="tempMax" ColumnName="tempMax" />
-          <ScalarProperty Name="tempMin" ColumnName="tempMin" />
-          <ScalarProperty Name="condicionClima" ColumnName="condicionClima" />
+          <ScalarProperty Name="Condicion" ColumnName="Condicion" />
+          <ScalarProperty Name="TempMin" ColumnName="TempMin" />
+          <ScalarProperty Name="TempMax" ColumnName="TempMax" />
+          <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Destino">
       <EntityTypeMapping TypeName="ExplorArgModel.Destino">
         <MappingFragment StoreEntitySet="Destino">
-          <ScalarProperty Name="id_destino" ColumnName="id_destino" />
-          <ScalarProperty Name="nombreDestino" ColumnName="nombreDestino" />
-          <ScalarProperty Name="infoDestino" ColumnName="infoDestino" />
+          <ScalarProperty Name="Info" ColumnName="Info" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -56,17 +46,12 @@
     <EntitySetMapping Name="Usuario">
       <EntityTypeMapping TypeName="ExplorArgModel.Usuario">
         <MappingFragment StoreEntitySet="Usuario">
+          <ScalarProperty Name="isAdmin" ColumnName="isAdmin" />
+          <ScalarProperty Name="Token" ColumnName="Token" />
           <ScalarProperty Name="id_usuarioReg" ColumnName="id_usuarioReg" />
           <ScalarProperty Name="Nombre" ColumnName="Nombre" />
           <ScalarProperty Name="Password" ColumnName="Password" />
           <ScalarProperty Name="Email" ColumnName="Email" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="UsuarioVisitante">
-      <EntityTypeMapping TypeName="ExplorArgModel.UsuarioVisitante">
-        <MappingFragment StoreEntitySet="UsuarioVisitante">
-          <ScalarProperty Name="id_usuario" ColumnName="id_usuario" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
