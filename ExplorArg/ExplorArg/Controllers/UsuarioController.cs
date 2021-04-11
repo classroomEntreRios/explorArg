@@ -77,7 +77,7 @@ namespace ExplorArg.Controllers
         // Login o autenticación de usuario
         [HttpPost]
         [Route("api/usuario/login")]
-        public Respuesta AutenticarUsuario(Usuario val)
+        public Respuesta AutenticarUsuario([FromBody] Usuario val)
         {
             Respuesta oRespuesta = new Respuesta();
 
