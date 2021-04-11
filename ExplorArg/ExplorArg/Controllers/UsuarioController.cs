@@ -29,6 +29,8 @@ namespace ExplorArg.Controllers
             return Ok(usuario);
         }
 
+
+
         // Registro de nuevos usuarios
         [HttpPost]
         public IHttpActionResult RegistrarUsuario(Usuario var)
@@ -79,13 +81,13 @@ namespace ExplorArg.Controllers
         {
             Respuesta oRespuesta = new Respuesta();
 
-            // encripta la passw ingresada por el usuario para revisar si coincide con la password encriptada anteriormente
+            // Encripta la password ingresada por el usuario para revisar si coincide con la password encriptada anteriormente
             string oValPass = Encrypt.GetSHA256(val.Password);
             val.Password = oValPass;
 
             try
             {
-                // revisa si existe un usuario que coincida con los datos aportados como parametro
+                // Revisa si existe un usuario que coincida con los datos aportados como parámetro
               var usuarioRegistrado = db.Usuario.Where(a => a.Email == val.Email && a.Password == val.Password).ToList();
 
                 if (usuarioRegistrado.Count > 0)
@@ -96,12 +98,11 @@ namespace ExplorArg.Controllers
                     // Crea un número aleatorio irrepetible
                     oRespuesta.Datos = Guid.NewGuid().ToString();
 
-                    // Ingresa ese número en la columna 'Token' de un Usuario Registrado y lo guarda en BD
+                    // Ingresa ese número en la columna 'Token' de un UsuarioRegistrado y lo guarda en BD
                     Usuario oUsuario = usuarioRegistrado.FirstOrDefault();
                     oUsuario.Token = oRespuesta.Datos.ToString();
                     db.Entry(oUsuario).State = System.Data.Entity.EntityState.Modified;
                     db.SaveChanges();
-                    
                 } 
                 else
                 {
@@ -112,7 +113,6 @@ namespace ExplorArg.Controllers
             }
             catch (Exception ex)
             {
-
                 oRespuesta.Mensaje = "Ocurrió un error. Intente más tarde. Detalles del error:" + ex.Message;
                 return oRespuesta;
             }
