@@ -1,4 +1,7 @@
-﻿CREATE DATABASE [ExplorArg]
+﻿USE [master]
+GO
+/****** Object:  Database [ExplorArg]    Script Date: 10/04/2021 17:49:04 ******/
+CREATE DATABASE [ExplorArg]
  CONTAINMENT = NONE
  ON  PRIMARY 
 ( NAME = N'ExplorArg', FILENAME = N'C:\Program Files\Microsoft SQL Server\MSSQL15.MSSQLSERVER\MSSQL\DATA\ExplorArg.mdf' , SIZE = 8192KB , MAXSIZE = UNLIMITED, FILEGROWTH = 65536KB )
@@ -77,23 +80,7 @@ ALTER DATABASE [ExplorArg] SET QUERY_STORE = OFF
 GO
 USE [ExplorArg]
 GO
-/****** Object:  Table [dbo].[Admin]    Script Date: 26/03/2021 19:03:32 ******/
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
-CREATE TABLE [dbo].[Admin](
-	[id_admin] [int] IDENTITY(1,1) NOT NULL,
-	[nombre] [varchar](30) NOT NULL,
-	[contraseña] [varchar](30) NOT NULL,
-	[email] [varchar](30) NOT NULL,
-PRIMARY KEY CLUSTERED 
-(
-	[id_admin] ASC
-)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
-) ON [PRIMARY]
-GO
-/****** Object:  Table [dbo].[Chat]    Script Date: 26/03/2021 19:03:32 ******/
+/****** Object:  Table [dbo].[Chat]    Script Date: 10/04/2021 17:49:04 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -110,39 +97,39 @@ CREATE TABLE [dbo].[Chat](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Clima]    Script Date: 26/03/2021 19:03:32 ******/
+/****** Object:  Table [dbo].[Clima]    Script Date: 10/04/2021 17:49:04 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
 GO
 CREATE TABLE [dbo].[Clima](
-	[fk_id_destino] [int] NULL,
-	[fechaClima] [date] NULL,
-	[tempMax] [int] NULL,
-	[tempMin] [int] NULL,
-	[condicionClima] [varchar](30) NOT NULL,
+	[Fecha] [date] NOT NULL,
+	[TempMax] [int] NOT NULL,
+	[TempMin] [int] NOT NULL,
+	[Condicion] [varchar](50) NOT NULL,
+	[Id] [int] IDENTITY(1,1) NOT NULL,
  CONSTRAINT [PK_Clima] PRIMARY KEY CLUSTERED 
 (
-	[condicionClima] ASC
+	[Id] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Destino]    Script Date: 26/03/2021 19:03:32 ******/
+/****** Object:  Table [dbo].[Destino]    Script Date: 10/04/2021 17:49:04 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
 GO
 CREATE TABLE [dbo].[Destino](
-	[id_destino] [int] IDENTITY(1,1) NOT NULL,
-	[nombreDestino] [varchar](30) NOT NULL,
-	[infoDestino] [varchar](900) NULL,
-PRIMARY KEY CLUSTERED 
+	[Id] [int] IDENTITY(1,1) NOT NULL,
+	[Nombre] [varchar](50) NOT NULL,
+	[Info] [varchar](max) NOT NULL,
+ CONSTRAINT [PK_Destino] PRIMARY KEY CLUSTERED 
 (
-	[id_destino] ASC
+	[Id] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
-) ON [PRIMARY]
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Foro]    Script Date: 26/03/2021 19:03:32 ******/
+/****** Object:  Table [dbo].[Foro]    Script Date: 10/04/2021 17:49:04 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -159,7 +146,7 @@ PRIMARY KEY CLUSTERED
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Usuario]    Script Date: 26/03/2021 19:03:32 ******/
+/****** Object:  Table [dbo].[Usuario]    Script Date: 10/04/2021 17:49:04 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -169,22 +156,11 @@ CREATE TABLE [dbo].[Usuario](
 	[Nombre] [varchar](30) NOT NULL,
 	[Password] [varchar](255) NOT NULL,
 	[Email] [varchar](30) NOT NULL,
+	[Token] [varchar](250) NULL,
+	[isAdmin] [bit] NULL,
  CONSTRAINT [PK__UsuarioR__F1D4FDF0234205A7] PRIMARY KEY CLUSTERED 
 (
 	[id_usuarioReg] ASC
-)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
-) ON [PRIMARY]
-GO
-/****** Object:  Table [dbo].[UsuarioVisitante]    Script Date: 26/03/2021 19:03:32 ******/
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
-CREATE TABLE [dbo].[UsuarioVisitante](
-	[id_usuario] [int] NOT NULL,
- CONSTRAINT [PK_UsuarioVisitante] PRIMARY KEY CLUSTERED 
-(
-	[id_usuario] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
@@ -192,11 +168,6 @@ ALTER TABLE [dbo].[Chat]  WITH CHECK ADD  CONSTRAINT [FK__Chat__fk_id_usua__3A81
 REFERENCES [dbo].[Usuario] ([id_usuarioReg])
 GO
 ALTER TABLE [dbo].[Chat] CHECK CONSTRAINT [FK__Chat__fk_id_usua__3A81B327]
-GO
-ALTER TABLE [dbo].[Clima]  WITH CHECK ADD  CONSTRAINT [FK__Clima__fk_id_des__3F466844] FOREIGN KEY([fk_id_destino])
-REFERENCES [dbo].[Destino] ([id_destino])
-GO
-ALTER TABLE [dbo].[Clima] CHECK CONSTRAINT [FK__Clima__fk_id_des__3F466844]
 GO
 ALTER TABLE [dbo].[Foro]  WITH CHECK ADD  CONSTRAINT [FK__Foro__fk_id_usua__3D5E1FD2] FOREIGN KEY([fk_id_usuarioReg])
 REFERENCES [dbo].[Usuario] ([id_usuarioReg])

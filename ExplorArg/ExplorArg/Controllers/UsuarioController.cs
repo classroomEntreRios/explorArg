@@ -60,6 +60,9 @@ namespace ExplorArg.Controllers
             else
             {
                 // si se pasan todos los chequeos se agrega el nuevo usuario
+
+                var.isAdmin = false;
+
                 db.Usuario.Add(var);
                 db.SaveChanges();
                 return Ok("Usuario creado correctamente");
@@ -100,11 +103,95 @@ namespace ExplorArg.Controllers
 
                 oRespuesta.Mensaje = "Ocurrió un error. Intente más tarde. Detalles del error:" + ex.Message;
                 return oRespuesta;
-            }
-
-            
+            }     
             
         }
 
+        // Modificar nombre.
+        [HttpPut]
+        [Route("api/usuario/editnombre")]
+        public IHttpActionResult PutNombreUsuario( int id, string nombre)
+        {
+            try
+            {
+                var busqueda = db.Usuario.Where(u => u.id_usuarioReg == id).Count();
+                if (busqueda > 0)
+                {
+                    var usuarioReg = db.Usuario.Where(u => u.id_usuarioReg == id).FirstOrDefault();
+                    usuarioReg.Nombre = nombre;
+                    db.SaveChanges();
+                    return Ok(usuarioReg);
+                }
+                else
+                {
+                    return BadRequest("No se encontró un usuario que coincida con los datos aportados");
+                }
+            }
+            catch (Exception ex)
+            {
+
+                throw new Exception("Ocurrió un error inesperado. Código de error: " + ex.Message);
+            }
+        }
+
+        // Modificar Email
+        [HttpPut]
+        [Route("api/usuario/editmail")]
+        public IHttpActionResult PutEmail( int id, string email)
+        {
+            try
+            {
+                var busqueda = db.Usuario.Where(u => u.id_usuarioReg == id).Count();
+
+                if (busqueda > 0)
+                {
+                    var usuarioReg = db.Usuario.Where(u => u.id_usuarioReg == id).FirstOrDefault();
+                    usuarioReg.Email = email;
+                    db.SaveChanges();
+                    return Ok(usuarioReg);
+                }
+                else
+                {
+                    return BadRequest("No se encontró un usuario que coincida con los datos aportados");
+                }
+            }
+            catch (Exception ex)
+            {
+
+                throw new Exception("Ocurrió un error inesperado. Código de error: " + ex.Message);
+            }
+            
+        }
+
+        // Modificar contraseña
+        [HttpPut]
+        [Route("api/usuario/editpassw")]
+        public IHttpActionResult PutContraseña( int id, string nuevoPass)
+        {
+
+            try
+            {
+                var busqueda = db.Usuario.Where(u => u.id_usuarioReg == id).Count();
+
+                if (busqueda > 0)
+                {
+                    var usuarioReg = db.Usuario.Where(u => u.id_usuarioReg == id).FirstOrDefault();
+
+                    usuarioReg.Password = Encrypt.GetSHA256(nuevoPass);
+                    db.SaveChanges();
+                    return Ok(usuarioReg);
+                }
+                else
+                {
+                    return BadRequest("No se encontró un usuario que coincida con los datos aportados");
+                }
+            }
+            catch (Exception ex)
+            {
+
+                throw new Exception("Ocurrió un error inesperado. Código de error: " + ex.Message);
+            }
+            
+        }
     }
 }

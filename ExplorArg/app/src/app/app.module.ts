@@ -17,12 +17,7 @@ import { ContactoComponent } from './components/contacto/contacto.component';
 
 
 
-const Routes: Routes =[
-  { path: '', component: InicioComponent },
-  { path: 'dashboard', component: DashboardComponent},
-  {path: 'registro', component: RegistroComponent},
-  {path: 'ingreso', component: IngresoComponent}
-];
+
 
 @NgModule({
   declarations: [
@@ -43,7 +38,7 @@ const Routes: Routes =[
     NgbModule,
     ReactiveFormsModule,
     HttpClientModule,
-    RouterModule.forRoot(Routes)
+
   ],
   providers: [HttpClient],
   bootstrap: [AppComponent]

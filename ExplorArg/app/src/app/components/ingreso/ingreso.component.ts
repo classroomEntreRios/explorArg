@@ -3,7 +3,7 @@ import { RegistroService } from './../../services/registro.service';
 import { Usuario } from './../../models/usuario';
 import { IngresoService } from './../../services/ingreso.service';
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormControl, FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 
@@ -14,7 +14,7 @@ import { Observable } from 'rxjs';
 })
 export class IngresoComponent implements OnInit {
 
-  constructor(private login: IngresoService, private router: Router, private datos: DatosService) { }
+  constructor(private login: IngresoService, private router: Router, private datos: DatosService, private fb: FormBuilder) { }
 
   usuario : Usuario = new Usuario;
   usuarioAutenticado = false;
@@ -24,9 +24,9 @@ export class IngresoComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  ingresoForm = new FormGroup({
-    emailLogin: new FormControl(""),
-    passwLogin: new FormControl("")
+  ingresoForm : FormGroup = this.fb.group({
+    emailLogin: [[""], [Validators.required, Validators.pattern('^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,}$')]],
+    passwLogin: [[""], [Validators.required, Validators.minLength(8)]]
   });
 
 
@@ -67,4 +67,9 @@ export class IngresoComponent implements OnInit {
     this.datos.agregarDatos(val);
   }
 
+
+  CampoValido(campo: string){
+    return this.ingresoForm.controls[campo].errors &&
+           this.ingresoForm.controls[campo].touched;
+  }
 }

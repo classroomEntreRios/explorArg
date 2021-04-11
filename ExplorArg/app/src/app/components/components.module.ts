@@ -10,7 +10,11 @@ import { DashboardpanelComponent } from './dashboardpanel/dashboardpanel.compone
 
 
 @NgModule({
-  declarations: [DestinosComponent, ContactoComponent, DashboardpanelComponent],
+
+  declarations: [
+
+  ],
+
   imports: [
     CommonModule
   ],
