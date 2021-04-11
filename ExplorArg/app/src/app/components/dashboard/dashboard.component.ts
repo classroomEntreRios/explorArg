@@ -1,7 +1,11 @@
+import { Router } from '@angular/router';
+import { DatosUsuarioService } from './../../services/datosUsuario/datos-usuario.service';
 import { Usuario } from './../../models/usuario';
 import { DatosService } from './../../services/datos.service';
-import { Component, OnInit, NgModule } from '@angular/core';
-import { FormsModule, NgModel } from '@angular/forms';
+import { Component, OnInit, NgModule, ViewChild } from '@angular/core';
+import { FormsModule, NgModel, FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+
 
 
 @Component({
@@ -11,14 +15,44 @@ import { FormsModule, NgModel } from '@angular/forms';
 })
 export class DashboardComponent implements OnInit {
 
-  usuario: any;
+  @ViewChild('myModalClose') modalClose: any;
+
+  usuario: any = [];
+  isAdmin: boolean = false;
 
 
 
-  constructor(private datos: DatosService) { }
+
+  modifNombre: FormGroup = this.fb.group({
+    Nombre: [[''], [Validators.required]]
+  });
+  modifEmail: FormGroup = this.fb.group({});
+  modifPassw: FormGroup = this.fb.group({});
+
+
+  constructor(
+    private datos: DatosService,
+    private fb: FormBuilder,
+    private serv: DatosUsuarioService,
+    ) { }
 
   ngOnInit(): void {
+    // obtiene datos del usuario logeado
     this.buscarDatos();
+
+    // rellena los campos del form
+    this.modifNombre = this.fb.group({
+      Nombre: [[this.usuario[0].Nombre], [Validators.required]],
+    });
+    this.modifEmail = this.fb.group({
+      Email: [[this.usuario[0].Email], [Validators.required]],
+    });
+    this.modifPassw = this.fb.group({
+      Password: [[''], [Validators.required]],
+    });
+
+    // muestra las opciones de administrador
+    this.checkAdminstatus();
   }
 
   buscarDatos(){
@@ -29,5 +63,55 @@ export class DashboardComponent implements OnInit {
     alert("Funcionalidad no implementada");
   }
 
+
+  putNombre(form: FormGroup){
+      this.serv.modifNombre(
+        this.usuario[0].id_usuarioReg,
+        form.value.Nombre
+      ).subscribe(resp =>
+        {
+          console.log(resp);
+          this.modalClose.nativeElement.click();
+
+        }, error => {
+          console.log(error)
+        }
+        );
+
+  }
+
+  putEmail(form: FormGroup){
+    this.serv.modifEmail(
+      this.usuario[0].id_usuarioReg,
+      form.value.Email
+    ).subscribe(resp => {
+      console.log(resp);
+      this.modalClose.nativeElement.click();
+
+    }, error => {
+      console.log(error)
+    })
+  }
+
+  putPassword(form: FormGroup){
+    this.serv.modifPassw(
+      this.usuario[0].id_usuarioReg,
+      form.value.Password
+    ).subscribe(resp => {
+      console.log(resp)
+      this.modalClose.nativeElement.click();
+    }, error => {
+      console.log(error)
+    })
+  }
+
+
+  checkAdminstatus(){
+    if (this.usuario[0].isAdmin === true){
+      this.isAdmin = true;
+    } else {
+      this.isAdmin = false;
+    }
+  }
 
 }

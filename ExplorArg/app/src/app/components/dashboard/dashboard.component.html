@@ -29,23 +29,21 @@
             </u>
         </b>
     </p>
+
         <a href="#">
             <img src="../../../assets/img/user.png" alt="Foto de perfil" class="perfil">
         </a>
 
+        <span>
+          <a class="btn btn-primary settings" data-toggle="modal" href='#settingsModal'>
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-gear-fill" viewBox="0 0 16 16">
+            <path d="M9.405 1.05c-.413-1.4-2.397-1.4-2.81 0l-.1.34a1.464 1.464 0 0 1-2.105.872l-.31-.17c-1.283-.698-2.686.705-1.987 1.987l.169.311c.446.82.023 1.841-.872 2.105l-.34.1c-1.4.413-1.4 2.397 0 2.81l.34.1a1.464 1.464 0 0 1 .872 2.105l-.17.31c-.698 1.283.705 2.686 1.987 1.987l.311-.169a1.464 1.464 0 0 1 2.105.872l.1.34c.413 1.4 2.397 1.4 2.81 0l.1-.34a1.464 1.464 0 0 1 2.105-.872l.31.17c1.283.698 2.686-.705 1.987-1.987l-.169-.311a1.464 1.464 0 0 1 .872-2.105l.34-.1c1.4-.413 1.4-2.397 0-2.81l-.34-.1a1.464 1.464 0 0 1-.872-2.105l.17-.31c.698-1.283-.705-2.686-1.987-1.987l-.311.169a1.464 1.464 0 0 1-2.105-.872l-.1-.34zM8 10.93a2.929 2.929 0 1 1 0-5.86 2.929 2.929 0 0 1 0 5.858z"/>
+          </svg>
+          </a>
+        </span>
+
 </div>
   </nav>
-
-
-
-
-          <div *ngIf="usuario[0].isAdmin">
-
-              <!-- crear componente dashboard-admin y dashboard-usuario para
-          insertar acá y mostrar dependiendo del rol de cada uno -->
-
-          </div>
-
 
   <div class="logo">
     <a href="">
@@ -53,7 +51,126 @@
     </a>
  </div>
 
- <div class="frase">
 
- </div>
+<div class="container adminPanel" *ngIf="usuario[0].isAdmin">
+  <div class="row">
+    <div class="col-xl-10 col-lg-8 col-sm-6">
+
+
+      <!--
+        To do:
+        - formulario para cargar, modificar y eliminar destinos
+      -->
+      <h1>
+        Admin el que lee
+      </h1>
+    </div>
+  </div>
+</div>
+
+
+<!-- Modal Opciones de Usuario -->
+<div class="settingModal">
+<div class="modal fade" id="settingsModal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title" >Opciones</h4><br>
+      </div>
+
+      <div class="modal-body">
+        <p>
+          Cualquier cambio realizado se verá reflejado la próxima vez que inicie sesión.
+        </p>
+        <button type="button" class="btn btn-info" data-toggle="modal" href='#modifNombreModal' data-dismiss="modal">
+          Modificar  nombre de usuario
+        </button><br>
+
+        <button type="button" class="btn btn-info" data-toggle="modal" href='#modifEmailModal' data-dismiss="modal">
+          Modificar email
+        </button><br>
+
+        <button type="button" class="btn btn-info" data-toggle="modal" href='#modifPasswModal' data-dismiss="modal">
+          Modificar contraseña
+        </button><br>
+
+        <!-- <button type="button" class="btn btn-info">Cambiar imagen de perfil</button><br> -->
+
+        <button type="button" class="btn btn-info">Cerrar sesión</button><br>
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-warning" data-dismiss="modal">Cancelar</button>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+
+
+ <!-- modificar nombre de usuario -->
+<div class="modal fade" id="modifNombreModal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title">Modificar nombre de usuario</h4>
+      </div>
+      <div class="modal-body">
+        <form [formGroup]="modifNombre" (ngSubmit)="putNombre(modifNombre)">
+          <div class="form-group">
+
+            <label for="">Nombre</label>
+            <input type="text" class="form-control" formControlName="Nombre">
+          </div>
+          <button type="submit" class="btn btn-primary">Modificar</button>
+          <button type="button" class="btn btn-warning" data-dismiss="modal" #myModalClose>Cancelar</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- modificar email de usuario -->
+<div class="modal fade" id="modifEmailModal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title">Cambiar Email</h4>
+      </div>
+      <div class="modal-body">
+
+        <form [formGroup]="modifEmail" (ngSubmit)="putEmail(modifEmail)">
+        <label for="">Email</label>
+        <input type="text" class="form-control" formControlName="Email">
+
+        <button type="submit" class="btn btn-primary">Modificar</button>
+        <button type="button" class="btn btn-warning" data-dismiss="modal" #myModalClose>Cancelar</button>
+      </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- modificar passw de usuario -->
+<div class="modal fade" id="modifPasswModal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title">Cambiar contraseña</h4>
+      </div>
+      <div class="modal-body">
+
+        <form [formGroup]="modifPassw" (ngSubmit)="putPassword(modifPassw)">
+        <label for="">Contraseña</label>
+        <input type="password" class="form-control" formControlName="Password">
+
+        <button type="submit" class="btn btn-primary">Modificar</button>
+        <button type="button" class="btn btn-warning" data-dismiss="modal" #myModalClose>Cancelar</button>
+      </form>
+      </div>
+    </div>
+  </div>
+</div>
 
