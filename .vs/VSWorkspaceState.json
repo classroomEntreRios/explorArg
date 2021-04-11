@@ -1,17 +1,8 @@
 {
   "ExpandedNodes": [
     "",
-    "\\ExplorArg",
-    "\\ExplorArg\\app",
-    "\\ExplorArg\\app\\src",
-    "\\ExplorArg\\app\\src\\app",
-    "\\ExplorArg\\app\\src\\app\\components",
-    "\\ExplorArg\\app\\src\\app\\components\\inicio",
-    "\\ExplorArg\\ExplorArg",
-    "\\ExplorArg\\ExplorArg\\App_Start",
-    "\\ExplorArg\\ExplorArg\\Controllers",
-    "\\ExplorArg\\ExplorArg\\Models"
+    "\\ExplorArg"
   ],
-  "SelectedNode": "\\ExplorArg\\ExplorArg\\App_Start\\WebApiConfig.cs",
+  "SelectedNode": "\\ExplorArg\\ExplorArg.sln",
   "PreviewInSolutionExplorer": false
 }
