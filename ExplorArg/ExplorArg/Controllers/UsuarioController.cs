@@ -70,6 +70,66 @@ namespace ExplorArg.Controllers
         }
 
 
+
+
+
+
+
+
+/*
+        [HttpGet]
+        public Respuesta RandomData()
+        {
+            Respuesta oRespuesta = new Respuesta();
+            oRespuesta.Mensaje = "Hola mundo";
+            oRespuesta.Resultado = 1;
+            return oRespuesta;
+        }
+*/
+
+        [HttpPost]
+        public Respuesta GenerarToken(string email, string password)
+        {
+            Respuesta oRespuesta = new Respuesta();
+
+            using (ExplorArgEntities db = new ExplorArgEntities())
+            {
+                var regUserToken = db.Usuario.Where(a => a.Email == email && a.Password == password);
+
+                if (regUserToken.Count() > 0)
+                {
+                    oRespuesta.Resultado = 1;
+                    oRespuesta.Datos = Guid.NewGuid().ToString();
+
+                    Usuario oUsuario = regUserToken.FirstOrDefault();
+                    oUsuario.Token = oRespuesta.Datos.ToString();
+                    db.Entry(oUsuario).State = System.Data.Entity.EntityState.Modified;
+                    db.SaveChanges();
+
+                }
+                else
+                {
+                    oRespuesta.Resultado = 0;
+                }
+            }
+            return oRespuesta;
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
         // Login o autenticación de usuario
         [HttpPost]
         [Route("api/usuario/login")]
@@ -90,6 +150,15 @@ namespace ExplorArg.Controllers
                 {
                     oRespuesta.Resultado = 1;
                     oRespuesta.Mensaje = "Login correcto";
+
+
+                    oRespuesta.Datos = Guid.NewGuid().ToString();
+
+                    Usuario oUsuario = usuarioRegistrado.FirstOrDefault();
+                    oUsuario.Token = oRespuesta.Datos.ToString();
+                    db.Entry(oUsuario).State = System.Data.Entity.EntityState.Modified;
+                    db.SaveChanges();
+                    
                 } 
                 else
                 {
