@@ -1,6 +1,6 @@
 ﻿USE [master]
 GO
-/****** Object:  Database [ExplorArg]    Script Date: 10/04/2021 17:49:04 ******/
+/****** Object:  Database [ExplorArg]    Script Date: 12/04/2021 10:14:16 ******/
 CREATE DATABASE [ExplorArg]
  CONTAINMENT = NONE
  ON  PRIMARY 
@@ -80,7 +80,7 @@ ALTER DATABASE [ExplorArg] SET QUERY_STORE = OFF
 GO
 USE [ExplorArg]
 GO
-/****** Object:  Table [dbo].[Chat]    Script Date: 10/04/2021 17:49:04 ******/
+/****** Object:  Table [dbo].[Chat]    Script Date: 12/04/2021 10:14:16 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -97,7 +97,7 @@ CREATE TABLE [dbo].[Chat](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Clima]    Script Date: 10/04/2021 17:49:04 ******/
+/****** Object:  Table [dbo].[Clima]    Script Date: 12/04/2021 10:14:16 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -114,7 +114,7 @@ CREATE TABLE [dbo].[Clima](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Destino]    Script Date: 10/04/2021 17:49:04 ******/
+/****** Object:  Table [dbo].[Destino]    Script Date: 12/04/2021 10:14:16 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -122,14 +122,15 @@ GO
 CREATE TABLE [dbo].[Destino](
 	[Id] [int] IDENTITY(1,1) NOT NULL,
 	[Nombre] [varchar](50) NOT NULL,
-	[Info] [varchar](max) NOT NULL,
+	[Info] [varchar](max) NULL,
+	[Id_destino] [varchar](50) NULL,
  CONSTRAINT [PK_Destino] PRIMARY KEY CLUSTERED 
 (
 	[Id] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Foro]    Script Date: 10/04/2021 17:49:04 ******/
+/****** Object:  Table [dbo].[Foro]    Script Date: 12/04/2021 10:14:16 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -146,7 +147,7 @@ PRIMARY KEY CLUSTERED
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Usuario]    Script Date: 10/04/2021 17:49:04 ******/
+/****** Object:  Table [dbo].[Usuario]    Script Date: 12/04/2021 10:14:16 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
