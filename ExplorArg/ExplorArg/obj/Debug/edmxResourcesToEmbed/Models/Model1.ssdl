@@ -26,7 +26,8 @@
     </Key>
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Nombre" Type="varchar" MaxLength="50" Nullable="false" />
-    <Property Name="Info" Type="varchar(max)" Nullable="false" />
+    <Property Name="Info" Type="varchar(max)" />
+    <Property Name="Id_destino" Type="varchar" MaxLength="50" />
   </EntityType>
   <EntityType Name="Foro">
     <Key>

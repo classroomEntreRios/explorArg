@@ -9,20 +9,44 @@
 <div class="container">
   <div class="row">
     <div class="col">
-      <h3>
-        Acá va el selector de destino
-      </h3>
+
+
+        <h3>
+          Seleccione un destino
+        </h3>
+
+        <form [formGroup]="destinosForm" (ngSubmit)="getInfoDestino(destinosForm)">
+          <select formControlName="nombreDestino">
+
+            <option selected> Por favor, elija un destino </option>
+            <option *ngFor="let destino of destinos">
+              {{ destino.Nombre }}
+            </option>
+          </select><br>
+          <button type="submit" class="btn btn-primary">Obtener Información</button>
+        </form>
+
     </div>
   </div>
 </div>
 <hr>
 
-<div class="container">
+<!-- card para la info del clima -->
+<div class="container" *ngIf="mostrarInfo">
   <div class="row">
     <div class="col">
-      <h3>
-        Acá va la información del destino seleccionado (clima, etc)
-      </h3>
+      <div class="card">
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item"><strong>Nombre:</strong> {{infoClima.name}} </li>
+          <li class="list-group-item"><strong>Humedad:</strong> %{{infoClima.main.humidity}} </li>
+          <li class="list-group-item"><strong>Temperatura:</strong> {{ infoClima.main.temp }} °C</li>
+          <li class="list-group-item"><strong>Sensación Térmica:</strong> {{ infoClima.main.feels_like }} °C</li>
+          <li class="list-group-item"><strong>Temp Máx:</strong> {{ infoClima.main.temp_max }} °C</li>
+          <li class="list-group-item"><strong>Temp Min:</strong> {{ infoClima.main.temp_min }} °C</li>
+          <li class="list-group-item"><strong>Descripción:</strong> {{ infoClima.weather[0].description }}</li>
+        </ul>
+      </div>
+
     </div>
   </div>
 </div>
