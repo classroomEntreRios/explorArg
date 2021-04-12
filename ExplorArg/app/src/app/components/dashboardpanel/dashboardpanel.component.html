@@ -1,17 +1,18 @@
-<div class="container text-center my-4">
+<div class="container text-center my-4 ">
     <div class="row">
         <h1 class="user-title">Panel de Usuario</h1>
         <br>
         <hr class="mt-3">
     </div>
 </div>
- 
- <div class="container bording col-md-4 minimum">
+
+<!-- Foto de perfil -->
+ <div class="container bording col-md-4 minimum userPanel">
      <div class="row justify-content-md-center">
          <div class="col-sm col-md-auto x-align">
              <p class="x-weight">Foto de Perfil</p>
              <div>
-                 <img class="fotoPerfil x-align x-border" src="./images/user.png" alt="Foto de perfil">
+                 <img class="fotoPerfil x-align x-border" [src]="fPerfil" alt="Foto de perfil">
              </div>
          </div>
      </div>
@@ -22,33 +23,112 @@
          </div>
      </div>
  </div>
-    
- <div class="container bording col-md-4 mt-4 minimum">
+
+ <!-- Nombre de usuario -->
+ <div class="container bording col-md-4 mt-4 minimum userPanel">
      <div class="row justify-content-md-center">
          <div class="col-sm col-md-4 mx-3 x-align">
              <p class="x-weight mt-3">Nombre</p>
-             <p class="x-cont">Nombre de usuario</p>
-             <button class="btn btn-danger mb-3">Modificar</button>
+             <p class="x-cont"> {{ usuario[0].Nombre }} </p>
+             <button class="btn btn-danger mb-3" data-toggle="modal"
+             href="#modifNombreModal">
+               Modificar
+              </button>
          </div>
      </div>
  </div>
 
- <div class="container bording col-md-4 mt-4 minimum">
+ <!-- Email  -->
+ <div class="container bording col-md-4 mt-4 minimum userPanel">
      <div class="row justify-content-md-center">
          <div class="col-sm col-md-4 mx-3 x-align">
              <p class="x-weight mt-3">Email</p>
-             <p class="x-cont">Email de usuario</p>
-             <button class="btn btn-danger mb-3">Modificar</button>
+             <p class="x-cont">{{ usuario[0].Email }}</p>
+             <button class="btn btn-danger mb-3" data-toggle="modal"
+             href="#modifEmailModal">
+               Modificar
+              </button>
          </div>
      </div>
  </div>
- 
-     <div class="container bording col-md-4 mt-4 minimum">
+
+ <!-- Contraseña -->
+     <div class="container bording col-md-4 mt-4 minimum userPanel">
      <div class="row justify-content-md-center">
          <div class="col-sm col-md-4 mx-3 x-align">
              <p class="x-weight mt-3">Contraseña</p>
-             <p class="x-cont">********</p>
-             <button class="btn btn-danger mb-3">Modificar</button>
+             <button class="btn btn-danger mb-3" data-toggle="modal"
+             href="#modifPasswModal">
+               Modificar
+              </button>
          </div>
      </div>
  </div>
+
+
+
+
+ <!-- modificar nombre de usuario -->
+<div class="modal fade" id="modifNombreModal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title">Modificar nombre de usuario</h4>
+      </div>
+      <div class="modal-body">
+        <form [formGroup]="modifNombre" (ngSubmit)="putNombre(modifNombre)">
+          <div class="form-group">
+
+            <label for="">Nombre</label>
+            <input type="text" class="form-control" formControlName="Nombre">
+          </div>
+          <button type="submit" class="btn btn-danger">Modificar</button>
+          <button type="button" class="btn btn-warning" data-dismiss="modal" #myModalClose>Cancelar</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- modificar email de usuario -->
+<div class="modal fade" id="modifEmailModal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title">Modificar Email</h4>
+      </div>
+      <div class="modal-body">
+
+        <form [formGroup]="modifEmail" (ngSubmit)="putEmail(modifEmail)">
+        <label for="">Email</label>
+        <input type="text" class="form-control" formControlName="Email">
+
+        <button type="submit" class="btn btn-danger">Modificar</button>
+        <button type="button" class="btn btn-warning" data-dismiss="modal" #myModalClose>Cancelar</button>
+      </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- modificar passw de usuario -->
+<div class="modal fade" id="modifPasswModal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title">Modificar contraseña</h4>
+      </div>
+      <div class="modal-body">
+
+        <form [formGroup]="modifPassw" (ngSubmit)="putPassword(modifPassw)">
+        <label for="">Contraseña</label>
+        <input type="password" class="form-control" formControlName="Password">
+
+        <button type="submit" class="btn btn-danger">Modificar</button>
+        <button type="button" class="btn btn-warning" data-dismiss="modal" #myModalClose>Cancelar</button>
+      </form>
+      </div>
+    </div>
+  </div>
+</div>
