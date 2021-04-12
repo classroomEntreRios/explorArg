@@ -26,6 +26,7 @@
     <EntitySetMapping Name="Destino">
       <EntityTypeMapping TypeName="ExplorArgModel.Destino">
         <MappingFragment StoreEntitySet="Destino">
+          <ScalarProperty Name="Id_destino" ColumnName="Id_destino" />
           <ScalarProperty Name="Info" ColumnName="Info" />
           <ScalarProperty Name="Nombre" ColumnName="Nombre" />
           <ScalarProperty Name="Id" ColumnName="Id" />
