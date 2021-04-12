@@ -1,1 +1,14 @@
+li {
+  list-style-type: none;
+}
 
+
+.infoDestino{
+  border: solid;
+  border-color: black;
+}
+
+.card-body{
+  background-color: rgb(138, 134, 134);
+  color: aliceblue;
+}

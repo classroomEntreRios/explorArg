@@ -32,21 +32,40 @@
 <hr>
 
 <!-- card para la info del clima -->
-<div class="container" *ngIf="mostrarInfo">
+<div class="container-fluid" *ngIf="mostrarInfo">
   <div class="row">
-    <div class="col">
-      <div class="card">
-        <ul class="list-group list-group-flush">
-          <li class="list-group-item"><strong>Nombre:</strong> {{infoClima.name}} </li>
-          <li class="list-group-item"><strong>Humedad:</strong> %{{infoClima.main.humidity}} </li>
-          <li class="list-group-item"><strong>Temperatura:</strong> {{ infoClima.main.temp }} °C</li>
-          <li class="list-group-item"><strong>Sensación Térmica:</strong> {{ infoClima.main.feels_like }} °C</li>
-          <li class="list-group-item"><strong>Temp Máx:</strong> {{ infoClima.main.temp_max }} °C</li>
-          <li class="list-group-item"><strong>Temp Min:</strong> {{ infoClima.main.temp_min }} °C</li>
-          <li class="list-group-item"><strong>Descripción:</strong> {{ infoClima.weather[0].description }}</li>
+    <div class="col-xl-8 col-lg-8 col-md-4 col-sm-2 infoDestino">
+      <h1>
+        info destino
+      </h1>
+      <h1>
+        info destino
+      </h1>
+      <h1>
+        info destino
+      </h1>
+      <h1>
+        info destino
+      </h1>
+    </div>
+    <div class="col-lg-2 col-md-2 infoClima">
+      <div class="card border-info">
+      <div class="card-body">
+        <div>
+          <img class="card-img-top iconoClima" [src]="'http://openweathermap.org/img/wn/' +  infoClima.weather[0].icon  + '@2x.png'"  alt="Card image cap">
+        </div>
+        <hr>
+        <ul>
+          <li><strong>Destino:</strong> {{infoClima.name}} </li>
+          <li><strong>Humedad:</strong> {{infoClima.main.humidity}} % </li>
+          <li><strong>Temperatura:</strong> {{ infoClima.main.temp }} °C</li>
+          <li><strong>Sensación Térmica:</strong> {{ infoClima.main.feels_like }} °C</li>
+          <li><strong>Temp Máx:</strong> {{ infoClima.main.temp_max }} °C</li>
+          <li><strong>Temp Min:</strong> {{ infoClima.main.temp_min }} °C</li>
+          <li><strong>Descripción:</strong> {{ infoClima.weather[0].description }}</li>
         </ul>
       </div>
-
+    </div>
     </div>
   </div>
 </div>

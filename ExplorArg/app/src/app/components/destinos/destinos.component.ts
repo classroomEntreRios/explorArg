@@ -26,6 +26,7 @@ export class DestinosComponent implements OnInit {
   infoClima: any;
   mostrarInfo: boolean = false;
 
+
   destinosForm = this.fb.group({
     nombreDestino: [[''], [Validators.required]]
   })
