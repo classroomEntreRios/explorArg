@@ -4,7 +4,7 @@ import { Usuario } from './../../models/usuario';
 import { DatosService } from './../../services/datos.service';
 import { Component, OnInit, NgModule, ViewChild } from '@angular/core';
 import { FormsModule, NgModel, FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms';
-import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+
 
 
 
@@ -19,7 +19,7 @@ export class DashboardComponent implements OnInit {
 
   usuario: any = [];
   isAdmin: boolean = false;
-
+  mostrarPanel: boolean = false;
 
 
 
@@ -112,6 +112,10 @@ export class DashboardComponent implements OnInit {
     } else {
       this.isAdmin = false;
     }
+  }
+
+  switchPanel(){
+    this.mostrarPanel = !this.mostrarPanel;
   }
 
 }

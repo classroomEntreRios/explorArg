@@ -1,3 +1,4 @@
+import { DashboardpanelComponent } from './components/dashboardpanel/dashboardpanel.component';
 import { Routes, RouterModule } from '@angular/router';
 import { RegistroService } from './services/registro.service';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
@@ -29,6 +30,7 @@ import { ContactoComponent } from './components/contacto/contacto.component';
     DashboardComponent,
     DestinosComponent,
     ContactoComponent,
+    DashboardpanelComponent
 
   ],
   imports: [
