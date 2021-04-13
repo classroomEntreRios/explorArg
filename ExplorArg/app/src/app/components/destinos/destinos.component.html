@@ -6,32 +6,23 @@
     - logica para consumir api del clima y mostrar la información solicitada
 -->
 
-<div class="container">
+<div class="container-fluid">
   <div class="row">
-    <div class="col">
-
-
-        <h3>
-          Seleccione un destino
-        </h3>
-
+    <div class="col destinosForm">
         <form [formGroup]="destinosForm" (ngSubmit)="getInfoDestino(destinosForm)">
-          <select formControlName="nombreDestino">
-
-            <option selected> Por favor, elija un destino </option>
+          <select class="custom-select" formControlName="nombreDestino">
+            <option value="" selected> Por favor, elija un destino </option>
             <option *ngFor="let destino of destinos">
               {{ destino.Nombre }}
             </option>
-          </select><br>
-          <button type="submit" class="btn btn-primary">Obtener Información</button>
+          </select>
+          <button type="submit" class="btn btn-light">Obtener Información</button>
         </form>
-
     </div>
   </div>
 </div>
-<hr>
 
-<!-- card para la info del clima -->
+<!-- Info del destino -->
 <div class="container-fluid" *ngIf="mostrarInfo">
   <div class="row">
     <div class="col-xl-8 col-lg-8 col-md-4 col-sm-2 infoDestino">
@@ -48,22 +39,24 @@
         info destino
       </h1>
     </div>
+
+    <!-- card para la info del clima -->
     <div class="col-lg-2 col-md-2 infoClima">
-      <div class="card border-info">
-      <div class="card-body">
+      <div class="card">
+      <div class="card-body border-dark">
         <div>
           <img class="card-img-top iconoClima" [src]="'http://openweathermap.org/img/wn/' +  infoClima.weather[0].icon  + '@2x.png'"  alt="Card image cap">
+          <p style="text-align: center;">
+            {{ infoClima.weather[0].description | titlecase}}
+          </p>
         </div>
         <hr>
-        <ul>
-          <li><strong>Destino:</strong> {{infoClima.name}} </li>
-          <li><strong>Humedad:</strong> {{infoClima.main.humidity}} % </li>
-          <li><strong>Temperatura:</strong> {{ infoClima.main.temp }} °C</li>
-          <li><strong>Sensación Térmica:</strong> {{ infoClima.main.feels_like }} °C</li>
-          <li><strong>Temp Máx:</strong> {{ infoClima.main.temp_max }} °C</li>
-          <li><strong>Temp Min:</strong> {{ infoClima.main.temp_min }} °C</li>
-          <li><strong>Descripción:</strong> {{ infoClima.weather[0].description }}</li>
-        </ul>
+          <strong>Destino: </strong>  {{infoClima.name}} <br>
+          <strong>Humedad: </strong> {{infoClima.main.humidity}} % <br>
+          <strong>Temperatura: </strong> {{ infoClima.main.temp  }} °C <br>
+          <strong>Sensación térmica: </strong> {{ infoClima.main.feels_like }} °C <br>
+          <strong>Temp máx: </strong> {{ infoClima.main.temp_max }} °C <br>
+          <strong>Temp min: </strong> {{ infoClima.main.temp_min }} °C <br>
       </div>
     </div>
     </div>
