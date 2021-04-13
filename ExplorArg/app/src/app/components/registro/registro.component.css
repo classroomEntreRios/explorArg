@@ -44,3 +44,11 @@ input {
     background: rgb(226, 126, 3);
     border: transparent;
   }
+
+  .notifCenter {
+    display: flex;
+    position: relative;
+    justify-content: center;
+    width: 50%;
+    margin: auto;
+  }
