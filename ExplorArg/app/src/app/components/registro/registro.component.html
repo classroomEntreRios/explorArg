@@ -44,7 +44,7 @@
               <div class="row">
                 <div class="col">
                   <button type="submit" class="btn btn-primary" (click)="registro(registroForm.value)"
-                    [disabled]="registroForm.invalid" style="float: right;"> Registrarse </button>
+                    [disabled]="registroForm.invalid" style="float: right;"> Registrarme </button>
                   <button class="btn btn-danger" routerLink="" style="float: left;" > Cancelar </button>
                 </div>
               </div>
@@ -53,8 +53,8 @@
           </form>
           <!-- Acomodar la posicion con css -->
           <!-- cartelito de éxito -->
-          <small *ngIf="usuarioCreado" class="alert alert-success" role="alert" alert-dismissible>
-            Usuario creado correctamente!
+          <small *ngIf="usuarioCreado" class="alert alert-success notifCenter" role="alert" alert-dismissible>
+            ¡Usuario creado correctamente!
           </small>
           <!-- cartelito de error -->
           <small *ngIf="usuarioExiste" class="alert alert-danger" role="alert" alert-dismissible>
