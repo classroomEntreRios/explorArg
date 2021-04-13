@@ -6,6 +6,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
+import { CookieService } from 'ngx-cookie-service';
+
 
 @Component({
   selector: 'app-ingreso',
@@ -14,7 +16,7 @@ import { Observable } from 'rxjs';
 })
 export class IngresoComponent implements OnInit {
 
-  constructor(private login: IngresoService, private router: Router, private datos: DatosService, private fb: FormBuilder) { }
+  constructor(private login: IngresoService, private router: Router, private datos: DatosService, private fb: FormBuilder, private cookieSvc : CookieService) { }
 
   usuario : Usuario = new Usuario;
   usuarioAutenticado = false;
@@ -44,6 +46,7 @@ export class IngresoComponent implements OnInit {
           this.datos.agregarDatos(this.datosU);
           this.router.navigate(['dashboard']);
           this.usuarioAutenticado = true;
+          this.cookieSvc.set('userCookie', 'TasLogueadoWacho!');
         })
       }
       // si el resultado es 0, emite alerta y redirige a la página de inicio
