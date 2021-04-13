@@ -15,7 +15,7 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { DestinosComponent } from './components/destinos/destinos.component';
 import { ContactoComponent } from './components/contacto/contacto.component';
-
+import { CookieService } from 'ngx-cookie-service';
 
 
 
@@ -42,7 +42,7 @@ import { ContactoComponent } from './components/contacto/contacto.component';
     HttpClientModule,
 
   ],
-  providers: [HttpClient],
+  providers: [HttpClient, CookieService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
