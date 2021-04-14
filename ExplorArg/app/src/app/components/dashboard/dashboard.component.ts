@@ -4,6 +4,7 @@ import { Usuario } from './../../models/usuario';
 import { DatosService } from './../../services/datos.service';
 import { Component, OnInit, NgModule, ViewChild } from '@angular/core';
 import { FormsModule, NgModel, FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms';
+import { CookieService } from 'ngx-cookie-service';
 
 
 
@@ -29,11 +30,12 @@ export class DashboardComponent implements OnInit {
   modifEmail: FormGroup = this.fb.group({});
   modifPassw: FormGroup = this.fb.group({});
 
-
+ 
   constructor(
     private datos: DatosService,
     private fb: FormBuilder,
     private serv: DatosUsuarioService,
+    private cookieSvc : CookieService
     ) { }
 
   ngOnInit(): void {
@@ -105,6 +107,9 @@ export class DashboardComponent implements OnInit {
     })
   }
 
+  cerrarSesion() {
+    this.cookieSvc.delete('userCookie');
+  }
 
   checkAdminstatus(){
     if (this.usuario[0].isAdmin === true){

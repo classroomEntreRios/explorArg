@@ -2,6 +2,8 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { DatosService } from 'src/app/services/datos.service';
 import { DatosUsuarioService } from 'src/app/services/datosUsuario/datos-usuario.service';
+import { CookieService } from 'ngx-cookie-service';
+
 
 @Component({
   selector: 'app-dashboardpanel',
@@ -31,6 +33,7 @@ export class DashboardpanelComponent implements OnInit {
     private datos: DatosService,
     private fb: FormBuilder,
     private serv: DatosUsuarioService,
+    private cookieSvc : CookieService
   ) { }
 
   ngOnInit(): void {
@@ -101,6 +104,10 @@ export class DashboardpanelComponent implements OnInit {
     })
   }
 
+  cerrarSesion() {
+    this.cookieSvc.get('userCookie');
+    this.cookieSvc.delete('userCookie');
+  }
 
   checkAdminstatus(){
     if (this.usuario[0].isAdmin === true){
