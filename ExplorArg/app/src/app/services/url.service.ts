@@ -16,6 +16,7 @@ urlLogin = 'https://localhost:44307/api/usuario/login';
 putNombre = 'https://localhost:44307/api/usuario/editnombre';
 putEmail = 'https://localhost:44307/api/usuario/editmail';
 putPassw = 'https://localhost:44307/api/usuario/editpassw';
+gettingToken = 'https://localhost:44307/api/usuario/token';
 
 // destinos
 urlDestinos = 'https://localhost:44307/api/destinos';

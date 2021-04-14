@@ -23,4 +23,7 @@ modifPassw(id: number, passw: string){
   return this.http.put(this.url.putPassw + '?id=' + id + '&nuevoPass=' + passw, {} );
 }
 
+getToken(id: number, token: string){
+  return this.http.put(this.url.gettingToken + '?id=' + id + '&nuevoToken=' + token, {} );
+}
 }
