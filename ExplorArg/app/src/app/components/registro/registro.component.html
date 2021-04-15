@@ -7,34 +7,36 @@
             <div>
             <!-- Campo usuario -->
             <label for="nombreU"> Nombre de usuario</label>
+            <small class="form-text text-danger"
+            *ngIf="CampoValido('Nombre')">
+              <strong>Dato requerido</strong>
+            </small>
             <input type="text" id="nombreU" class="form-control" formControlName="Nombre"
               placeholder="Debe tener al menos 5 caracteres">
-              <small class="form-text text-danger"
-              *ngIf="CampoValido('Nombre')">
-               <p> Dato requerido </p>
-              </small>
+
             </div><br>
 
             <div>
             <!-- Campo password -->
             <label for="passU"> Contraseña </label>
+            <small class="form-text text-danger"
+              *ngIf="CampoValido('Password')">
+               <strong>Dato requerido</strong>
+              </small>
             <input type="password" id="passU" class="form-control" formControlName="Password"
                placeholder="Debe tener al menos 8 caracteres">
-               <small class="form-text text-danger"
-              *ngIf="CampoValido('Password')">
-               <p> Dato requerido </p>
-              </small>
             </div><br>
 
             <div>
             <!-- Campo Email -->
             <label for="emailU"> Email</label>
+            <small class="form-text text-danger"
+              *ngIf="CampoValido('Email')">
+              <strong>Dato requerido</strong>
+              </small>
             <input type="email" id="emailU" class="form-control" formControlName="Email"
                placeholder="ejemplo@ejemplo.com">
-               <small class="form-text text-danger"
-              *ngIf="CampoValido('Email')">
-               <p> Dato requerido </p>
-              </small>
+
             </div><br>
 
 

@@ -1,3 +1,4 @@
+import { Observable } from 'rxjs';
 import { ApiService } from './../../services/openWeather/api.service';
 import { FormBuilder, Validators, FormGroup } from '@angular/forms';
 import { DestinosService } from './../../services/destinos/destinos.service';
@@ -25,6 +26,7 @@ export class DestinosComponent implements OnInit {
   idDestino: any;
   infoClima: any;
   mostrarInfo: boolean = false;
+  mostrarSpinner: boolean = false;
 
 
   destinosForm = this.fb.group({
@@ -45,12 +47,16 @@ export class DestinosComponent implements OnInit {
 
   getInfoDestino(form: FormGroup){
    this.idDestino =  this.buscarIdDestino(form.value.nombreDestino);
-
-   this.clima.getClima(this.idDestino[0].Id_destino).subscribe(resp =>
+   this.mostrarInfo = false;
+   this.mostrarSpinner = true;
+   this.clima.getClima(this.idDestino[0].Id_destino)
+   .subscribe(resp =>
     {
       this.infoClima = resp;
-      console.log(this.infoClima); //propiedades importantes: main(todas) - name - weather[0].description/icon
+      // console.log(this.infoClima);
+      this.mostrarSpinner = false;
       this.mostrarInfo = true;
+
     }, error => {
       console.log(error);
     })
@@ -59,7 +65,6 @@ export class DestinosComponent implements OnInit {
   buscarIdDestino(nombre: string){
     return this.destinos.filter((x: { Nombre: string; }) => x.Nombre === nombre)
   }
-
 
 
 }
