@@ -21,9 +21,7 @@ export class DashboardpanelComponent implements OnInit {
   mostrarPanel: boolean = false;
   fPerfil: string = '/src/assets/img/user.png';
 
-  modifNombre: FormGroup = this.fb.group({
-    Nombre: [[''], [Validators.required]]
-  });
+  modifNombre: FormGroup = this.fb.group({});
   modifEmail: FormGroup = this.fb.group({});
   modifPassw: FormGroup = this.fb.group({});
 
@@ -41,13 +39,13 @@ export class DashboardpanelComponent implements OnInit {
     this.buscarDatos();
     // rellena los campos del form
    this.modifNombre = this.fb.group({
-    Nombre: [[this.usuario[0].Nombre], [Validators.required]],
+    Nombre: [[("")], [Validators.required, Validators.minLength(5), Validators.pattern("[a-zA-Z ]*")]],
   });
   this.modifEmail = this.fb.group({
-    Email: [[this.usuario[0].Email], [Validators.required]],
+    Email: [[("")], [Validators.required, Validators.pattern('^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,}$')]],
   });
   this.modifPassw = this.fb.group({
-    Password: [[''], [Validators.required]],
+    Password: [[''], [Validators.required, Validators.minLength(8)]],
   });
 
   this.checkAdminstatus();

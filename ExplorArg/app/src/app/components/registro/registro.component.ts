@@ -2,7 +2,6 @@ import { RegistroService } from './../../services/registro.service';
 import { Usuario } from './../../models/usuario';
 import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
-import { formatCurrency } from '@angular/common';
 
 
 @Component({
@@ -17,7 +16,7 @@ export class RegistroComponent implements OnInit {
     private fb: FormBuilder) { }
 
   registroForm : FormGroup = this.fb.group({
-      Nombre: ["", [Validators.required, Validators.minLength(4)]],
+      Nombre: ["", [Validators.required, Validators.minLength(5), Validators.pattern("[a-zA-Z ]*")]],
       Password: ["", [Validators.required, Validators.minLength(8)]],
       Email: ["", [Validators.required, Validators.pattern('^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,}$')]],
   });
