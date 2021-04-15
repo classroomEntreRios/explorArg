@@ -93,7 +93,7 @@
             <label for="">Nombre</label>
             <input type="text" class="form-control" formControlName="Nombre">
           </div>
-          <button type="submit" class="btn btn-danger">Modificar</button>
+          <button type="submit" class="btn btn-danger" [disabled]="modifNombre.invalid">Modificar</button>
           <button type="button" class="btn btn-warning" data-dismiss="modal" #myModalClose>Cancelar</button>
         </form>
       </div>
@@ -115,7 +115,7 @@
         <label for="">Email</label>
         <input type="text" class="form-control" formControlName="Email">
 
-        <button type="submit" class="btn btn-danger">Modificar</button>
+        <button type="submit" class="btn btn-danger" [disabled]="modifEmail.invalid">Modificar</button>
         <button type="button" class="btn btn-warning" data-dismiss="modal" #myModalClose>Cancelar</button>
       </form>
       </div>
@@ -136,7 +136,7 @@
         <label for="">Contraseña</label>
         <input type="password" class="form-control" formControlName="Password">
 
-        <button type="submit" class="btn btn-danger">Modificar</button>
+        <button type="submit" class="btn btn-danger" [disabled]="modifPassw.invalid">Modificar</button>
         <button type="button" class="btn btn-warning" data-dismiss="modal" #myModalClose>Cancelar</button>
       </form>
       </div>

@@ -16,7 +16,7 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { DestinosComponent } from './components/destinos/destinos.component';
 import { ContactoComponent } from './components/contacto/contacto.component';
 import { CookieService } from 'ngx-cookie-service';
-
+import { SpinnersAngularModule } from 'spinners-angular';
 
 
 
@@ -40,6 +40,7 @@ import { CookieService } from 'ngx-cookie-service';
     NgbModule,
     ReactiveFormsModule,
     HttpClientModule,
+    SpinnersAngularModule
 
   ],
   providers: [HttpClient, CookieService],
