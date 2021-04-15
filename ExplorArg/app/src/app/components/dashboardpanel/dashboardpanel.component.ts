@@ -104,11 +104,6 @@ export class DashboardpanelComponent implements OnInit {
     })
   }
 
-  gettingToken() {
-    this.serv.getToken
-    }
-
-
   cerrarSesion() {
     this.cookieSvc.get('userCookie');
     this.cookieSvc.delete('userCookie');

@@ -10,20 +10,17 @@ export class DatosUsuarioService {
   constructor(private http: HttpClient, private url: UrlService) { }
 
 
-modifNombre(id: number, nombre: string){
-   return this.http.put(this.url.putNombre + '?id=' + id + '&nombre=' + nombre, {})
-}
+    modifNombre(id: number, nombre: string){
+      return this.http.put(this.url.putNombre + '?id=' + id + '&nombre=' + nombre, {})
+    }
 
-modifEmail(id: number, email: string){
-  return this.http.put(this.url.putEmail + '?id=' + id + '&email=' + email, {}
-  );
-}
+    modifEmail(id: number, email: string){
+      return this.http.put(this.url.putEmail + '?id=' + id + '&email=' + email, {}
+      );
+    }
 
-modifPassw(id: number, passw: string){
-  return this.http.put(this.url.putPassw + '?id=' + id + '&nuevoPass=' + passw, {} );
-}
+    modifPassw(id: number, passw: string){
+      return this.http.put(this.url.putPassw + '?id=' + id + '&nuevoPass=' + passw, {} );
+    }
 
-getToken(id: number, token: string){
-  return this.http.put(this.url.gettingToken + '?id=' + id + '&nuevoToken=' + token, {} );
-}
 }
