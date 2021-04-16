@@ -22,6 +22,7 @@ export class IngresoComponent implements OnInit {
   usuarioAutenticado = false;
   respuesta: any;
   datosU: any;
+  tokenClosting : string = 'Closting';
 
   ngOnInit(): void {
   }
@@ -46,7 +47,7 @@ export class IngresoComponent implements OnInit {
           this.datos.agregarDatos(this.datosU);
           this.router.navigate(['dashboard']);
           this.usuarioAutenticado = true;
-          this.cookieSvc.set('userCookie', 'TasLogueadoWacho!', {expires: 15});
+          this.cookieSvc.set('userCookie', this.tokenClosting , {expires: 15});
         })
       }
       // si el resultado es 0, emite alerta y redirige a la página de inicio
@@ -63,7 +64,7 @@ export class IngresoComponent implements OnInit {
 
 
   registrate(){
-    window.location.href = 'registro'
+    window.location.href = 'registro';
   }
 
   guardarDatosUsuario(val: Usuario){
