@@ -19,4 +19,8 @@ export class IngresoService {
   obtenerUsuario(email: string){
     return this.http.get(this.url.urlRegistro + '?Email=' + email)
   }
+
+  obtenerToken(token: string){
+    return this.http.get(this.url.urlRegistro + '?Token=' + token);
+  }
 }
