@@ -3,6 +3,9 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { DatosService } from 'src/app/services/datos.service';
 import { DatosUsuarioService } from 'src/app/services/datosUsuario/datos-usuario.service';
 import { CookieService } from 'ngx-cookie-service';
+import { Router } from '@angular/router';
+import { Usuario } from './../../models/usuario';
+import { IngresoService } from 'src/app/services/ingreso.service';
 
 
 @Component({
@@ -12,7 +15,8 @@ import { CookieService } from 'ngx-cookie-service';
 })
 export class DashboardpanelComponent implements OnInit {
 
-
+  datosU: any;
+  tokenString: string = '';
 
   @ViewChild('myModalClose') modalClose: any;
 
@@ -31,8 +35,14 @@ export class DashboardpanelComponent implements OnInit {
     private datos: DatosService,
     private fb: FormBuilder,
     private serv: DatosUsuarioService,
-    private cookieSvc : CookieService
-  ) { }
+    private cookieSvc : CookieService,
+    private ingreso: IngresoService
+  ) { 
+    let cookieString = this.cookieSvc.get('userCookie')
+    let tokenString = this.datos.mostrarToken()
+    console.log('El valor de cookie es: ' + cookieString)
+    console.log('El valor del token es: ' + tokenString)
+  }
 
   ngOnInit(): void {
     // obtiene datos del usuario logeado
@@ -115,3 +125,4 @@ export class DashboardpanelComponent implements OnInit {
     }
   }
 }
+
