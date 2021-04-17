@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { RegistroService } from './../../services/registro.service';
 import { Usuario } from './../../models/usuario';
 import { Component, Input, OnInit } from '@angular/core';
@@ -13,7 +14,8 @@ export class RegistroComponent implements OnInit {
 
   constructor(
     private registroS: RegistroService,
-    private fb: FormBuilder) { }
+    private fb: FormBuilder,
+    private route: Router) { }
 
   registroForm : FormGroup = this.fb.group({
       Nombre: ["", [Validators.required, Validators.minLength(5), Validators.pattern("[a-zA-Z ]*")]],
@@ -39,6 +41,9 @@ export class RegistroComponent implements OnInit {
       console.log(resp);
       this.usuarioExiste = false;
       this.usuarioCreado = true;
+      setTimeout(() => {
+        this.route.navigate(['ingreso']);
+      }, 5000)
      })
   }
 
