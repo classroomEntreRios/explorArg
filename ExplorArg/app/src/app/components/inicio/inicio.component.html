@@ -1,6 +1,10 @@
-   <app-navbar></app-navbar>
-    <!-- <app-dashboard></app-dashboard> -->
+   <div *ngIf="!logState">
+        <app-navbar></app-navbar>
+   </div>
 
+    <div *ngIf="logState">
+        <app-dashboard></app-dashboard>
+    </div>
 
     <div class="logo">
         <a href="">
