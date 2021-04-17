@@ -24,8 +24,4 @@ mostrarToken(){
   return this.datosUsuario[0].Token
 }
 
-eliminarToken(){
-  return this.datosUsuario[0].Token.push('')
-}
-
 }
