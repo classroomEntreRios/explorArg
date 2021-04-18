@@ -27,7 +27,7 @@ export class AgregardestComponent implements OnInit {
     private serv: DestinosService
   ) { }
 
-  show: boolean = false;
+
   dest: any;
 
   destinosPosibles: Destino[] = [

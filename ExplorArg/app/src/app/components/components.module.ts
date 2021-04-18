@@ -8,6 +8,7 @@ import { DashboardpanelComponent } from './dashboardpanel/dashboardpanel.compone
 import { AtractivosComponent } from './atractivos/atractivos.component';
 import { AtraccionesComponent } from './atracciones/atracciones.component';
 import { AgregardestComponent } from './destinos/agregardest/agregardest.component';
+import { AgregarAComponent } from './atracciones/agregar/agregar-a/agregar-a.component';
 
 
 
@@ -20,7 +21,9 @@ import { AgregardestComponent } from './destinos/agregardest/agregardest.compone
 
   AtraccionesComponent,
 
-  AgregardestComponent],
+  AgregardestComponent,
+
+  AgregarAComponent],
 
   imports: [
     CommonModule

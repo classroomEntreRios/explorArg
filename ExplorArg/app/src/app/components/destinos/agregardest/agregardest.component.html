@@ -1,13 +1,14 @@
 
 <div class="container">
     <div class="row registroRow col-md-8">
-      <div class="col-sm col-md col-lg col-xl">
 
-      </div>
-      <form [formGroup]="postDestino"  (ngSubmit)="onSubmit(postDestino)" >
-        <select formControlName="Nombre" >
-          <option value="" selected> Elija un destino </option>
-          <option *ngFor="let destino of destinosPosibles"> {{destino.Nombre}} </option>
-        </select>
-        <button type="submit"> Confirmar </button>
-      </form>
+      <div class="col-sm col-md col-lg col-xl">
+        <form [formGroup]="postDestino"  (ngSubmit)="onSubmit(postDestino)" >
+          <select formControlName="Nombre" >
+            <option value="" selected> Elija un destino </option>
+            <option *ngFor="let destino of destinosPosibles"> {{destino.Nombre}} </option>
+          </select>
+          <button type="submit"> Confirmar </button>
+        </form>
+      </div >
+
