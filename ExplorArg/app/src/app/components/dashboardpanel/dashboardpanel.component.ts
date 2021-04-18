@@ -36,8 +36,9 @@ export class DashboardpanelComponent implements OnInit {
     private fb: FormBuilder,
     private serv: DatosUsuarioService,
     private cookieSvc : CookieService,
-    private ingreso: IngresoService
-  ) { 
+    private ingreso: IngresoService,
+    private router: Router
+  ) {
     let cookieString = this.cookieSvc.get('userCookie')
     let tokenString = this.datos.mostrarToken()
     console.log('El valor de cookie es: ' + cookieString)
@@ -115,6 +116,7 @@ export class DashboardpanelComponent implements OnInit {
   cerrarSesion() {
     this.cookieSvc.get('userCookie');
     this.cookieSvc.delete('userCookie');
+    this.router.navigate(['ingreso']);
   }
 
   checkAdminstatus(){
