@@ -24,7 +24,6 @@ body {
 
 @media screen and (max-width: 990px){
   body {
-       background-image: url(../../../assets/img/home_background.png);
       width: 100vw;
       height: 100vh;
       min-width: 420px;
@@ -34,15 +33,11 @@ body {
       background-attachment: fixed;
   }
 
-  .frase {
-      display: none;
-  }
-
   .logo {
-      margin: 120px 15px 0px 15px;
+    margin: 120px 15px 0px 15px;
   }
 
   .logo img {
-      width: 400px;
+    width: 300px;
   }
 }

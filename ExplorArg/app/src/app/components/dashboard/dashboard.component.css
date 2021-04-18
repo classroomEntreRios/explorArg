@@ -56,3 +56,30 @@ li .btn {
 .adminPanel{
     background: linear-gradient(to left, #6835f3, #FDC830);
   }
+
+    /* MEDIA QUERIES */
+
+@media screen and (max-width: 990px){
+    .x-situate {
+      margin: auto;
+      margin-right: 15px;
+    }
+  
+    body {
+      width: 100vw;
+      height: 100vh;
+      min-width: 420px;
+      min-height: 990px;
+      background-size: cover;
+      background-position: center center;
+      background-attachment: fixed;
+  }
+  
+  .logo {
+    margin: 120px 15px 0px 15px;
+  }
+  
+  .logo img {
+    width: 300px;
+  }
+  }

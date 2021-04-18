@@ -61,3 +61,12 @@ input {
     /* background: pink; */
     margin: 100px 0px 0px 300px;
   }
+
+    /* MEDIA QUERIES */
+
+@media screen and (max-width: 990px){
+  .x-situate {
+    margin: auto;
+    margin-right: 15px;
+  }
+}
