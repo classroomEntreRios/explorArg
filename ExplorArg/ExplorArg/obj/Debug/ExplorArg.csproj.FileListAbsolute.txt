@@ -160,7 +160,6 @@ E:\[Full-Stack Web Developer]\[ISPC]\project\explorArg\ExplorArg\ExplorArg\obj\D
 E:\[Full-Stack Web Developer]\[ISPC]\project\explorArg\ExplorArg\ExplorArg\obj\Debug\ExplorArg.csproj.CopyComplete
 E:\[Full-Stack Web Developer]\[ISPC]\project\explorArg\ExplorArg\ExplorArg\obj\Debug\ExplorArg.dll
 E:\[Full-Stack Web Developer]\[ISPC]\project\explorArg\ExplorArg\ExplorArg\obj\Debug\ExplorArg.pdb
-D:\Programación\ISPC\proyecto-g2c\ExplorArg\ExplorArg\obj\Debug\ExplorArg.csprojAssemblyReference.cache
 E:\[Full-Stack Web Developer]\[ISPC]\project\explorArg\ExplorArg\ExplorArg\bin\roslyn\csc.exe.config
 E:\[Full-Stack Web Developer]\[ISPC]\project\explorArg\ExplorArg\ExplorArg\bin\roslyn\csc.rsp
 E:\[Full-Stack Web Developer]\[ISPC]\project\explorArg\ExplorArg\ExplorArg\bin\roslyn\csi.exe
@@ -202,3 +201,4 @@ E:\[Full-Stack Web Developer]\[ISPC]\project\explorArg\ExplorArg\ExplorArg\bin\r
 E:\[Full-Stack Web Developer]\[ISPC]\project\explorArg\ExplorArg\ExplorArg\bin\roslyn\VBCSCompiler.exe
 E:\[Full-Stack Web Developer]\[ISPC]\project\explorArg\ExplorArg\ExplorArg\bin\roslyn\VBCSCompiler.exe.config
 E:\[Full-Stack Web Developer]\[ISPC]\project\explorArg\ExplorArg\ExplorArg\obj\Debug\ExplorArg.csprojAssemblyReference.cache
+D:\Programación\ISPC\proyecto-g2c\ExplorArg\ExplorArg\obj\Debug\ExplorArg.csprojAssemblyReference.cache

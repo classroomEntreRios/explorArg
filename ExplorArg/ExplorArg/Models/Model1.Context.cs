@@ -27,8 +27,9 @@ namespace ExplorArg.Models
     
         public virtual DbSet<Chat> Chat { get; set; }
         public virtual DbSet<Clima> Clima { get; set; }
-        public virtual DbSet<Destino> Destino { get; set; }
         public virtual DbSet<Foro> Foro { get; set; }
         public virtual DbSet<Usuario> Usuario { get; set; }
+        public virtual DbSet<Atracciones> Atracciones { get; set; }
+        public virtual DbSet<Destino> Destino { get; set; }
     }
 }

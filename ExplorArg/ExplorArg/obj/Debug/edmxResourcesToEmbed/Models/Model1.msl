@@ -23,16 +23,6 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="Destino">
-      <EntityTypeMapping TypeName="ExplorArgModel.Destino">
-        <MappingFragment StoreEntitySet="Destino">
-          <ScalarProperty Name="Id_destino" ColumnName="Id_destino" />
-          <ScalarProperty Name="Info" ColumnName="Info" />
-          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
-          <ScalarProperty Name="Id" ColumnName="Id" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
     <EntitySetMapping Name="Foro">
       <EntityTypeMapping TypeName="ExplorArgModel.Foro">
         <MappingFragment StoreEntitySet="Foro">
@@ -56,5 +46,32 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="Atracciones">
+      <EntityTypeMapping TypeName="ExplorArgModel.Atracciones">
+        <MappingFragment StoreEntitySet="Atracciones">
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="Info" ColumnName="Info" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Destino">
+      <EntityTypeMapping TypeName="ExplorArgModel.Destino">
+        <MappingFragment StoreEntitySet="Destino">
+          <ScalarProperty Name="Id_destino" ColumnName="Id_destino" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="Destinos_Atracciones" TypeName="ExplorArgModel.Destinos_Atracciones" StoreEntitySet="Destinos_Atracciones">
+      <EndProperty Name="Destino">
+        <ScalarProperty Name="Id" ColumnName="Id_Destino" />
+      </EndProperty>
+      <EndProperty Name="Atracciones">
+        <ScalarProperty Name="Id" ColumnName="Id_Atraccion" />
+      </EndProperty>
+      <Condition ColumnName="Id_Destino" IsNull="false" />
+    </AssociationSetMapping>
   </EntityContainerMapping>
 </Mapping>
