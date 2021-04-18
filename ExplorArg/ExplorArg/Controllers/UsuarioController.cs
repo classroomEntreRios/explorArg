@@ -205,5 +205,30 @@ namespace ExplorArg.Controllers
             }
             
         }
+
+        [HttpDelete]
+        public IHttpActionResult delUsuario(int id)
+        {
+            try
+            {
+                var busqueda = db.Usuario.Where(u => u.id_usuarioReg == id).Count();
+                if (busqueda > 0)
+                {
+                    var usuario = db.Usuario.Where(u => u.id_usuarioReg == id).FirstOrDefault();
+                    db.Usuario.Remove(usuario);
+                    db.SaveChanges();
+                    return Ok(usuario);
+                }
+                else
+                {
+                    return BadRequest("El usuario seleccionado no existe");
+                }
+            }
+            catch (Exception ex)
+            {
+
+                throw new Exception("Ocurrió un error inesperado. Código de error: " + ex.Message);
+            }
+        }
     }
 }
