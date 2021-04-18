@@ -1,0 +1,53 @@
+
+<div class="container">
+    <div class="row registroRow col-md-8">
+      <div class="col-sm col-md col-lg col-xl">
+            <form>
+  
+              <div>
+              <!-- Campo usuario -->
+              <label for="nombreAt">Insertar nombre de atracción</label>
+              <small class="form-text text-danger"
+              *ngIf="CampoValido('Nombre')">
+                <strong>Dato requerido</strong>
+              </small>
+              <input type="text" id="nombreAt" class="form-control" formControlName="Nombre"
+                placeholder="Debe tener al menos 5 caracteres">
+  
+              </div><br>
+  
+              <div>
+              <!-- Campo password -->
+              <label for="passU"> Insertar ID de la atracción </label>
+              <small class="form-text text-danger"
+                *ngIf="CampoValido('Password')">
+                 <strong>Dato requerido</strong>
+                </small>
+              <input type="password" id="passU" class="form-control" formControlName="ID"
+                 placeholder="Debe tener al menos 1 caracter">
+              </div><br>
+  
+              <!-- Botón -->
+              <div class="container">
+                <hr>
+                <div class="row">
+                  <div class="col">
+                    <button type="submit" class="btn btn-primary" style="float: right;"> Agregar </button>
+                    <button class="btn btn-danger" routerLink="" style="float: left;" > Cancelar </button>
+                  </div>
+                </div>
+                <hr>
+              </div>
+            </form>
+            <!-- Acomodar la posicion con css -->
+            <!-- cartelito de éxito -->
+            <small *ngIf="usuarioCreado" class="alert alert-success notifCenter" role="alert" alert-dismissible>
+              ¡Nombre y ID agregados!
+            </small>
+            <!-- cartelito de error -->
+            <small *ngIf="usuarioExiste" class="alert alert-danger" role="alert" alert-dismissible>
+              <p>Mensaje de error</p>
+              <span class="close" data-dismiss="alert"></span></small>
+          </div>
+          </div>
+      </div>
