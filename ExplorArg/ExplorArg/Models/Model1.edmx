@@ -5,6 +5,14 @@
     <!-- SSDL content -->
     <edmx:StorageModels>
     <Schema Namespace="ExplorArgModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Atracciones">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nombre" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Info" Type="varchar(max)" />
+        </EntityType>
         <EntityType Name="Chat">
           <Key>
             <PropertyRef Name="usuarioChat" />
@@ -31,8 +39,14 @@
           </Key>
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Nombre" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="Info" Type="varchar(max)" />
           <Property Name="Id_destino" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Destinos_Atracciones">
+          <Key>
+            <PropertyRef Name="Id_Atraccion" />
+          </Key>
+          <Property Name="Id_Destino" Type="int" Nullable="false" />
+          <Property Name="Id_Atraccion" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="Foro">
           <Key>
@@ -79,10 +93,40 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Destinos_Atracciones_Atracciones">
+          <End Role="Atracciones" Type="Self.Atracciones" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Destinos_Atracciones" Type="Self.Destinos_Atracciones" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Atracciones">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Destinos_Atracciones">
+              <PropertyRef Name="Id_Atraccion" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Destinos_Atracciones_Destino">
+          <End Role="Destino" Type="Self.Destino" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Destinos_Atracciones" Type="Self.Destinos_Atracciones" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Destino">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Destinos_Atracciones">
+              <PropertyRef Name="Id_Destino" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <EntityContainer Name="ExplorArgModelStoreContainer">
+          <EntitySet Name="Atracciones" EntityType="Self.Atracciones" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Chat" EntityType="Self.Chat" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Clima" EntityType="Self.Clima" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Destino" EntityType="Self.Destino" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Destinos_Atracciones" EntityType="Self.Destinos_Atracciones" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Foro" EntityType="Self.Foro" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Usuario" EntityType="Self.Usuario" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK__Chat__fk_id_usua__3A81B327" Association="Self.FK__Chat__fk_id_usua__3A81B327">
@@ -92,6 +136,14 @@
           <AssociationSet Name="FK__Foro__fk_id_usua__3D5E1FD2" Association="Self.FK__Foro__fk_id_usua__3D5E1FD2">
             <End Role="Usuario" EntitySet="Usuario" />
             <End Role="Foro" EntitySet="Foro" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Destinos_Atracciones_Atracciones" Association="Self.FK_Destinos_Atracciones_Atracciones">
+            <End Role="Atracciones" EntitySet="Atracciones" />
+            <End Role="Destinos_Atracciones" EntitySet="Destinos_Atracciones" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Destinos_Atracciones_Destino" Association="Self.FK_Destinos_Atracciones_Destino">
+            <End Role="Destino" EntitySet="Destino" />
+            <End Role="Destinos_Atracciones" EntitySet="Destinos_Atracciones" />
           </AssociationSet>
         </EntityContainer>
       </Schema></edmx:StorageModels>
@@ -118,15 +170,6 @@
           <Property Name="TempMax" Type="Int32" Nullable="false" />
           <Property Name="TempMin" Type="Int32" Nullable="false" />
           <Property Name="Condicion" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-        </EntityType>
-        <EntityType Name="Destino">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Nombre" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="Info" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="Id_destino" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="Foro">
           <Key>
@@ -179,7 +222,6 @@
         <EntityContainer Name="ExplorArgEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Chat" EntityType="Self.Chat" />
           <EntitySet Name="Clima" EntityType="Self.Clima" />
-          <EntitySet Name="Destino" EntityType="Self.Destino" />
           <EntitySet Name="Foro" EntityType="Self.Foro" />
           <EntitySet Name="Usuario" EntityType="Self.Usuario" />
           <AssociationSet Name="FK__Chat__fk_id_usua__3A81B327" Association="Self.FK__Chat__fk_id_usua__3A81B327">
@@ -190,7 +232,35 @@
             <End Role="Usuario" EntitySet="Usuario" />
             <End Role="Foro" EntitySet="Foro" />
           </AssociationSet>
+          <EntitySet Name="Atracciones" EntityType="ExplorArgModel.Atracciones" />
+          <EntitySet Name="Destino" EntityType="ExplorArgModel.Destino" />
+          <AssociationSet Name="Destinos_Atracciones" Association="ExplorArgModel.Destinos_Atracciones">
+            <End Role="Atracciones" EntitySet="Atracciones" />
+            <End Role="Destino" EntitySet="Destino" />
+          </AssociationSet>
         </EntityContainer>
+        <EntityType Name="Atracciones">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Info" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Destino" Relationship="ExplorArgModel.Destinos_Atracciones" FromRole="Atracciones" ToRole="Destino" />
+          <Property Name="Nombre" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Destino">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Id_destino" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Atracciones" Relationship="ExplorArgModel.Destinos_Atracciones" FromRole="Destino" ToRole="Atracciones" />
+        </EntityType>
+        <Association Name="Destinos_Atracciones">
+          <End Type="ExplorArgModel.Atracciones" Role="Atracciones" Multiplicity="*" />
+          <End Type="ExplorArgModel.Destino" Role="Destino" Multiplicity="0..1" />
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -219,16 +289,6 @@
                 </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Destino">
-            <EntityTypeMapping TypeName="ExplorArgModel.Destino">
-              <MappingFragment StoreEntitySet="Destino">
-                <ScalarProperty Name="Id_destino" ColumnName="Id_destino" />
-                <ScalarProperty Name="Info" ColumnName="Info" />
-                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="Foro">
             <EntityTypeMapping TypeName="ExplorArgModel.Foro">
               <MappingFragment StoreEntitySet="Foro">
@@ -252,7 +312,34 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-        </EntityContainerMapping>
+          <EntitySetMapping Name="Atracciones">
+            <EntityTypeMapping TypeName="ExplorArgModel.Atracciones">
+              <MappingFragment StoreEntitySet="Atracciones">
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Info" ColumnName="Info" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Destino">
+            <EntityTypeMapping TypeName="ExplorArgModel.Destino">
+              <MappingFragment StoreEntitySet="Destino">
+                <ScalarProperty Name="Id_destino" ColumnName="Id_destino" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="Destinos_Atracciones" TypeName="ExplorArgModel.Destinos_Atracciones" StoreEntitySet="Destinos_Atracciones">
+            <EndProperty Name="Destino">
+              <ScalarProperty Name="Id" ColumnName="Id_Destino" />
+            </EndProperty>
+            <EndProperty Name="Atracciones">
+              <ScalarProperty Name="Id" ColumnName="Id_Atraccion" />
+            </EndProperty>
+            <Condition ColumnName="Id_Destino" IsNull="false" />
+          </AssociationSetMapping>
+          </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
   </edmx:Runtime>

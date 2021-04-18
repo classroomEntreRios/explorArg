@@ -1,3 +1,4 @@
+﻿using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,6 +19,9 @@ namespace ExplorArg
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
+            GlobalConfiguration.Configuration.Formatters
+                   .JsonFormatter.SerializerSettings.Re‌​ferenceLoopHandling
+                   = ReferenceLoopHandling.Ignore;
         }
     }
 }

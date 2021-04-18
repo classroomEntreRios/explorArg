@@ -1,6 +1,6 @@
 ﻿USE [master]
 GO
-/****** Object:  Database [ExplorArg]    Script Date: 12/04/2021 10:14:16 ******/
+/****** Object:  Database [ExplorArg]    Script Date: 18/04/2021 12:47:53 ******/
 CREATE DATABASE [ExplorArg]
  CONTAINMENT = NONE
  ON  PRIMARY 
@@ -80,7 +80,22 @@ ALTER DATABASE [ExplorArg] SET QUERY_STORE = OFF
 GO
 USE [ExplorArg]
 GO
-/****** Object:  Table [dbo].[Chat]    Script Date: 12/04/2021 10:14:16 ******/
+/****** Object:  Table [dbo].[Atracciones]    Script Date: 18/04/2021 12:47:54 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Atracciones](
+	[Id] [int] IDENTITY(1,1) NOT NULL,
+	[Nombre] [varchar](50) NOT NULL,
+	[Info] [varchar](max) NULL,
+ CONSTRAINT [PK_Atracciones] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[Chat]    Script Date: 18/04/2021 12:47:54 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -97,7 +112,7 @@ CREATE TABLE [dbo].[Chat](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Clima]    Script Date: 12/04/2021 10:14:16 ******/
+/****** Object:  Table [dbo].[Clima]    Script Date: 18/04/2021 12:47:54 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -114,7 +129,7 @@ CREATE TABLE [dbo].[Clima](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Destino]    Script Date: 12/04/2021 10:14:16 ******/
+/****** Object:  Table [dbo].[Destino]    Script Date: 18/04/2021 12:47:54 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -122,15 +137,28 @@ GO
 CREATE TABLE [dbo].[Destino](
 	[Id] [int] IDENTITY(1,1) NOT NULL,
 	[Nombre] [varchar](50) NOT NULL,
-	[Info] [varchar](max) NULL,
 	[Id_destino] [varchar](50) NULL,
  CONSTRAINT [PK_Destino] PRIMARY KEY CLUSTERED 
 (
 	[Id] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
-) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Foro]    Script Date: 12/04/2021 10:14:16 ******/
+/****** Object:  Table [dbo].[Destinos_Atracciones]    Script Date: 18/04/2021 12:47:54 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Destinos_Atracciones](
+	[Id_Destino] [int] NOT NULL,
+	[Id_Atraccion] [int] NOT NULL,
+ CONSTRAINT [PK_Destinos_Atracciones] PRIMARY KEY CLUSTERED 
+(
+	[Id_Atraccion] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[Foro]    Script Date: 18/04/2021 12:47:54 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -147,7 +175,7 @@ PRIMARY KEY CLUSTERED
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Usuario]    Script Date: 12/04/2021 10:14:16 ******/
+/****** Object:  Table [dbo].[Usuario]    Script Date: 18/04/2021 12:47:54 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -169,6 +197,20 @@ ALTER TABLE [dbo].[Chat]  WITH CHECK ADD  CONSTRAINT [FK__Chat__fk_id_usua__3A81
 REFERENCES [dbo].[Usuario] ([id_usuarioReg])
 GO
 ALTER TABLE [dbo].[Chat] CHECK CONSTRAINT [FK__Chat__fk_id_usua__3A81B327]
+GO
+ALTER TABLE [dbo].[Destinos_Atracciones]  WITH CHECK ADD  CONSTRAINT [FK_Destinos_Atracciones_Atracciones] FOREIGN KEY([Id_Atraccion])
+REFERENCES [dbo].[Atracciones] ([Id])
+ON UPDATE CASCADE
+ON DELETE CASCADE
+GO
+ALTER TABLE [dbo].[Destinos_Atracciones] CHECK CONSTRAINT [FK_Destinos_Atracciones_Atracciones]
+GO
+ALTER TABLE [dbo].[Destinos_Atracciones]  WITH CHECK ADD  CONSTRAINT [FK_Destinos_Atracciones_Destino] FOREIGN KEY([Id_Destino])
+REFERENCES [dbo].[Destino] ([Id])
+ON UPDATE CASCADE
+ON DELETE CASCADE
+GO
+ALTER TABLE [dbo].[Destinos_Atracciones] CHECK CONSTRAINT [FK_Destinos_Atracciones_Destino]
 GO
 ALTER TABLE [dbo].[Foro]  WITH CHECK ADD  CONSTRAINT [FK__Foro__fk_id_usua__3D5E1FD2] FOREIGN KEY([fk_id_usuarioReg])
 REFERENCES [dbo].[Usuario] ([id_usuarioReg])

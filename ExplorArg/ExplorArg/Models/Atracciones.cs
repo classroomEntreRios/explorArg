@@ -12,19 +12,12 @@ namespace ExplorArg.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class Destino
+    public partial class Atracciones
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Destino()
-        {
-            this.Atracciones = new HashSet<Atracciones>();
-        }
-    
         public int Id { get; set; }
+        public string Info { get; set; }
         public string Nombre { get; set; }
-        public string Id_destino { get; set; }
     
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Atracciones> Atracciones { get; set; }
+        public virtual Destino Destino { get; set; }
     }
 }
