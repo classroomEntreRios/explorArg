@@ -72,9 +72,9 @@
         box-shadow: 3px 3px 8px darkslategrey;
     }
 
-    .minimum {
+    /* .minimum {
         width: 350px;
-    }
+    } */
 
     .modal-content{
         background: linear-gradient(to left, #F37335, #FDC830);
