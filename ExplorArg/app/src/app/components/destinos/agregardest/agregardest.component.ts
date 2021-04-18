@@ -4,11 +4,11 @@ import { FormBuilder, FormControl, FormGroup, FormsModule, ReactiveFormsModule, 
 
 
 @Component({
-  selector: 'app-atracciones',
-  templateUrl: './atracciones.component.html',
-  styleUrls: ['./atracciones.component.css']
+  selector: 'app-agregardest',
+  templateUrl: './agregardest.component.html',
+  styleUrls: ['./agregardest.component.css']
 })
-export class AtraccionesComponent implements OnInit {
+export class AgregardestComponent implements OnInit {
 
   constructor(
     private fb: FormBuilder,

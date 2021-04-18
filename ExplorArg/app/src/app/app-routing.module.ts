@@ -7,14 +7,16 @@ import { InicioComponent } from './components/inicio/inicio.component';
 import { RegistroComponent } from './components/registro/registro.component';
 import { AtraccionesComponent } from './components/atracciones/atracciones.component';
 import { AuthGuardService } from './services/guard/auth-guard.service';
+import { AgregardestComponent} from './components/destinos/agregardest/agregardest.component'
 
 const routes: Routes = [
 { path: '', component: InicioComponent },
 { path: 'dashboard', canActivate: [AuthGuardService] , component: DashboardComponent},
-{path: 'registro', component: RegistroComponent},
-{path: 'ingreso', component: IngresoComponent},
-{path: 'destinos', component: DestinosComponent},
-{path: 'atracciones', component: AtraccionesComponent}
+{ path: 'registro', component: RegistroComponent},
+{ path: 'ingreso', component: IngresoComponent},
+{ path: 'destinos', component: DestinosComponent},
+{ path: 'atracciones', component: AtraccionesComponent},
+{ path: 'agregardest', component: AgregardestComponent}
 
 ];
 
