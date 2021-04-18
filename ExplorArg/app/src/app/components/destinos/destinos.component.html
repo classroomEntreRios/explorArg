@@ -25,7 +25,7 @@
 <!-- Info del destino -->
 <div class="container" *ngIf="mostrarSpinner">
   <div class="row">
-    <div class="col-lg-12 loadingSpinner">
+    <div class="col-lg-11 loadingSpinner">
       <sa-spinner-circular-fixed size="30%"></sa-spinner-circular-fixed>
     </div>
   </div>
@@ -33,17 +33,15 @@
 <div class="container-fluid" *ngIf="mostrarInfo">
   <div class="row">
     <div class="col-xl-8 col-lg-8 col-md-4 col-sm-2 infoDestino">
-      <h1>
-        info destino
+      <h1 *ngFor="let atraccion of atracciones">
+      <!-- <h1> -->
+        <p>{{ atracciones[0].Nombre }}</p>
       </h1>
       <h1>
-        info destino
+        Foto/imagen atracción
       </h1>
       <h1>
-        info destino
-      </h1>
-      <h1>
-        info destino
+        Descripción atracción
       </h1>
     </div>
 
