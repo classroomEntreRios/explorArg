@@ -6,6 +6,7 @@ import { DestinosComponent } from './destinos/destinos.component';
 import { ContactoComponent } from './contacto/contacto.component';
 import { DashboardpanelComponent } from './dashboardpanel/dashboardpanel.component';
 import { AtractivosComponent } from './atractivos/atractivos.component';
+import { AtraccionesComponent } from './atracciones/atracciones.component';
 
 
 
@@ -14,7 +15,9 @@ import { AtractivosComponent } from './atractivos/atractivos.component';
 
   declarations: [
 
-  AtractivosComponent],
+  AtractivosComponent,
+
+  AtraccionesComponent],
 
   imports: [
     CommonModule
