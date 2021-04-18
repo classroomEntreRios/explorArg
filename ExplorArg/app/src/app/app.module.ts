@@ -1,3 +1,4 @@
+import { AgregarAComponent } from './components/atracciones/agregar/agregar-a/agregar-a.component';
 import { AgregardestComponent } from './components/destinos/agregardest/agregardest.component';
 import { DashboardpanelComponent } from './components/dashboardpanel/dashboardpanel.component';
 import { Routes, RouterModule } from '@angular/router';
@@ -33,7 +34,8 @@ import { SpinnersAngularModule } from 'spinners-angular';
     DestinosComponent,
     ContactoComponent,
     DashboardpanelComponent,
-    AgregardestComponent
+    AgregardestComponent,
+    AgregarAComponent
 
   ],
   imports: [
