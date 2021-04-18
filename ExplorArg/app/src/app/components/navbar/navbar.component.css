@@ -1,7 +1,3 @@
-body {
-    background-image: url(../../../assets/img/home_background.png);
-}
-
 li {
     padding: 10px;
     text-align: center;
@@ -16,3 +12,31 @@ li .btn {
     display: flex;
 }
 
+#boat-icon {
+    width: 35px;
+    height: 35px;
+    margin: 0px 10px 0px 0px;
+}
+
+#timon-icon {
+    width: 30px;
+    height: 30px;
+    margin: 0px 0px 0px 10px;
+}
+
+#user-icon {
+    width: 35px;
+    height: 35px;
+    margin-right: 5px;
+    border: 1px solid #D87C40;
+    border-radius: 50%;
+    padding: 2px;
+    box-shadow: 2px 2px 2px black;
+}
+
+.userName {
+    font-size: 14px;
+    line-height: 30px;
+    color: #D87C40;
+    margin-right: 5px;
+}
