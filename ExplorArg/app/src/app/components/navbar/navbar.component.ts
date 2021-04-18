@@ -14,7 +14,11 @@ export class NavbarComponent implements OnInit {
   }
 
   trueCookie() {
-
+    if(this.cookieSvc.get('userCookie')){
+      return true
+    }else{
+      return false
+    }
   }
 
 }
