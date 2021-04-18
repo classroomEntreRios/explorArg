@@ -1,5 +1,5 @@
 .userPanel{
-    background: linear-gradient(to left, #F37335, #FDC830);
+    background: linear-gradient(90deg, rgba(207, 147, 91, 0.664)  0%, rgba(247, 178, 75, 0.726) 100%);
     }
 
     .user-title {
@@ -14,13 +14,14 @@
         display: flex;
         border-radius: 50px;
         text-align: center;
-        box-shadow: 3px 3px 8px #F1843C;
+        box-shadow: 3px 3px 8px darkslategrey;
     }
 
     .fotoPerfil {
         width: 150px;
         height: 150px;
         border-radius: 50%;
+        margin: auto;
     }
 
     .x-file {
@@ -34,6 +35,7 @@
         position: relative;
         border-radius: 5px;
         margin-top: 5%;
+        margin: auto;
     }
 
     .x-file:hover {
@@ -67,11 +69,11 @@
 
     .bording {
     /*    border: 1px solid yellow;*/
-        box-shadow: 3px 3px 8px #F1843C;
+        box-shadow: 3px 3px 8px darkslategrey;
     }
 
     .minimum {
-        width: 600px;
+        width: 350px;
     }
 
     .modal-content{
