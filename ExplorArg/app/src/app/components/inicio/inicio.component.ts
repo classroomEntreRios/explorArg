@@ -28,7 +28,7 @@ export class InicioComponent implements OnInit {
 
   ngOnInit(): void {
     this.verUsuarios();
-    this.userLog();
+    // this.userLog();
   }
 
   cerrarModal(){
@@ -41,20 +41,21 @@ export class InicioComponent implements OnInit {
     })
   }
 
-  userLog() {
-    let cookieString = this.cookieSvc.get('userCookie')
-    let tokenString = this.datos.mostrarToken()
-    if(tokenString == cookieString){
-      console.log('Sesión de usuario ON')
-      this.logState = true
-    }else{
-      this.cookieSvc.delete('userCookie')
-      console.log('Sesión de usuario OFF')
-      this.logState = false
-      alert('Sesión de usuario expirada')
-      setTimeout(() => {
-        this.router.navigate(['ingreso'])
-      }, 2000)
-    }
-  }
+  // userLog() {
+  //   let cookieString = this.cookieSvc.get('userCookie')
+  //   let tokenString = this.datos.mostrarToken()
+  //   if(tokenString == cookieString){
+  //     console.log('Sesión de usuario ON')
+  //     this.logState = true
+  //   }else{
+  //     this.datosUsuario[0].Token = null;
+  //     this.cookieSvc.delete('userCookie')
+  //     console.log('Sesión de usuario OFF')
+  //     this.logState = false
+  //     alert('Sesión de usuario expirada')
+  //     setTimeout(() => {
+  //       this.router.navigate(['ingreso'])
+  //     }, 2000)
+  //   }
+  // }
 }

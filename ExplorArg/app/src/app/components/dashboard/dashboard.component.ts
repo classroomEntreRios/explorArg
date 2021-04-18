@@ -30,12 +30,13 @@ export class DashboardComponent implements OnInit {
   modifEmail: FormGroup = this.fb.group({});
   modifPassw: FormGroup = this.fb.group({});
 
- 
+
   constructor(
     private datos: DatosService,
     private fb: FormBuilder,
     private serv: DatosUsuarioService,
-    private cookieSvc : CookieService
+    private cookieSvc : CookieService,
+    private router: Router
     ) { }
 
   ngOnInit(): void {
@@ -55,6 +56,8 @@ export class DashboardComponent implements OnInit {
 
     // muestra las opciones de administrador
     this.checkAdminstatus();
+
+    this.userLog();
   }
 
   buscarDatos(){
@@ -121,6 +124,21 @@ export class DashboardComponent implements OnInit {
 
   switchPanel(){
     this.mostrarPanel = !this.mostrarPanel;
+  }
+
+  userLog() {
+    let cookieString = this.cookieSvc.get('userCookie')
+    let tokenString = this.datos.mostrarToken()
+    if(tokenString == cookieString){
+      console.log('Sesión de usuario ON')
+    }else{
+      this.cookieSvc.delete('userCookie')
+      console.log('Sesión de usuario OFF')
+      alert('Sesión de usuario expirada')
+      setTimeout(() => {
+        this.router.navigate(['ingreso'])
+      }, 2000)
+    }
   }
 
 }

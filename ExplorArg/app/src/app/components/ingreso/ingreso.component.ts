@@ -16,7 +16,12 @@ import { CookieService } from 'ngx-cookie-service';
 })
 export class IngresoComponent implements OnInit {
 
-  constructor(private login: IngresoService, private router: Router, private datos: DatosService, private fb: FormBuilder, private cookieSvc : CookieService) { }
+  constructor(
+    private login: IngresoService,
+    private router: Router,
+    private datos: DatosService,
+    private fb: FormBuilder,
+    private cookieSvc : CookieService) { }
 
   usuario : Usuario = new Usuario;
   usuarioAutenticado = false;
@@ -25,6 +30,7 @@ export class IngresoComponent implements OnInit {
   cookieString : string = '';
 
   ngOnInit(): void {
+
   }
 
   ingresoForm : FormGroup = this.fb.group({
