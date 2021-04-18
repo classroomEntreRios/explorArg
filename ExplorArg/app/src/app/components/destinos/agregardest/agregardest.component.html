@@ -5,8 +5,8 @@
             <form>
   
               <div>
-              <!-- Campo atracción -->
-              <label for="nombreAt">Insertar nombre de atracción</label>
+              <!-- Campo nombre -->
+              <label for="nombreAt">Insertar nombre de destino</label>
               <small class="form-text text-danger"
               *ngIf="CampoValido('Nombre')">
                 <strong>Dato requerido</strong>
@@ -17,8 +17,8 @@
               </div><br>
   
               <div>
-              <!-- Campo ID atracción -->
-              <label for="passU"> Insertar ID de la atracción </label>
+              <!-- Campo password -->
+              <label for="passU"> Insertar ID de la destino </label>
               <small class="form-text text-danger"
                 *ngIf="CampoValido('Password')">
                  <strong>Dato requerido</strong>
@@ -39,7 +39,7 @@
                 <hr>
               </div>
             </form>
-            
+            <!-- Acomodar la posicion con css -->
             <!-- cartelito de éxito -->
             <small *ngIf="usuarioCreado" class="alert alert-success notifCenter" role="alert" alert-dismissible>
               ¡Nombre y ID agregados!

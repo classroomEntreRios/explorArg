@@ -7,6 +7,7 @@ import { ContactoComponent } from './contacto/contacto.component';
 import { DashboardpanelComponent } from './dashboardpanel/dashboardpanel.component';
 import { AtractivosComponent } from './atractivos/atractivos.component';
 import { AtraccionesComponent } from './atracciones/atracciones.component';
+import { AgregardestComponent } from './destinos/agregardest/agregardest.component';
 
 
 
@@ -17,7 +18,9 @@ import { AtraccionesComponent } from './atracciones/atracciones.component';
 
   AtractivosComponent,
 
-  AtraccionesComponent],
+  AtraccionesComponent,
+
+  AgregardestComponent],
 
   imports: [
     CommonModule
