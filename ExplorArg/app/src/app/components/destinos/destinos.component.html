@@ -1,10 +1,5 @@
 <app-navbar></app-navbar>
 
-<!--
-  To do:
-    - formulario para elegir destino (Parana)
-    - logica para consumir api del clima y mostrar la información solicitada
--->
 
 <div class="container-fluid">
   <div class="row">
@@ -35,7 +30,7 @@
     <div class="col-xl-8 col-lg-8 col-md-4 col-sm-2 infoDestino">
       <h1 *ngFor="let atraccion of atracciones">
       <!-- <h1> -->
-        <p>{{ atracciones[0].Nombre }}</p>
+        <!-- <p>{{ atracciones[0].Nombre }}</p> -->
       </h1>
       <h1>
         Foto/imagen atracción
@@ -67,3 +62,24 @@
     </div>
   </div>
 </div>
+
+
+
+<div class="modal fade" id="modal-id">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title">Modal title</h4>
+      </div>
+      <div class="modal-body">
+        <app-agregardest></app-agregardest>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+

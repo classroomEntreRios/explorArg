@@ -1,3 +1,4 @@
+import { AgregardestComponent } from './components/destinos/agregardest/agregardest.component';
 import { DashboardpanelComponent } from './components/dashboardpanel/dashboardpanel.component';
 import { Routes, RouterModule } from '@angular/router';
 import { RegistroService } from './services/registro.service';
@@ -20,6 +21,7 @@ import { SpinnersAngularModule } from 'spinners-angular';
 
 
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -30,7 +32,8 @@ import { SpinnersAngularModule } from 'spinners-angular';
     DashboardComponent,
     DestinosComponent,
     ContactoComponent,
-    DashboardpanelComponent
+    DashboardpanelComponent,
+    AgregardestComponent
 
   ],
   imports: [
@@ -40,7 +43,8 @@ import { SpinnersAngularModule } from 'spinners-angular';
     NgbModule,
     ReactiveFormsModule,
     HttpClientModule,
-    SpinnersAngularModule
+    SpinnersAngularModule,
+
 
   ],
   providers: [HttpClient, CookieService],

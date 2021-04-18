@@ -1,3 +1,4 @@
+import { Destino } from './../../models/destino.model';
 import { UrlService } from './../url.service';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
@@ -13,4 +14,16 @@ export class DestinosService {
   getDestinos(){
     return this.http.get(this.url.urlDestinos);
   }
+
+  postDestino(val: Destino){
+    return this.http.post(this.url.urlDestinos, {
+      Id: 0,
+      Nombre: val.Nombre,
+      Id_destino: val.Id_destino
+    });
+  }
+
+  // getDestino(nombre: string){
+  //   return this.http.get(this.url.urlDestinos + "?nombre=" + nombre);
+  // }
 }

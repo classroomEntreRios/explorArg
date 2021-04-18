@@ -1,3 +1,4 @@
+import { DatosService } from 'src/app/services/datos.service';
 import { Observable } from 'rxjs';
 import { ApiService } from './../../services/openWeather/api.service';
 import { FormBuilder, Validators, FormGroup } from '@angular/forms';
@@ -18,13 +19,19 @@ export class DestinosComponent implements OnInit {
     private fb: FormBuilder,
     private clima: ApiService,
     private serv2: AtraccionesService,
-    private serv3: AtractinosService
+    private serv3: AtractinosService,
+    private datos: DatosService
   ) { }
 
   ngOnInit(): void {
+    this.datosU = this.datos.mostrarDatos();
     this.getDestinos();
     this.mostrarAtracciones()
+    this.verificarRol();
   }
+
+  datosU: any;
+  isAdmin: boolean = false;
 
   // DESTINOS
   destinos: any = [];
@@ -106,4 +113,12 @@ export class DestinosComponent implements OnInit {
     // return
   }
 
+
+  verificarRol(){
+    if (this.datosU[0].isAdmin){
+      this.isAdmin = true;
+    }else{
+      this.isAdmin = false;
+    }
+  }
 }

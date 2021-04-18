@@ -143,3 +143,42 @@
     </div>
   </div>
 </div>
+
+<hr>
+<div class="container text-center my-4 " *ngIf="isAdmin">
+  <div class="row">
+      <h1 class="user-title">Panel de Administración</h1>
+      <br>
+      <hr class="mt-3">
+  </div>
+</div>
+
+<!-- Agregar destino -->
+<div class="container bording col-md-4 mt-4 minimum userPanel">
+  <div class="row justify-content-md-center">
+      <div class="col-sm col-md-4 mx-3 x-align">
+        <p class="x-weight mt-3">Administrar Destinos</p>
+          <button class="btn btn-danger mb-3" data-toggle="modal"
+          href='#postDestino'>
+            Agregar destino
+           </button>
+      </div>
+  </div>
+</div>
+
+<div class="modal fade" id="postDestino">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title">Modal title</h4>
+      </div>
+      <div class="modal-body">
+        <app-agregardest></app-agregardest>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>

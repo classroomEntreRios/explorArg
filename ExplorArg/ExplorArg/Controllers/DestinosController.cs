@@ -24,6 +24,12 @@ namespace ExplorArg.Controllers
             return Ok(destino);
         }
 
+        public IHttpActionResult Get(string nombre)
+        {
+            var destino = db.Destino.Where(d => d.Nombre == nombre).FirstOrDefault();
+            return Ok(destino);
+        }
+
         [HttpPost]
         public IHttpActionResult Post(Destino oDestino)
         {

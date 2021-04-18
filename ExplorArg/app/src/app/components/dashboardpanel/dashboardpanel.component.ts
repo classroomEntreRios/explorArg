@@ -59,7 +59,7 @@ export class DashboardpanelComponent implements OnInit {
     Password: [[''], [Validators.required, Validators.minLength(8)]],
   });
 
-  this.checkAdminstatus();
+  this.verificarRol();
   }
 
 
@@ -119,10 +119,18 @@ export class DashboardpanelComponent implements OnInit {
     this.router.navigate(['ingreso']);
   }
 
-  checkAdminstatus(){
-    if (this.usuario[0].isAdmin === true){
+  // checkAdminstatus(){
+  //   if (this.usuario[0].isAdmin === true){
+  //     this.isAdmin = true;
+  //   } else {
+  //     this.isAdmin = false;
+  //   }
+  // }
+
+  verificarRol(){
+    if (this.datosU[0].isAdmin){
       this.isAdmin = true;
-    } else {
+    }else{
       this.isAdmin = false;
     }
   }

@@ -1,7 +1,5 @@
 export class Destino {
-  Id: any;
+  Id: number = 0;
   Nombre: string = '';
-  Info: string = '';
-  Id_destino: any;
-
+  Id_destino: number = 0;
 }
