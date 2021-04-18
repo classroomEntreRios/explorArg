@@ -17,7 +17,7 @@ export class AtraccionesComponent implements OnInit {
 
   registroForm : FormGroup = this.fb.group({
     Nombre: ["", [Validators.required, Validators.minLength(5), Validators.pattern("[a-zA-Z ]*")]],
-    ID: ["", [Validators.required, Validators.minLength(1)]],
+    ID: ["", [Validators.required, Validators.minLength(1), Validators.pattern("/^[+]?([0-9]+(?:[\.][0-9]*)?|\.[0-9]+)$/")]],
 });
 
   ngOnInit(): void {
