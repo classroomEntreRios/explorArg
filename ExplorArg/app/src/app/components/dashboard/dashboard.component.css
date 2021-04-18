@@ -4,64 +4,55 @@ body {
     height: 100vh;
 }
 
-li {
-    padding: 15px;
-}
-
-li .nav-link {
-    font-size: 1.5em;
-}
-
 .logo {
-    margin: 20px 150px;
-}
-
-.frase {
-    margin: 260px 150px;
-}
-
-.frase p {
-    color: white;
-    font-size: 1.2em;
-}
-
+    margin: 80px 150px;
+  }
 
 /* DASHBOARD */
 
-.settings {
-  border: none;
-  background-color: transparent;
+
+li {
+    padding: 10px;
+    text-align: center;
+
 }
 
-.dashboard {
+li .btn {
+    font-size: 1.5em;
+}
+.nav-item {
     display: flex;
-    justify-content: flex-end;
-    position: relative;
 }
 
-.dashboard p {
-    text-align: end;
-    margin: 15px 0px;
-    color: #FDC830;
-    font-size: 1.3em;
+#boat-icon {
+    width: 35px;
+    height: 35px;
+    margin: 2px 10px 0px 0px;
 }
-/* .dashboard a{
-    text-decoration: none;
-    color: rgb(243, 145, 53);
-} */
 
-.dashboard .perfil {
-    border: 1px solid black;
+#timon-icon {
+    width: 30px;
+    height: 30px;
+    margin: 4px 0px 0px 10px;
+}
+
+#user-icon {
+    width: 35px;
+    height: 35px;
+    margin: 2px 5px 0px 0px;
+    border: 1px solid #D87C40;
     border-radius: 50%;
-    width: 50px;
-    height: 50px;
-    margin: 5px 8px;
-    justify-content: center;
-    opacity: .8;
+    padding: 2px;
+    box-shadow: 2px 2px 2px black;
 }
 
-
+.userName {
+    font-size: 14px;
+    line-height: 30px;
+    color: #D87C40;
+    margin: 2px 5px 0px 0px;
+}
 
 .adminPanel{
-  background: linear-gradient(to left, #F37335, #FDC830);
-}
+    background: linear-gradient(to left, #6835f3, #FDC830);
+  }
