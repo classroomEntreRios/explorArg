@@ -26,7 +26,7 @@
     box-shadow: 3px 3px 8px rgba(0,0,0,.5);
     border-radius: 3em;
     padding: 15px;
-    background: linear-gradient(90deg, rgba(238,179,125, .5)  0%, rgba(247, 178, 75, .5) 100%);
+    background: linear-gradient(90deg, rgba(43, 39, 59, 0.5)  0%, rgba(41, 35, 77, 0.5) 100%);
   }
 
   .sinotienecuenta{
@@ -47,6 +47,15 @@
   }
 
   .btn-danger {
-    background: rgb(226, 126, 3);
+    background: rgb(182, 42, 37);
     border: transparent;
+  }
+
+  p {
+    color: darkgray;
+  }
+
+  .x-situate {
+    /* background: pink; */
+    margin: 100px 0px 0px 300px;
   }

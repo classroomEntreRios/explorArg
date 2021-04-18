@@ -1,9 +1,9 @@
 .userPanel{
-    background: linear-gradient(to left, #F37335, #FDC830);
+    background: linear-gradient(to left, #626386, #343585);
     }
 
     .user-title {
-        text-shadow: 2px 4px 4px #B22222;
+        text-shadow: 2px 4px 4px whitesmoke;
     }
 
     .x-align {
@@ -14,7 +14,7 @@
         display: flex;
         border-radius: 50px;
         text-align: center;
-        box-shadow: 3px 3px 8px #F1843C;
+        box-shadow: 3px 3px 8px #faf603;
     }
 
     .fotoPerfil {
@@ -37,7 +37,7 @@
     }
 
     .x-file:hover {
-        background: #BB2D3B;
+        background: #460b10;
         transition: .3s ease;
     }
 
@@ -75,7 +75,7 @@
     }
 
     .modal-content{
-        background: linear-gradient(to left, #F37335, #FDC830);
+        background: linear-gradient(to left, #464b8f, #5455b3);
     }
 
     input.ng-invalid{
