@@ -85,19 +85,19 @@ export class IngresoComponent implements OnInit {
   }
 
 
-userLog() {
-  let cookieString = this.cookieSvc.get('userCookie')
-  let tokenString = this.datos.mostrarToken()
-  if(tokenString == cookieString){
-    console.log('Sesión de usuario ON')
-  }else{
-    this.cookieSvc.delete('userCookie')
-    console.log('Sesión de usuario OFF')
-    alert('Sesión de usuario expirada')
-    setTimeout(() => {
-      this.router.navigate(['ingreso'])
-    }, 2000)
-  }
-}
+// userLog() {
+//   let cookieString = this.cookieSvc.get('userCookie')
+//   let tokenString = this.datos.mostrarToken()
+//   if(tokenString == cookieString){
+//     console.log('Sesión de usuario ON')
+//   }else{
+//     this.cookieSvc.delete('userCookie')
+//     console.log('Sesión de usuario OFF')
+//     alert('Sesión de usuario expirada')
+//     setTimeout(() => {
+//       this.router.navigate(['ingreso'])
+//     }, 2000)
+//   }
+// }
 
 }
