@@ -6,6 +6,7 @@ import { Component, OnInit } from '@angular/core';
 import { DestinosService } from './../../services/destinos/destinos.service';
 import { AtraccionesService } from './,,/../../../services/destinos/atracciones.service';
 import { AtractinosService } from './,,/../../../services/destinos/atractinos.service';
+import { isJSDocThisTag } from 'typescript';
 
 @Component({
   selector: 'app-destinos',
@@ -73,7 +74,7 @@ export class DestinosComponent implements OnInit {
       })
   }
 
-  getInfoDestino(form: FormGroup){
+  async getInfoDestino(form: FormGroup){
    this.idDestino =  this.buscarIdDestino(form.value.nombreDestino);
    this.mostrarInfo = false;
    this.mostrarSpinner = true;
@@ -88,6 +89,8 @@ export class DestinosComponent implements OnInit {
     }, error => {
       console.log(error);
     })
+
+   this.infoAtracciones =  await this.getAtracciones(this.idDestino[0].Id);
   }
 
   buscarIdDestino(nombre: string){
@@ -122,5 +125,11 @@ export class DestinosComponent implements OnInit {
     }else{
       this.isAdmin = false;
     }
+  }
+
+  async getAtracciones(id: number): Promise<any>{
+    let resp = await this.serv.getAtracciones_Destinos(id)
+    .toPromise()
+    return resp;
   }
 }

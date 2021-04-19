@@ -26,4 +26,12 @@ export class DestinosService {
    getDestino(nombre: string){
      return this.http.get(this.url.urlDestinos + "?nombre=" + nombre);
    }
+
+   getIdDestino(nombre: string){
+    return this.http.get(this.url.urlDestinos + "?nombre=" + nombre);
+   }
+
+   getAtracciones_Destinos(id: number){
+     return this.http.get(this.url.urlDestinos + "/atracciones" + "?id=" + id);
+   }
 }

@@ -35,20 +35,20 @@
       <h1>
         Descripción atracción
       </h1> -->
-      <table class="table table-bordered">
-        <thead>
+      <table class="table table-bordered table-sm" style="margin-top: 5px;">
+        <thead class="thead-dark">
           <tr>
-            <th th scope="col"> Atracciones </th>
+            <th th scope="col"> Atracción </th>
             <th th scope="col"> Información </th>
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let atraccion of atracciones, let i = index" class="success">
+          <tr *ngFor="let info of infoAtracciones, let i = index" class="success">
           <td>
-            {{atraccion.Nombre}}
+           <strong>{{info.Nombre}}</strong>
           </td>
           <td>
-            {{atraccion.Info}}
+            {{info.Info}}
           </td>
         </tr>
         </tbody>

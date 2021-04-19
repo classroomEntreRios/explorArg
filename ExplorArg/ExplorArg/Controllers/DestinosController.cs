@@ -83,5 +83,22 @@ namespace ExplorArg.Controllers
             }
         }
 
+        
+        [Route("api/destinos/atracciones")]
+        public IHttpActionResult getAracciones(int id)
+        {
+            try
+            {
+                var destino = db.Destino.Where(d => d.Id == id).FirstOrDefault();
+                var respuesta = destino.Atracciones.ToList();
+                return Ok(respuesta);
+            }
+            catch (Exception ex)
+            {
+
+                throw new Exception("Ocurrió un error inesperado. Código de error: " + ex.Message);
+            }
+        }
+
     }
 }
