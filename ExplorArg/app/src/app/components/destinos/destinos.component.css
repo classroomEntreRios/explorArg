@@ -40,6 +40,7 @@
 .card{
   background: transparent;
   background-color: transparent;
+  border: none;
 }
 
 .loadingSpinner{
@@ -47,4 +48,8 @@
   margin-top: 10%;
   margin-left: 35%;
   margin-right: 45%;
+}
+
+.table-bordered {
+  margin-top: 15px;
 }
