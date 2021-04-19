@@ -1,1 +1,18 @@
-<p>agregar-a works!</p>
+<div class="container">
+  <div class="row registroRow col-md-8">
+    <div class="col-sm col-md col-lg col-xl">
+      <form [formGroup]="postAtraccion"  (ngSubmit)="onSubmit(postAtraccion)" >
+        <label> Destino al que pertenece: </label>
+        <select formControlName="perteneceAlDestino" >
+          <option value="" selected> Elija un destino </option><br>
+          <option *ngFor="let destino of listaDestinos"> {{destino.Nombre}} </option>
+        </select>
+
+        <br><label>Nombre:</label>
+        <input type="text" formControlName="Nombre">
+        <label>Información de la atracción:</label>
+        <textarea name="Info" id="Info" cols="50" rows="20" formControlName="Info">
+        </textarea>
+        <button type="submit" class="btn btn-danger"> Agregar </button>
+      </form>
+    </div >

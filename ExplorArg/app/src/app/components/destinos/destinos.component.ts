@@ -28,6 +28,7 @@ export class DestinosComponent implements OnInit {
     this.getDestinos();
     this.mostrarAtracciones()
     this.verificarRol();
+
   }
 
   datosU: any;
@@ -65,6 +66,7 @@ export class DestinosComponent implements OnInit {
     .subscribe(resp =>
       {
         this.destinos = resp;
+        console.log(this.destinos);
       },
       error => {
         console.log(error);
@@ -98,7 +100,7 @@ export class DestinosComponent implements OnInit {
     this.serv2.getAtracciones()
     .subscribe( resp =>{
       this.atracciones = resp;
-      console.log(this.atracciones)
+      // console.log(this.atracciones)
     }, err => {
       console.log(err)
     })

@@ -24,4 +24,8 @@ export class AtraccionesService {
       Info: val.Info
     })
   }
+
+  Atraccion_Destino(id_Destino: number, id_Atraccion: number){
+    return this.http.post(this.url.urlDestino_Atraccion + "?idDestino=" + id_Destino + "&idAtraccion=" + id_Atraccion , {})
+  }
 }
