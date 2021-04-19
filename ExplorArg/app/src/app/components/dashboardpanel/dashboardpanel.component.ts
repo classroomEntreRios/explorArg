@@ -128,7 +128,8 @@ export class DashboardpanelComponent implements OnInit {
   // }
 
   verificarRol(){
-    if (this.datosU[0].isAdmin){
+    let status = this.usuario[0].isAdmin;
+    if (status == true){
       this.isAdmin = true;
     }else{
       this.isAdmin = false;
