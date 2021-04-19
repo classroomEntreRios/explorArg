@@ -23,7 +23,7 @@ export class DestinosService {
     });
   }
 
-  // getDestino(nombre: string){
-  //   return this.http.get(this.url.urlDestinos + "?nombre=" + nombre);
-  // }
+   getDestino(nombre: string){
+     return this.http.get(this.url.urlDestinos + "?nombre=" + nombre);
+   }
 }

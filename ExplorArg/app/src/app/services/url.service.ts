@@ -20,6 +20,7 @@ gettingToken = 'https://localhost:44307/api/usuario/token';
 
 // destinos
 urlDestinos = 'https://localhost:44307/api/destinos';
+urlDestino_Atraccion = 'https://localhost:44307/api/destino_atraccion';
 
 // atracciones
 urlAtracciones = 'https://localhost:44307/api/atracciones';

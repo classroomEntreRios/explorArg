@@ -28,16 +28,31 @@
 <div class="container-fluid" *ngIf="mostrarInfo">
   <div class="row">
     <div class="col-xl-8 col-lg-8 col-md-4 col-sm-2 infoDestino">
-      <h1 *ngFor="let atraccion of atracciones">
-      <!-- <h1> -->
-        <!-- <p>{{ atracciones[0].Nombre }}</p> -->
-      </h1>
-      <h1>
-        Foto/imagen atracción
-      </h1>
+      <!-- <h5 *ngFor="let atraccion of atracciones">
+        {{ atraccion.Nombre }} :
+        {{ atraccion.Info }}
+      </h5>
       <h1>
         Descripción atracción
-      </h1>
+      </h1> -->
+      <table class="table table-bordered">
+        <thead>
+          <tr>
+            <th th scope="col"> Atracciones </th>
+            <th th scope="col"> Información </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let atraccion of atracciones, let i = index" class="success">
+          <td>
+            {{atraccion.Nombre}}
+          </td>
+          <td>
+            {{atraccion.Info}}
+          </td>
+        </tr>
+        </tbody>
+      </table>
     </div>
 
     <!-- card para la info del clima -->
@@ -64,22 +79,4 @@
 </div>
 
 
-
-<div class="modal fade" id="modal-id">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-        <h4 class="modal-title">Modal title</h4>
-      </div>
-      <div class="modal-body">
-        <app-agregardest></app-agregardest>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
-      </div>
-    </div>
-  </div>
-</div>
 

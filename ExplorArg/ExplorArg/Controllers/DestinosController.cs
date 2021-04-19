@@ -53,7 +53,9 @@ namespace ExplorArg.Controllers
             }
         }
 
+        
         [HttpPost]
+        [Route("api/destino_atraccion")]
         public IHttpActionResult agregarAtraccion(int idDestino, int idAtraccion)
         {
             try
