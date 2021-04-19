@@ -1,4 +1,4 @@
-
+<!-- 
 <div class="container">
     <div class="row registroRow col-md-8">
 
@@ -10,5 +10,56 @@
           </select>
           <button type="submit"> Confirmar </button>
         </form>
-      </div >
+      </div > -->
 
+<div class="container padd">
+    <div class="row registroRow col-md-8">
+      <div class="col-sm col-md col-lg col-xl padd">
+            <form [formGroup]="postDestino" (ngSubmit)="onSubmit(postDestino)" class="style-center">
+
+              <button type="submit" class="btn btn-primary"> Cargar todos los destinos posibles </button>
+              <br><br>
+              
+              <select formControlName="Nombre" class="nav-item dropdown select-style">
+                <option value="" selected class="dropdown-toggle">Seleccione uno</option>
+                <option *ngFor="let destino of destinosPosibles"> {{ destino.Nombre }} </option>
+              </select>
+              <br><br>
+
+              <!-- Botón -->
+              <div class="container">
+                <div class="row">
+                  <div class="col">
+                    <button type="submit" class="btn btn-primary" style="float: right;"> Agregar </button>
+                    <button class="btn btn-danger" data-dismiss="modal" routerLink="/dashboard" style="float: left;" > Cancelar </button>
+                  </div>
+                </div>
+              </div>
+            </form>
+
+          </div>
+        </div>
+      </div>
+      
+<div class="container padd">
+  <div class="row registroRow col-md-8">
+    <div class="col-sm col-md col-lg col-xl padd">
+      <!-- cartelito de éxito -->
+      <small class="alert alert-success notifCenter style-center" role="alert" alert-dismissible>
+        ¡Destino agregado!
+      </small>
+      </div>
+  </div>
+</div>
+
+<div class="container padd">
+  <div class="row registroRow col-md-8">
+    <div class="col-sm col-md col-lg col-xl padd">
+      <!-- cartelito de error -->
+        <small class="alert alert-danger style-center" role="alert" alert-dismissible>
+          Error
+          <span class="close" data-dismiss="alert"></span>
+        </small>
+    </div>
+  </div>
+</div>
