@@ -27,7 +27,7 @@ export class InicioComponent implements OnInit {
   datosUsuario: Usuario[] = []
 
   ngOnInit(): void {
-    this.verUsuarios();
+     this.verUsuarios();
     // this.userLog();
   }
 
