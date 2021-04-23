@@ -1,1 +1,79 @@
-<p>forotopic works!</p>
+<br><br>
+<div class="container">
+    <h1 class="text-center">Foro</h1>
+</div>
+<br><br>
+
+<div class="container background">
+    <br>
+
+    <h4>Nombre tema creado</h4>
+    <br>
+    <!-- INCORPORAR NOMBRE DEL AUTOR Y FECHA DE LA PUBLICACIÓN -->
+    <p class="pStyle">Autor del tema- Fecha del tema</p>
+    <br>
+
+    <div class="temaContent">
+        <p>Este es el contenido del tópico creado por un tipo cualquiera, o tipa cualquiera, o tipe cuelquiere (?), si bien este último preferentemente será banneado, en honor del buen uso del lenguaje.</p>
+        <p>Y este párrafo lo agregué no más para ver cómo quedan 2.</p>
+    </div>
+
+    <!-- OPCIÓN DE ELIMINAR PUBLICACIÓN SI QUIEN INGRESA ES EL AUTOR DE LA MISMA -->
+    <div class="modal-footer" *ngIf="true">
+        <button type="button" class="btn btn-danger">Eliminar publicación</button>
+        <!-- <button type="button" class="btn btn-primary" data-dismiss="modal">Editar</button> -->
+        <div>
+            <button type="button" class="btn btn-primary">Responder</button>
+        </div>
+    </div>
+
+</div>
+
+<br><br>
+
+
+<!-- RESPUESTAS DADAS AL TÓPICO PRINCIPAL -->
+<div>
+    <div class="container background2 commentStyle" *ngIf="true">
+        <br>
+        <p class="pStyle">Respuesta de: Autor de la respuesta - Fecha de la respuesta</p>
+        <div class="respuestaContent">
+            <p>Acá un ser consciente con capacidad de lenguaje y otros atributos cognitivos ya ha dado una respuesta.</p>
+        </div>
+        <br>
+
+            <!-- OPCIÓN DE ELIMINAR COMENTARIO SI QUIEN INGRESA ES EL AUTOR DE LA MISMA -->
+            <div class="modal-footer" *ngIf="true">
+                <button type="button" class="btn btn-danger">Eliminar respuesta</button>
+                <!-- <button type="button" class="btn btn-primary" data-dismiss="modal">Editar</button> -->
+                <div>
+                    <button type="button" class="btn btn-primary">Responder</button>
+                </div>
+            </div>
+    </div>
+
+    <br><br>
+</div>
+
+<!-- OPCIÓN DE RESPONDER A DESPLEGAR CUANDO SE CLICKEA 'RESPONDER' -->
+<div>
+    <div class="container background2 commentStyle" *ngIf="true">
+        <br>
+        <textarea name="consulta" id="respuestaTopic" cols="" rows="5">
+            Y esto es lo que se despliega si alguien presiona el botón de 'Responder' en cualquier tema o comentario ya establecido.
+        </textarea>
+        <br>
+
+            <!-- OPCIÓN DE ELIMINAR COMENTARIO SI QUIEN INGRESA ES EL AUTOR DE LA MISMA -->
+            <div class="modal-footer" *ngIf="true">
+                <button type="button" class="btn btn-danger" routerLink="/foro">Cancelar</button>
+                <!-- <button type="button" class="btn btn-primary" data-dismiss="modal">Editar</button> -->
+                <div>
+                    <button type="button" class="btn btn-primary">Enviar</button>
+                </div>
+            </div>
+    </div>
+
+    <br><br>
+</div>
+

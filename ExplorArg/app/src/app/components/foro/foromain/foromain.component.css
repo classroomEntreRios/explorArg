@@ -2,3 +2,44 @@
     background: white;
     border-radius: 5px;
 }
+
+.background2 {
+    background: whitesmoke;
+    max-width: 1050px;
+}
+
+h1 {
+    color: white;
+}
+
+h4 {
+    padding: 0px 20px;
+}
+
+textarea {
+    box-sizing: border-box;
+    width: 100%;
+    background: whitesmoke;
+    border-radius: 5px;
+}
+
+.foroInput:focus {
+    border-radius: 5px;
+    background: whitesmoke;
+}
+
+.pStyle {
+    color: grey;
+    padding: 0px 20px;
+}
+
+.foroInput {
+    width: 285px;
+    border: 1px solid black;
+    border-radius: 5px;
+}
+
+.temaContent, .respuestaContent {
+    text-align: justify;
+    padding: 0px 20px;
+}

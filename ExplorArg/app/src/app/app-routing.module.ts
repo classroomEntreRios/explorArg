@@ -9,6 +9,8 @@ import { AtraccionesComponent } from './components/atracciones/atracciones.compo
 import { AuthGuardService } from './services/guard/auth-guard.service';
 import { AgregardestComponent} from './components/destinos/agregardest/agregardest.component'
 import { ForomainComponent } from './components/foro/foromain/foromain.component';
+import { ForocrudComponent } from './components/foro/forocrud/forocrud.component';
+import { ForotopicComponent } from './components/foro/forotopic/forotopic.component';
 
 const routes: Routes = [
 { path: '', component: InicioComponent },
@@ -18,7 +20,9 @@ const routes: Routes = [
 { path: 'destinos', component: DestinosComponent},
 { path: 'atracciones', component: AtraccionesComponent},
 { path: 'agregardest', component: AgregardestComponent},
-{ path: 'foro', component: ForomainComponent}
+{ path: 'foro', component: ForomainComponent},
+{ path: 'agregarTema', component: ForocrudComponent},
+{ path: 'foroTopic', component: ForotopicComponent}
 ];
 
 @NgModule({
