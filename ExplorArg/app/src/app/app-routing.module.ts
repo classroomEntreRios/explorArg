@@ -8,6 +8,7 @@ import { RegistroComponent } from './components/registro/registro.component';
 import { AtraccionesComponent } from './components/atracciones/atracciones.component';
 import { AuthGuardService } from './services/guard/auth-guard.service';
 import { AgregardestComponent} from './components/destinos/agregardest/agregardest.component'
+import { ForomainComponent } from './components/foro/foromain/foromain.component';
 
 const routes: Routes = [
 { path: '', component: InicioComponent },
@@ -16,8 +17,8 @@ const routes: Routes = [
 { path: 'ingreso', component: IngresoComponent},
 { path: 'destinos', component: DestinosComponent},
 { path: 'atracciones', component: AtraccionesComponent},
-{ path: 'agregardest', component: AgregardestComponent}
-
+{ path: 'agregardest', component: AgregardestComponent},
+{ path: 'foro', component: ForomainComponent}
 ];
 
 @NgModule({
