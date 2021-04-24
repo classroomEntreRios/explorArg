@@ -1,11 +1,10 @@
 .padd {
     display: flex;
-    padding-top: 50px;
     justify-content: center;
 }
 
 .select-style {
-  background: #D87C40;
+  background: #56A6FB;
   color: white;
   width: 268px;
   height: 35px;

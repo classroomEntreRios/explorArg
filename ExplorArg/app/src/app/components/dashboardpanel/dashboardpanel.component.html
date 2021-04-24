@@ -1,8 +1,10 @@
+<br><br>
+
 <div class="container text-center my-4 ">
     <div class="row">
-        <h1 class="user-title">Panel de Usuario</h1>
+        <h1>Panel de Usuario</h1>
         <br>
-        <hr class="mt-3">
+        <hr>
     </div>
 </div>
 
@@ -89,12 +91,11 @@
       <div class="modal-body">
         <form [formGroup]="modifNombre" (ngSubmit)="putNombre(modifNombre)">
           <div class="form-group">
-
             <label for="">Nombre</label>
             <input type="text" class="form-control" formControlName="Nombre">
           </div>
-          <button type="submit" class="btn btn-danger" [disabled]="modifNombre.invalid">Modificar</button>
-          <button type="button" class="btn btn-warning" data-dismiss="modal" #myModalClose>Cancelar</button>
+          <button type="button" class="btn btn-danger" data-dismiss="modal" #myModalClose style="float: left">Cancelar</button>
+          <button type="submit" class="btn btn-primary" [disabled]="modifNombre.invalid" style="float: right">Modificar</button>
         </form>
       </div>
     </div>
@@ -110,13 +111,14 @@
         <h4 class="modal-title">Modificar Email</h4>
       </div>
       <div class="modal-body">
-
         <form [formGroup]="modifEmail" (ngSubmit)="putEmail(modifEmail)">
-        <label for="">Email</label>
-        <input type="text" class="form-control" formControlName="Email">
+          <div class="form-group">
+            <label for="">Email</label>
+            <input type="text" class="form-control" formControlName="Email">
+        </div>
+        <button type="button" class="btn btn-danger" data-dismiss="modal" #myModalClose style="float: left">Cancelar</button>
+        <button type="submit" class="btn btn-primary" [disabled]="modifEmail.invalid" style="float: right">Modificar</button>
 
-        <button type="submit" class="btn btn-danger" [disabled]="modifEmail.invalid">Modificar</button>
-        <button type="button" class="btn btn-warning" data-dismiss="modal" #myModalClose>Cancelar</button>
       </form>
       </div>
     </div>
@@ -133,23 +135,28 @@
       <div class="modal-body">
 
         <form [formGroup]="modifPassw" (ngSubmit)="putPassword(modifPassw)">
-        <label for="">Contraseña</label>
-        <input type="password" class="form-control" formControlName="Password">
+          <div class="form-group">
+            <label for="">Contraseña</label>
+            <input type="password" class="form-control" formControlName="Password">
+          </div>
+        <button type="button" class="btn btn-danger" data-dismiss="modal" #myModalClose style="float: left">Cancelar</button>
+        <button type="submit" class="btn btn-primary" [disabled]="modifPassw.invalid" style="float: right">Modificar</button>
 
-        <button type="submit" class="btn btn-danger" [disabled]="modifPassw.invalid">Modificar</button>
-        <button type="button" class="btn btn-warning" data-dismiss="modal" #myModalClose>Cancelar</button>
       </form>
       </div>
     </div>
   </div>
 </div>
 
+
+<br><br>
 <div *ngIf="isAdmin">
 <div class="container text-center my-4" >
   <div class="row">
-      <h1 class="user-title">Panel de Administración</h1>
+    <br><br>
+      <h1>Panel de Administración</h1>
       <br>
-      <hr class="mt-3">
+      <hr>
   </div>
 </div>
 
@@ -195,9 +202,10 @@
       </div>
   </div>
 </div>
+<br><br>
 
 
-<div class="modal fade" id="postAtraccion">
+<div class="modal" id="postAtraccion">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">

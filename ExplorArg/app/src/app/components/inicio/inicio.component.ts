@@ -24,6 +24,7 @@ export class InicioComponent implements OnInit {
     ) { }
 
   logState : boolean = false;
+  initCheck :any = false;
   datosUsuario: Usuario[] = []
 
   ngOnInit(): void {
@@ -41,21 +42,12 @@ export class InicioComponent implements OnInit {
     })
   }
 
-  // userLog() {
-  //   let cookieString = this.cookieSvc.get('userCookie')
-  //   let tokenString = this.datos.mostrarToken()
-  //   if(tokenString == cookieString){
-  //     console.log('Sesión de usuario ON')
-  //     this.logState = true
-  //   }else{
-  //     this.datosUsuario[0].Token = null;
-  //     this.cookieSvc.delete('userCookie')
-  //     console.log('Sesión de usuario OFF')
-  //     this.logState = false
-  //     alert('Sesión de usuario expirada')
-  //     setTimeout(() => {
-  //       this.router.navigate(['ingreso'])
-  //     }, 2000)
-  //   }
-  // }
+  initChecking() {
+    if(this.cookieSvc.get('userCookie')){
+       this.initCheck = true
+    }else{
+      this.initCheck = false
+    }
+  }
+
 }

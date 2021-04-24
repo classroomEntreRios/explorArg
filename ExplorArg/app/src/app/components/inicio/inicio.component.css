@@ -4,7 +4,9 @@ body {
   height: 100%;
 }
 
-/* LOGO Y FRASE EN HOME */
+h1 {
+  color: white;
+}
 
 .logo {
   margin: 80px 150px;
@@ -43,6 +45,6 @@ body {
   }
 
   .logo img {
-      width: 400px;
+      width: 260px;
   }
 }

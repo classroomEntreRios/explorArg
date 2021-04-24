@@ -37,3 +37,14 @@
 .adminPanel{
   background: linear-gradient(to left, #F37335, #FDC830);
 }
+
+/* MEDIA QUERIES */
+
+@media screen and (max-width: 990px){
+  div.container-fluid.dashboard{
+    width: 200px;
+    display: flex;
+    margin: auto;
+  }
+
+  }
