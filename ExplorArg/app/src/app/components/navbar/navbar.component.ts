@@ -1,6 +1,7 @@
 import { CookieService } from 'ngx-cookie-service';
 import { DatosService } from 'src/app/services/datos.service';
 import { Component, OnInit } from '@angular/core';
+import { DatosUsuarioService } from 'src/app/services/datosUsuario/datos-usuario.service';
 
 @Component({
   selector: 'app-navbar',
@@ -12,10 +13,12 @@ export class NavbarComponent implements OnInit {
   islogged: boolean = false;
   isAdmin: boolean = false;
   datosU: any;
+  token: any = ''
 
   constructor(
     private datos: DatosService,
-    private cookie: CookieService
+    private cookie: CookieService,
+    private usuario: DatosUsuarioService
   ) { }
 
   ngOnInit(): void {
