@@ -4,7 +4,7 @@ h1 {
 
 .infoDestino{
   border-radius: 1em;
-  background: linear-gradient(to left, #F37335, #FDC830);
+  background: rgba(255, 255, 255, .4);
   margin-top: 2em;
   margin-left: 3em;
 }
@@ -17,6 +17,7 @@ h1 {
   font-size: 18px;
   border: solid;
   border-color: rgba(0, 0, 0, 0.4);
+  margin-top: 30px;
 }
 
 .infoClima{
@@ -55,4 +56,26 @@ h1 {
 
 .table-bordered {
   margin-top: 15px;
+}
+
+
+/* MEDIA QUERIES */
+
+@media screen and (max-width: 990px){
+  .infoDestino {
+    margin-left: 1px;
+    margin-right: 1px;
+    width: 350px;
+    margin: auto;
+  }
+
+  .infoClima {
+    display: flex;
+    margin: 40px 5px 0px 5px;
+    justify-content: center;
+  }
+
+  .destinosForm{
+    margin-bottom: 20px;
+  }
 }

@@ -54,3 +54,13 @@ h1 {
     border: transparent;
   }
   
+  /* MEDIA QUERIES */
+
+@media screen and (max-width: 990px){
+  .ingresoRow {
+    margin-left: 1px;
+    margin-right: 1px;
+    display: flex;
+    justify-content: center;
+  }
+}

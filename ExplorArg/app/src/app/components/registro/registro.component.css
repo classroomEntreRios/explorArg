@@ -56,3 +56,14 @@ input {
     width: 50%;
     margin: auto;
   }
+
+    /* MEDIA QUERIES */
+
+@media screen and (max-width: 990px){
+  .registroRow {
+    margin-left: 1px;
+    margin-right: 1px;
+    display: flex;
+    justify-content: center;
+  }
+}
