@@ -11,6 +11,8 @@ import { AgregarAComponent } from './atracciones/agregar/agregar-a/agregar-a.com
 import { ForomainComponent } from './foro/foromain/foromain.component';
 import { ForotopicComponent } from './foro/forotopic/forotopic.component';
 import { ForocrudComponent } from './foro/forocrud/forocrud.component';
+import { FooterComponent } from './footer/footer.component';
+import { FooterabsoluteComponent } from './footer/footerabsolute/footerabsolute.component';
 
 
 
@@ -29,7 +31,11 @@ import { ForocrudComponent } from './foro/forocrud/forocrud.component';
 
   ForotopicComponent,
 
-  ForocrudComponent],
+  ForocrudComponent,
+
+  FooterComponent,
+
+  FooterabsoluteComponent],
 
   imports: [
     CommonModule

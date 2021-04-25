@@ -21,6 +21,10 @@ h1 {
   font-size: 1.2em;
 }
 
+.containerFooter {
+  min-height: calc(100vh - 200px);
+}
+
 
 /* MEDIA QUERIES */
 

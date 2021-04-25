@@ -22,6 +22,8 @@ import { SpinnersAngularModule } from 'spinners-angular';
 import { ForomainComponent } from './components/foro/foromain/foromain.component';
 import { ForotopicComponent } from './components/foro/forotopic/forotopic.component';
 import { ForocrudComponent } from './components/foro/forocrud/forocrud.component';
+import { FooterComponent } from './components/footer/footer.component';
+import { FooterabsoluteComponent } from './components/footer/footerabsolute/footerabsolute.component';
 
 
 
@@ -41,8 +43,9 @@ import { ForocrudComponent } from './components/foro/forocrud/forocrud.component
     AgregarAComponent,
     ForomainComponent,
     ForotopicComponent,
-    ForocrudComponent
-
+    ForocrudComponent,
+    FooterComponent,
+    FooterabsoluteComponent
   ],
   imports: [
     BrowserModule,

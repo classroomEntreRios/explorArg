@@ -38,6 +38,10 @@
   background: linear-gradient(to left, #F37335, #FDC830);
 }
 
+.container {
+  min-height: calc(150vh - 200px);
+}
+
 /* MEDIA QUERIES */
 
 @media screen and (max-width: 990px){

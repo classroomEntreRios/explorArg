@@ -1,3 +1,6 @@
+h1 {
+  color: whitesmoke;
+}
 
   label {
     color:black;
@@ -50,3 +53,4 @@
     background: rgb(226, 126, 3);
     border: transparent;
   }
+  

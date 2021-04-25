@@ -12,3 +12,6 @@ li:hover {
     transition: 0.4s ease;
 }
 
+.container {
+    min-height: calc(100vh - 200px);
+}
