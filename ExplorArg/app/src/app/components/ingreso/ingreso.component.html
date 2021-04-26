@@ -1,4 +1,11 @@
 <app-navbar></app-navbar>
+
+<br><br>
+<div>
+    <h1 class="text-center">Inicio de sesión</h1>
+</div>
+
+<br><br>
 <div class="container mx-1 mx-auto">
   <div class="row ingresoRow">
     <div class="col">
@@ -9,7 +16,7 @@
           <div>
           <label for="emailLogin"> Email</label>
           <input type="email" id="emailLogin" class="form-control" formControlName="emailLogin"
-             placeholder="ejemplo@ejemplo.com">
+             placeholder="ejemplo@ejemplo.com" autofocus>
              <small class="form-text text-danger"
               *ngIf="CampoValido('emailLogin')">
                <p> Dato requerido </p>
@@ -52,3 +59,11 @@
     </div>
   </div>
 </div>
+
+<div class="neccesarySpace">
+  <br><br>
+  <br><br>
+  <br>
+</div>
+
+<app-footer></app-footer>

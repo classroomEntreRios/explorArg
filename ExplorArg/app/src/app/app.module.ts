@@ -19,6 +19,11 @@ import { DestinosComponent } from './components/destinos/destinos.component';
 import { ContactoComponent } from './components/contacto/contacto.component';
 import { CookieService } from 'ngx-cookie-service';
 import { SpinnersAngularModule } from 'spinners-angular';
+import { ForomainComponent } from './components/foro/foromain/foromain.component';
+import { ForotopicComponent } from './components/foro/forotopic/forotopic.component';
+import { ForocrudComponent } from './components/foro/forocrud/forocrud.component';
+import { FooterComponent } from './components/footer/footer.component';
+import { FooterabsoluteComponent } from './components/footer/footerabsolute/footerabsolute.component';
 
 
 
@@ -35,8 +40,12 @@ import { SpinnersAngularModule } from 'spinners-angular';
     ContactoComponent,
     DashboardpanelComponent,
     AgregardestComponent,
-    AgregarAComponent
-
+    AgregarAComponent,
+    ForomainComponent,
+    ForotopicComponent,
+    ForocrudComponent,
+    FooterComponent,
+    FooterabsoluteComponent
   ],
   imports: [
     BrowserModule,

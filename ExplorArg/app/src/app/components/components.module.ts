@@ -5,10 +5,14 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { DestinosComponent } from './destinos/destinos.component';
 import { ContactoComponent } from './contacto/contacto.component';
 import { DashboardpanelComponent } from './dashboardpanel/dashboardpanel.component';
-import { AtractivosComponent } from './atractivos/atractivos.component';
 import { AtraccionesComponent } from './atracciones/atracciones.component';
 import { AgregardestComponent } from './destinos/agregardest/agregardest.component';
 import { AgregarAComponent } from './atracciones/agregar/agregar-a/agregar-a.component';
+import { ForomainComponent } from './foro/foromain/foromain.component';
+import { ForotopicComponent } from './foro/forotopic/forotopic.component';
+import { ForocrudComponent } from './foro/forocrud/forocrud.component';
+import { FooterComponent } from './footer/footer.component';
+import { FooterabsoluteComponent } from './footer/footerabsolute/footerabsolute.component';
 
 
 
@@ -17,13 +21,21 @@ import { AgregarAComponent } from './atracciones/agregar/agregar-a/agregar-a.com
 
   declarations: [
 
-  AtractivosComponent,
-
   AtraccionesComponent,
 
   AgregardestComponent,
 
-  AgregarAComponent],
+  AgregarAComponent,
+
+  ForomainComponent,
+
+  ForotopicComponent,
+
+  ForocrudComponent,
+
+  FooterComponent,
+
+  FooterabsoluteComponent],
 
   imports: [
     CommonModule

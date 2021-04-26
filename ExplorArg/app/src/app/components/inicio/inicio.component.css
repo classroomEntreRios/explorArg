@@ -4,7 +4,9 @@ body {
   height: 100%;
 }
 
-/* LOGO Y FRASE EN HOME */
+h1 {
+  color: white;
+}
 
 .logo {
   margin: 80px 150px;
@@ -17,6 +19,10 @@ body {
 .frase p {
   color: white;
   font-size: 1.2em;
+}
+
+.containerFooter {
+  min-height: calc(100vh - 200px);
 }
 
 
@@ -43,6 +49,6 @@ body {
   }
 
   .logo img {
-      width: 400px;
+      width: 260px;
   }
 }
