@@ -31,4 +31,9 @@ urlAtractinos = 'https://localhost:44307/api/atractinos';
 // openWeather
 openWeathUrl = 'https://api.openweathermap.org/data/2.5/weather?appid=9c52a24aa0e31859db10036c2852ef1f&units=metric&lang=sp&id=';
 
+// Foro
+urlForo = 'https://localhost:44307/api/foro';
+urlForoTopic = 'https://localhost:44307/api/foroTopic';
+urlForoCrud = 'https://localhost:44307/api/agregarTema';
+
 }
