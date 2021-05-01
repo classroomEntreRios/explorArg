@@ -42,6 +42,7 @@ export class DashboardComponent implements OnInit {
   ngOnInit(): void {
     // obtiene datos del usuario logeado
     this.buscarDatos();
+    console.log(this.usuario);
 
     // rellena los campos del form
     this.modifNombre = this.fb.group({

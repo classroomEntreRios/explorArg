@@ -23,17 +23,6 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="Foro">
-      <EntityTypeMapping TypeName="ExplorArgModel.Foro">
-        <MappingFragment StoreEntitySet="Foro">
-          <ScalarProperty Name="id_topico" ColumnName="id_topico" />
-          <ScalarProperty Name="fk_id_usuarioReg" ColumnName="fk_id_usuarioReg" />
-          <ScalarProperty Name="nombreTopico" ColumnName="nombreTopico" />
-          <ScalarProperty Name="fechaTopico" ColumnName="fechaTopico" />
-          <ScalarProperty Name="contenidoTopico" ColumnName="contenidoTopico" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
     <EntitySetMapping Name="Usuario">
       <EntityTypeMapping TypeName="ExplorArgModel.Usuario">
         <MappingFragment StoreEntitySet="Usuario">
@@ -73,5 +62,16 @@
       </EndProperty>
       <Condition ColumnName="Id_Destino" IsNull="false" />
     </AssociationSetMapping>
+    <EntitySetMapping Name="Foro">
+      <EntityTypeMapping TypeName="ExplorArgModel.Foro">
+        <MappingFragment StoreEntitySet="Foro">
+          <ScalarProperty Name="Contenido" ColumnName="Contenido" />
+          <ScalarProperty Name="FechaCreacion" ColumnName="FechaCreacion" />
+          <ScalarProperty Name="Titulo" ColumnName="Titulo" />
+          <ScalarProperty Name="fk_id_usuarioReg" ColumnName="fk_id_usuarioReg" />
+          <ScalarProperty Name="id_topico" ColumnName="id_topico" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
   </EntityContainerMapping>
 </Mapping>

@@ -21,21 +21,7 @@ import { FooterabsoluteComponent } from './footer/footerabsolute/footerabsolute.
 
   declarations: [
 
-  AtraccionesComponent,
-
-  AgregardestComponent,
-
-  AgregarAComponent,
-
-  ForomainComponent,
-
-  ForotopicComponent,
-
-  ForocrudComponent,
-
-  FooterComponent,
-
-  FooterabsoluteComponent],
+],
 
   imports: [
     CommonModule

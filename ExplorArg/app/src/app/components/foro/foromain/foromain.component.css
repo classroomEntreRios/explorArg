@@ -1,6 +1,7 @@
 .background {
     background: whitesmoke;
     border-radius: 5px;
+    max-width: 95%;
 }
 
 .background2 {
@@ -43,3 +44,13 @@ textarea {
     text-align: justify;
     padding: 0px 20px;
 }
+
+.backArrow{
+  text-align: left;
+  color: black;
+  margin-top: 2em;
+}
+.backArrow:hover{
+  color:grey;
+}
+
