@@ -35,9 +35,10 @@ textarea {
 }
 
 .consulta-container {
-    /* border: 1px solid white; */
-    box-shadow: 1px 1px 8px rgba(255, 255, 255, 0.3);
+    border: 1px solid rgb(255, 255, 255);
+    box-shadow: 1px 1px 8px rgba(199, 197, 240, 0.712);
     margin: auto;
+    padding: 0px 5px;
 }
 
 .recuadro-user {
