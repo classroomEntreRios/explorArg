@@ -15,18 +15,22 @@
 
 <div class="container col-md-12">
     <div class="consulta-container col-md-7">
-        <form class="container">
+        <form class="container" [formGroup]="consultaForm">
             <div class="mb-3 emailSize">
-                <label for="exampleInputEmail1" class="form-label">Ingrese su e-mail</label>
-                <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                <label for="emailAddress">Ingrese su e-mail</label>
+                <input type="email" class="form-control" id="emailAddress" formControlName="Email" aria-describedby="emailHelp" autofocus>
+                <small class="form-text text-danger"
+                *ngIf="CampoValido('Email')">
+                 <i>-- Dato requerido --</i>
+                </small>
             </div>
             <div class="mb-3">
                 <br>
-                <textarea name="" id="" cols="" rows="10"></textarea>
+                <textarea name="msgCh" id="mensajeChart" cols="" rows="10" formControlName="Mensaje"></textarea>
 
             </div>
             <button type="submit" class="btn btn-primary" style="float: left;">Ver consultas realizadas</button>
-            <button type="submit" class="btn btn-primary" style="float: right;">Enviar nueva consulta</button>
+            <button type="submit" class="btn btn-primary" style="float: right;" (click)="consulta(consultaForm.value)" [disabled]="consultaForm.invalid">Enviar nueva consulta</button>
             <br><br><br>
         </form>
     </div>

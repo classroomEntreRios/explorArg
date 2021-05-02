@@ -43,7 +43,7 @@ export class RegistroComponent implements OnInit {
       this.usuarioCreado = true;
       setTimeout(() => {
         this.route.navigate(['ingreso']);
-      }, 5000)
+      }, 2000)
      })
   }
 
