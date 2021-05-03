@@ -13,7 +13,7 @@ export class NavbarComponent implements OnInit {
   islogged: boolean = false;
   isAdmin: boolean = false;
   datosU: any;
-  token: any = ''
+  token: any = '';
 
   constructor(
     private datos: DatosService,
@@ -23,7 +23,7 @@ export class NavbarComponent implements OnInit {
 
   ngOnInit(): void {
     this.datosU = this.datos.mostrarDatos();
-    this.checkStatus()
+    // this.checkStatus()
   }
 
   checkStatus(){

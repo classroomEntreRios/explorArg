@@ -1,3 +1,4 @@
+import { ChatComponent } from './components/chat/chat.component';
 import { AgregarAComponent } from './components/atracciones/agregar/agregar-a/agregar-a.component';
 import { AgregardestComponent } from './components/destinos/agregardest/agregardest.component';
 import { DashboardpanelComponent } from './components/dashboardpanel/dashboardpanel.component';
@@ -24,7 +25,8 @@ import { ForotopicComponent } from './components/foro/forotopic/forotopic.compon
 import { ForocrudComponent } from './components/foro/forocrud/forocrud.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { FooterabsoluteComponent } from './components/footer/footerabsolute/footerabsolute.component';
-import { ChatComponent } from './components/chat/chat.component';
+import { DatePipe } from '@angular/common';
+
 
 
 
@@ -60,7 +62,10 @@ import { ChatComponent } from './components/chat/chat.component';
 
 
   ],
-  providers: [HttpClient, CookieService],
+  providers: [HttpClient,
+              CookieService,
+              DatePipe
+            ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -44,7 +44,7 @@
 
       <p>
           <b>
-                      {{usuario[0].Nombre}}
+                      {{usuario.DatosUsuario.Nombre}}
           </b>
       </p>
           <a href="#">
@@ -59,7 +59,7 @@
           </span>
         </div>
 </nav>
-  
+
         <div *ngIf="mostrarPanel">
     <app-dashboardpanel></app-dashboardpanel>
    </div>
