@@ -20,8 +20,9 @@
 .dashboard p {
     text-align: end;
     margin: 15px 0px;
-    color: #FDC830;
-    font-size: 1.3em;
+    margin-right: 10px;
+     color: #ffffff;
+    font-size: 1.1em;
 }
 
 .dashboard .perfil {
@@ -39,7 +40,9 @@
 }
 
 .container {
-  min-height: calc(150vh - 200px);
+  margin: auto;
+  min-height: fit-content;
+  /* min-height: calc(150vh - 200px); */
 }
 
 /* MEDIA QUERIES */
@@ -85,4 +88,8 @@
 .carousel-item {
   max-width: 100%;
   height: auto;
+}
+
+.instrucciones{
+  color: white;
 }

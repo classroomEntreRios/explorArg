@@ -24,6 +24,7 @@ export class DashboardComponent implements OnInit {
   mostrarPanel: boolean = false;
   fechaActual: any = 0;
   fechaExp: any = 0;
+  contactoOff: boolean = true;
 
   modifNombre: FormGroup = this.fb.group({
     Nombre: [[''], [Validators.required]]
@@ -81,5 +82,9 @@ export class DashboardComponent implements OnInit {
     } else {
         console.log("Sesión válida")
     }
+  }
+
+  switch(){
+    this.contactoOff = false;
   }
 }

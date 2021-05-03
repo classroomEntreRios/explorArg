@@ -26,12 +26,12 @@
                   </button>
               </li>
               <li class="nav-item px-2 mx-3 pt-2">
-                  <button class="nav-link btn btn-outline-alert text-white" aria-current="page" routerLink="/foro">
+                  <button (click)="switch()" class="nav-link btn btn-outline-alert text-white" aria-current="page" routerLink="foro">
                     Foro
                 </button>
               </li>
               <li class="nav-item px-2 mx-3 pt-2">
-                  <button class="nav-link btn btn-outline-alert text-white" aria-current="page" routerLink="/contacto">
+                  <button (click)="switch()" class="nav-link btn btn-outline-alert text-white" aria-current="page" routerLink="/contacto">
                     Contactanos
                   </button>
               </li>
@@ -43,12 +43,12 @@
     <div class="container-fluid dashboard">
 
       <p>
-          <b>
-                      {{usuario.DatosUsuario.Nombre}}
-          </b>
+         {{usuario.DatosUsuario.Nombre}}
       </p>
-          <a href="#">
-              <img src="../../../assets/img/user.png" alt="Foto de perfil" class="perfil">
+          <a>
+            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="56" fill="white" class="bi bi-person" viewBox="0 0 16 16">
+              <path d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0zm4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4zm-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10z"/>
+            </svg>
           </a>
           <span>
             <a class="btn btn-primary settings" (click)="switchPanel()">
@@ -60,115 +60,134 @@
         </div>
 </nav>
 
-        <div *ngIf="mostrarPanel">
-    <app-dashboardpanel></app-dashboardpanel>
-   </div>
-
    <br><br>
-
+   <div *ngIf="contactoOff">
    <div class="logo">
     <a href="#">
         <img src="../../../assets/img/logo.png" alt="Logo de ExplorArg.com">
     </a>
  </div>
+ <div *ngIf="mostrarPanel">
+  <app-dashboardpanel></app-dashboardpanel>
+ </div>
 
-   <br><br>
-   <div class="cont">
-    <div class="cont-carousel">
-        <div id="carouselExampleInterval" class="carousel slide" data-bs-ride="carousel">
-            <div class="carousel-inner">
-              <div class="carousel-item active" data-bs-interval="3000">
-                <img src="./../../../assets/img/car-1.jpg" class="d-block w-100 imgSize" alt="...">
-              </div>
-              <div class="carousel-item" data-bs-interval="3000">
-                <img src="./../../../assets/img/car-2.jpg" class="d-block w-100" alt="...">
-              </div>
-              <div class="carousel-item">
-                <img src="./../../../assets/img/car-3.jpg" class="d-block w-100" alt="...">
-              </div>
-              <div class="carousel-item">
-                <img src="./../../../assets/img/car-4.jpg" class="d-block w-100" alt="...">
-              </div>
-              <div class="carousel-item">
-                <img src="./../../../assets/img/car-5.jpg" class="d-block w-100" alt="...">
-              </div>
-              <div class="carousel-item">
-                <img src="./../../../assets/img/car-6.jpg" class="d-block w-100" alt="...">
-              </div>
-              <div class="carousel-item">
-                <img src="./../../../assets/img/car-7.jpg" class="d-block w-100" alt="...">
-              </div>
-              <div class="carousel-item">
-                <img src="./../../../assets/img/car-8.jpg" class="d-block w-100" alt="...">
-              </div>
+ <div class="container instrucciones">
+  <div class="row">
+    <div class="col">
+      <h1>
+        Instrucciones:
+      </h1>
+      <p>
+        Si querés acceder a tu configuración de usuario, podés hacer click
+        en el icono
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-gear-fill" viewBox="0 0 16 16">
+          <path d="M9.405 1.05c-.413-1.4-2.397-1.4-2.81 0l-.1.34a1.464 1.464 0 0 1-2.105.872l-.31-.17c-1.283-.698-2.686.705-1.987 1.987l.169.311c.446.82.023 1.841-.872 2.105l-.34.1c-1.4.413-1.4 2.397 0 2.81l.34.1a1.464 1.464 0 0 1 .872 2.105l-.17.31c-.698 1.283.705 2.686 1.987 1.987l.311-.169a1.464 1.464 0 0 1 2.105.872l.1.34c.413 1.4 2.397 1.4 2.81 0l.1-.34a1.464 1.464 0 0 1 2.105-.872l.31.17c1.283.698 2.686-.705 1.987-1.987l-.169-.311a1.464 1.464 0 0 1 .872-2.105l.34-.1c1.4-.413 1.4-2.397 0-2.81l-.34-.1a1.464 1.464 0 0 1-.872-2.105l.17-.31c.698-1.283-.705-2.686-1.987-1.987l-.311.169a1.464 1.464 0 0 1-2.105-.872l-.1-.34zM8 10.93a2.929 2.929 0 1 1 0-5.86 2.929 2.929 0 0 1 0 5.858z"/>
+        </svg> de la barra de navegación.
+      </p>
+      <p>
+        Si querés publicar una opinión o experiencia respecto de tu visita a alguno de nuestros destinos,
+        podés hacerlo en nuestro Foro haciendo click en la sección "Foro" de la barra de navegación.
+      </p>
+      <p>
+        Si necesitas realizar cualquier tipo de consulta, podés hacerlo desde el chat de consultas que se
+        encuentra en la sección "Contacto" de la barra de navegación.
+      </p>
+    </div>
+  </div>
+</div><br><br>
+<div class="cont">
+  <div class="cont-carousel">
+      <div id="carouselExampleInterval" class="carousel slide" data-bs-ride="carousel">
+          <div class="carousel-inner">
+            <div class="carousel-item active" data-bs-interval="3000">
+              <img src="./../../../assets/img/car-1.jpg" class="d-block w-100 imgSize" alt="...">
+            </div>
+            <div class="carousel-item" data-bs-interval="3000">
+              <img src="./../../../assets/img/car-2.jpg" class="d-block w-100" alt="...">
+            </div>
+            <div class="carousel-item">
+              <img src="./../../../assets/img/car-3.jpg" class="d-block w-100" alt="...">
+            </div>
+            <div class="carousel-item">
+              <img src="./../../../assets/img/car-4.jpg" class="d-block w-100" alt="...">
+            </div>
+            <div class="carousel-item">
+              <img src="./../../../assets/img/car-5.jpg" class="d-block w-100" alt="...">
+            </div>
+            <div class="carousel-item">
+              <img src="./../../../assets/img/car-6.jpg" class="d-block w-100" alt="...">
+            </div>
+            <div class="carousel-item">
+              <img src="./../../../assets/img/car-7.jpg" class="d-block w-100" alt="...">
+            </div>
+            <div class="carousel-item">
+              <img src="./../../../assets/img/car-8.jpg" class="d-block w-100" alt="...">
             </div>
           </div>
-    </div>
+        </div>
+  </div>
 
-    <div class="cont-carousel">
-        <div id="carouselExampleInterval" class="carousel slide" data-bs-ride="carousel">
-            <div class="carousel-inner">
-              <div class="carousel-item active" data-bs-interval="7000">
-                <img src="./../../../assets/img/car-21.jpg" class="d-block w-100" alt="...">
-              </div>
-              <div class="carousel-item" data-bs-interval="2000">
-                <img src="./../../../assets/img/car-23.jpg" class="d-block w-100" alt="...">
-              </div>
-              <div class="carousel-item">
-                <img src="./../../../assets/img/car-22.jpg" class="d-block w-100" alt="...">
-              </div>
-              <div class="carousel-item">
-                <img src="./../../../assets/img/car-24.jpg" class="d-block w-100" alt="...">
-              </div>
-              <div class="carousel-item">
-                <img src="./../../../assets/img/car-25.jpg" class="d-block w-100" alt="...">
-              </div>
-              <div class="carousel-item">
-                <img src="./../../../assets/img/car-26.jpg" class="d-block w-100" alt="...">
-              </div>
-              <div class="carousel-item">
-                <img src="./../../../assets/img/car-27.jpg" class="d-block w-100" alt="...">
-              </div>
-              <div class="carousel-item">
-                <img src="./../../../assets/img/car-28.jpg" class="d-block w-100" alt="...">
-              </div>
+  <div class="cont-carousel">
+      <div id="carouselExampleInterval" class="carousel slide" data-bs-ride="carousel">
+          <div class="carousel-inner">
+            <div class="carousel-item active" data-bs-interval="7000">
+              <img src="./../../../assets/img/car-21.jpg" class="d-block w-100" alt="...">
+            </div>
+            <div class="carousel-item" data-bs-interval="2000">
+              <img src="./../../../assets/img/car-23.jpg" class="d-block w-100" alt="...">
+            </div>
+            <div class="carousel-item">
+              <img src="./../../../assets/img/car-22.jpg" class="d-block w-100" alt="...">
+            </div>
+            <div class="carousel-item">
+              <img src="./../../../assets/img/car-24.jpg" class="d-block w-100" alt="...">
+            </div>
+            <div class="carousel-item">
+              <img src="./../../../assets/img/car-25.jpg" class="d-block w-100" alt="...">
+            </div>
+            <div class="carousel-item">
+              <img src="./../../../assets/img/car-26.jpg" class="d-block w-100" alt="...">
+            </div>
+            <div class="carousel-item">
+              <img src="./../../../assets/img/car-27.jpg" class="d-block w-100" alt="...">
+            </div>
+            <div class="carousel-item">
+              <img src="./../../../assets/img/car-28.jpg" class="d-block w-100" alt="...">
             </div>
           </div>
-    </div>
+        </div>
+  </div>
 
-
-    <div class="cont-carousel">
-        <div id="carouselExampleInterval" class="carousel slide" data-bs-ride="carousel">
-            <div class="carousel-inner">
-              <div class="carousel-item active" data-bs-interval="5000">
-                <img src="./../../../assets/img/car-31.jpg" class="d-block w-100" alt="...">
-              </div>
-              <div class="carousel-item" data-bs-interval="2000">
-                <img src="./../../../assets/img/car-32.jpg" class="d-block w-100" alt="...">
-              </div>
-              <div class="carousel-item">
-                <img src="./../../../assets/img/car-33.jpg" class="d-block w-100" alt="...">
-              </div>
-              <div class="carousel-item">
-                <img src="./../../../assets/img/car-34.png" class="d-block w-100" alt="...">
-              </div>
-              <div class="carousel-item">
-                <img src="./../../../assets/img/car-35.jpg" class="d-block w-100" alt="...">
-              </div>
-              <div class="carousel-item">
-                <img src="./../../../assets/img/car-36.jpg" class="d-block w-100" alt="...">
-              </div>
-              <div class="carousel-item">
-                <img src="./../../../assets/img/car-37.jpeg" class="d-block w-100" alt="...">
-              </div>
-              <div class="carousel-item">
-                <img src="./../../../assets/img/car-38.jpg" class="d-block w-100" alt="...">
-              </div>
+  <div class="cont-carousel">
+      <div id="carouselExampleInterval" class="carousel slide" data-bs-ride="carousel">
+          <div class="carousel-inner">
+            <div class="carousel-item active" data-bs-interval="5000">
+              <img src="./../../../assets/img/car-31.jpg" class="d-block w-100" alt="...">
+            </div>
+            <div class="carousel-item" data-bs-interval="2000">
+              <img src="./../../../assets/img/car-32.jpg" class="d-block w-100" alt="...">
+            </div>
+            <div class="carousel-item">
+              <img src="./../../../assets/img/car-33.jpg" class="d-block w-100" alt="...">
+            </div>
+            <div class="carousel-item">
+              <img src="./../../../assets/img/car-34.png" class="d-block w-100" alt="...">
+            </div>
+            <div class="carousel-item">
+              <img src="./../../../assets/img/car-35.jpg" class="d-block w-100" alt="...">
+            </div>
+            <div class="carousel-item">
+              <img src="./../../../assets/img/car-36.jpg" class="d-block w-100" alt="...">
+            </div>
+            <div class="carousel-item">
+              <img src="./../../../assets/img/car-37.jpeg" class="d-block w-100" alt="...">
+            </div>
+            <div class="carousel-item">
+              <img src="./../../../assets/img/car-38.jpg" class="d-block w-100" alt="...">
             </div>
           </div>
-    </div>
+        </div>
+  </div>
 </div>
-
-
-
+</div>
    <app-footer></app-footer>

@@ -10,6 +10,11 @@ import { ChatService } from './../../services/chat.service';
 })
 export class ChatComponent implements OnInit {
 
+
+  usuario: any = '';
+
+
+
   constructor(
     private fb: FormBuilder,
     private chatS: ChatService,
@@ -24,6 +29,7 @@ export class ChatComponent implements OnInit {
   usuarioCreado: boolean = false;
 
   ngOnInit(): void {
+    this.buscarDatos();
   }
 
   consulta(consultaForm : FormGroup){
@@ -41,4 +47,8 @@ export class ChatComponent implements OnInit {
            this.consultaForm.controls[campo].touched;
   }
 
+  buscarDatos(){
+    let request: any = localStorage.getItem("Usuario");
+    this.usuario = JSON.parse(request);
+  }
 }

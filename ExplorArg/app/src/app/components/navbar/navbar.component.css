@@ -15,3 +15,17 @@ li:hover {
 .container {
     min-height: calc(100vh - 200px);
 }
+
+.dashboard {
+  display: flex;
+  justify-content: flex-end;
+  position: relative;
+}
+.dashboard p {
+  text-align: end;
+  margin: 15px 0px;
+  margin-right: 10px;
+  /* color: #FDC830; */
+  font-size: 1.1em;
+}
+
