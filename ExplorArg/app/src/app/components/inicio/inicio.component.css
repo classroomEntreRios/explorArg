@@ -12,25 +12,35 @@ h1 {
   margin: 80px 150px;
 }
 
-.frase {
-  margin: 260px 150px;
-}
-
-.frase p {
-  color: white;
-  font-size: 1.2em;
-}
-
 .containerFooter {
   min-height: calc(100vh - 200px);
 }
+
+/* CAROUSEL */
+
+.cont {
+  display: flex;
+}
+
+.cont-carousel {
+  width: 500px;
+  height: 300px;
+  margin: 0px 50px;
+  margin: auto;
+}
+
+.carousel-item {
+  max-width: 100%;
+  height: auto;
+}
+
 
 
 /* MEDIA QUERIES */
 
 @media screen and (max-width: 990px){
   body {
-       background-image: url(../../../assets/img/home_background.png);
+      background-image: url(../../../assets/img/home_background.png);
       width: 100vw;
       height: 100vh;
       min-width: 420px;
@@ -40,15 +50,27 @@ h1 {
       background-attachment: fixed;
   }
 
-  .frase {
-      display: none;
-  }
-
   .logo {
-      margin: 120px 15px 0px 15px;
+      margin: 48px 15px 0px 35px;
   }
 
   .logo img {
       width: 260px;
+  }
+
+  .cont-carousel {
+    max-width: 340px;
+    max-height: 204px;
+    margin: auto;
+    margin-top: 10px;
+  }
+
+  .cont {
+    display: block;
+  }
+
+  .imgSize {
+    width: 340px;
+    height: 202px;
   }
 }

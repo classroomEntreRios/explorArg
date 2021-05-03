@@ -24,6 +24,7 @@ import { ForotopicComponent } from './components/foro/forotopic/forotopic.compon
 import { ForocrudComponent } from './components/foro/forocrud/forocrud.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { FooterabsoluteComponent } from './components/footer/footerabsolute/footerabsolute.component';
+import { ChatComponent } from './components/chat/chat.component';
 
 
 
@@ -45,7 +46,8 @@ import { FooterabsoluteComponent } from './components/footer/footerabsolute/foot
     ForotopicComponent,
     ForocrudComponent,
     FooterComponent,
-    FooterabsoluteComponent
+    FooterabsoluteComponent,
+    ChatComponent
   ],
   imports: [
     BrowserModule,

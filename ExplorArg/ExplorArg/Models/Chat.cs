@@ -19,6 +19,7 @@ namespace ExplorArg.Models
         public string usuarioChat { get; set; }
         public string emailChat { get; set; }
         public string mensajeChat { get; set; }
+        public string respuestaChat { get; set; }
     
         public virtual Usuario Usuario { get; set; }
     }

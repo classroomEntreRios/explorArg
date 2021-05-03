@@ -1,0 +1,80 @@
+h1 {
+    color: white;
+}
+
+.user-p {
+    color: dodgerblue;
+    padding: 5px;
+}
+
+.admin-p {
+    color: #00FF38;
+    padding: 5px;
+}
+
+h5 {
+    color: white;
+    padding: 5px;
+}
+
+.p-style {
+    color: whitesmoke;
+    font-size: 1.1em;
+    margin: 5px;
+}
+
+label {
+    color: whitesmoke;
+    padding-top: 10px;
+}
+
+textarea {
+    box-sizing: border-box;
+    width: 100%;
+    background: whitesmoke;
+    border-radius: 5px;
+    min-height: 150px;
+    max-height: 435px;
+}
+
+button {
+    margin-top: 15px;
+}
+
+.consulta-container {
+    border: 1px solid rgb(255, 255, 255);
+    box-shadow: 1px 1px 8px rgba(199, 197, 240, 0.712);
+    margin: auto;
+    padding: 0px 5px;
+}
+
+.emailSize {
+    min-width: 250px;
+    max-width: 400px;
+}
+
+.recuadro-user {
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    border-radius: 5px;
+    padding: 10px;
+    max-width: 900px;
+    margin-right: 20%;
+}
+
+.recuadro-admin {
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    border-radius: 5px;
+    padding: 10px;
+    max-width: 900px;
+    margin-left: 20%;
+    text-align: right;
+}
+
+
+/* MEDIA QUERIES */
+
+@media screen and (max-width: 990px){
+    .consulta-container {
+        height: 520px;
+    }
+}

@@ -36,4 +36,6 @@ urlForo = 'https://localhost:44307/api/foro';
 urlForoTopic = 'https://localhost:44307/api/foroTopic';
 urlForoCrud = 'https://localhost:44307/api/agregarTema';
 
+// Chat
+urlChat = 'https://localhost:44307/api/chat';
 }

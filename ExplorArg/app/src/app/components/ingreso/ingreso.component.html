@@ -19,7 +19,7 @@
              placeholder="ejemplo@ejemplo.com" autofocus>
              <small class="form-text text-danger"
               *ngIf="CampoValido('emailLogin')">
-               <p> Dato requerido </p>
+               <i>-- Dato requerido --</i>
               </small>
            </div><br>
 
@@ -30,7 +30,7 @@
              placeholder="Debe tener al menos 8 caracteres">
              <small class="form-text text-danger"
               *ngIf="CampoValido('passwLogin')">
-               <p> Dato requerido </p>
+               <i>-- Dato requerido --</i>
               </small>
             </div><br>
 

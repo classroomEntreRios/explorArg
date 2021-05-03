@@ -1,0 +1,82 @@
+<!-- <app-navbar></app-navbar> -->
+<app-dashboard></app-dashboard>
+
+<div>
+    <br><br>
+    <h1 class="text-center">Consulta</h1>
+</div>
+
+<div class="text-center">
+    <br>
+    <p class="p-style">Expresanos tu interrogante o dejanos una sugerencia. Un Administrador te dará respuesta a la brevedad en esta misma sección. </p>
+</div>
+
+<br>
+
+<div class="container col-md-12">
+    <div class="consulta-container col-md-7">
+        <form class="container" [formGroup]="consultaForm">
+            <div class="mb-3 emailSize">
+                <label for="emailAddress">Ingrese su e-mail</label>
+                <input type="email" class="form-control" id="emailAddress" formControlName="Email" aria-describedby="emailHelp" autofocus>
+                <small class="form-text text-danger"
+                *ngIf="CampoValido('Email')">
+                 <i>-- Dato requerido --</i>
+                </small>
+            </div>
+            <div class="mb-3">
+                <br>
+                <textarea name="msgCh" id="mensajeChart" cols="" rows="10" formControlName="Mensaje"></textarea>
+
+            </div>
+            <button type="submit" class="btn btn-primary" style="float: left;">Ver consultas realizadas</button>
+            <button type="submit" class="btn btn-primary" style="float: right;" (click)="consulta(consultaForm.value)" [disabled]="consultaForm.invalid">Enviar nueva consulta</button>
+            <br><br><br>
+        </form>
+    </div>
+</div>
+
+<br><br>
+
+<div class="container">
+    <div>
+        <br>
+        <div class="recuadro-user">
+            <h5>
+                Consulta
+            </h5>
+            <p class="user-p">
+                Esto recibe la consulta insertada en el textarea, que a su vez se envía a la DB.
+            </p>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <div>
+        <br>
+        <div class="recuadro-admin">
+            <h5>
+                Administrador
+            </h5>
+            <p class="admin-p">
+                Y acá el Admin, <br>
+                haciéndose el capo no más porque le puse un style al color tipo Matrix, <br>
+                responde como si supiera.
+            </p>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+<div class="neccesarySpace">
+    <br><br>
+    <br><br>
+    <br>
+</div>
+
+<app-footer></app-footer>
