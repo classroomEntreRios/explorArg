@@ -74,8 +74,9 @@ export class DashboardpanelComponent implements OnInit {
         form.value.Nombre
       ).subscribe(resp =>
         {
-          console.log(resp);
           this.modalClose.nativeElement.click();
+          localStorage.clear();
+          this.router.navigateByUrl('/ingreso');;
 
         }, error => {
           console.log(error)
@@ -89,8 +90,9 @@ export class DashboardpanelComponent implements OnInit {
       this.usuario.DatosUsuario.id_usuarioReg,
       form.value.Email
     ).subscribe(resp => {
-      console.log(resp);
       this.modalClose.nativeElement.click();
+      localStorage.clear();
+      this.router.navigateByUrl('/ingreso');
 
     }, error => {
       console.log(error)
@@ -102,8 +104,9 @@ export class DashboardpanelComponent implements OnInit {
       this.usuario.DatosUsuario.id_usuarioReg,
       form.value.Password
     ).subscribe(resp => {
-      console.log(resp)
       this.modalClose.nativeElement.click();
+      localStorage.clear();
+      this.router.navigateByUrl('/ingreso');
     }, error => {
       console.log(error)
     })
