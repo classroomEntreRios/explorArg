@@ -22,12 +22,16 @@ export class ForoService {
     return this.http.get(this.url.urlForo + "?id=" + id)
   }
 
-  postForo(post: Foro){
+  postForo(post: any){
     return this.http.post(this.url.urlForo, post)
   }
 
   editar(post: Foro){
     return this.http.put(this.url.urlForo , post)
+  }
+
+  eliminar(id: number){
+    return this.http.delete(this.url.urlForo + "?id=" + id)
   }
 
 

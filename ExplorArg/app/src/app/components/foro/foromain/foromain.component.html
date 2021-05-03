@@ -1,8 +1,6 @@
 <app-dashboard></app-dashboard>
 <br>
-        <button type="button" class="btn btn-primary addbtn" (click)="showPostForm()">
-          Agregar tema
-        </button>
+
 <br>
 <br>
 <div class="container-fluid background card bg-light" *ngIf="show">
@@ -13,6 +11,11 @@
       </div>
     <table class="table table-striped">
         <thead>
+          <div>
+            <button type="button" class="btn btn-primary addbtn" (click)="showPostForm()">
+              Agregar tema
+              </button>
+          </div>
           <tr>
             <th scope="col">Título</th>
             <!-- <th scope="col">Autor</th> -->
@@ -50,7 +53,7 @@
                 <path d="M8 9.5a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3z"/>
               </svg>
               <!-- Eliminar -->
-              <button class="btn btn-outline-dark">
+              <button class="btn btn-outline-dark" data-toggle="modal" href='#delete' (click)="deleteModal(data)">
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash-fill" viewBox="0 0 16 16">
                   <path d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1H2.5zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5zM8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5zm3 .5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 1 0z"/>
                 </svg>
@@ -77,14 +80,12 @@
     </div>
     <div>
       <h4>{{postInfo.Titulo}}</h4>
-
       <!-- INCORPORAR NOMBRE DEL AUTOR Y FECHA DE LA PUBLICACIÓN -->
       <p class="pStyle">{{postInfo.Usuario.Nombre}}- {{postInfo.FechaCreacion | date}}</p>
       <div class="temaContent">
           {{postInfo.Contenido}}
       </div>
     </div>
-
   </div>
 
 
@@ -127,7 +128,7 @@
       <div class="col input-group">
         <div class="col-lg-12 card-body">
           <form [formGroup]="postForm" (ngSubmit)="postPost(postForm)">
-            <input type="text" hidden formControlName="id_topico">
+            <input type="text" hidden formControlName="Usuario">
             <input type="text" hidden formControlName="fk_id_usuarioReg">
             <label class="card-text"> <h2>Título</h2> </label><br>
             <input type="text" class="form-control" formControlName="Titulo"><br>
@@ -148,6 +149,36 @@
     </div>
 </div>
 
+<!-- Eliminar Post -->
+<div class="container">
+  <div class="row">
+    <div class="col-lg-8 col-md-6">
+      <div class="modal fade" id="delete">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h4>Está seguro de querer eliminar este post?</h4>
+            </div>
+            <div class="modal-body">
+              <div>
+                <p>
+                  <strong>Titulo: </strong> {{postInfo.Titulo}}
+                </p>
+              <p>
+                <strong>Creado: </strong> {{postInfo.FechaCreacion | date}}
+              </p>
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-outline-dark" data-dismiss="modal">Cancelar</button>
+              <button type="button" class="btn btn-danger" (click)="delPost(postInfo.id_topico)">Eliminar</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 
 
 <div class="neccesarySpace">

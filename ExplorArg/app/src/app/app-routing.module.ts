@@ -14,13 +14,13 @@ import { ForotopicComponent } from './components/foro/forotopic/forotopic.compon
 
 const routes: Routes = [
 { path: '', component: InicioComponent },
-{ path: 'dashboard', canActivate: [AuthGuardService] , component: DashboardComponent},
+{ path: 'dashboard' , canActivate: [AuthGuardService], component: DashboardComponent}, // , canActivate: [AuthGuardService]
 { path: 'registro', component: RegistroComponent},
 { path: 'ingreso', component: IngresoComponent},
 { path: 'destinos', component: DestinosComponent},
 { path: 'atracciones', component: AtraccionesComponent},
 { path: 'agregardest', component: AgregardestComponent},
-{ path: 'foro', component: ForomainComponent},
+{ path: 'foro', canActivate: [AuthGuardService], component: ForomainComponent},
 { path: 'agregarTema', component: ForocrudComponent},
 { path: 'foroTopic', component: ForotopicComponent}
 ];

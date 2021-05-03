@@ -47,15 +47,14 @@ export class IngresoComponent implements OnInit {
     this.login.autenticarUsuario(this.usuario).subscribe(resp =>{
       this.respuesta = resp;
       if (this.respuesta.Resultado == 1){
-        this.login.obtenerUsuario(this.usuario.Email.toString())
-        .subscribe(resp => {
-          this.datosU = resp;
-          this.datos.agregarDatos(this.datosU);
-          this.router.navigate(['dashboard']);
-          this.usuarioAutenticado = true;
-          this.cookieString = this.datosU.Token;
-          this.cookieSvc.set('userCookie', this.cookieString , {expires: 15});
-        })
+        // guardando datos en localstorage como json
+        localStorage.setItem('Usuario', JSON.stringify(this.respuesta));
+        // redirige al dashboard
+        this.router.navigate(['dashboard']);
+        this.usuarioAutenticado = true;
+        // accediendo a datos guardados en localstorage como json
+         let dato: any = localStorage.getItem('Usuario');
+         this.datosU = JSON.parse(dato);
       }
       // si el resultado es 0, emite alerta y redirige a la página de inicio
       else {

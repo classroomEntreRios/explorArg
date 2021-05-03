@@ -24,6 +24,7 @@ import { ForotopicComponent } from './components/foro/forotopic/forotopic.compon
 import { ForocrudComponent } from './components/foro/forocrud/forocrud.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { FooterabsoluteComponent } from './components/footer/footerabsolute/footerabsolute.component';
+import { DatePipe } from '@angular/common';
 
 
 
@@ -58,7 +59,10 @@ import { FooterabsoluteComponent } from './components/footer/footerabsolute/foot
 
 
   ],
-  providers: [HttpClient, CookieService],
+  providers: [HttpClient,
+              CookieService,
+              DatePipe
+            ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -77,7 +77,7 @@ namespace ExplorArg.Controllers
         // Login o autenticación de usuario
         [HttpPost]
         [Route("api/usuario/login")]
-        public Respuesta AutenticarUsuario([FromBody] Usuario val)
+        public IHttpActionResult AutenticarUsuario([FromBody] Usuario val)
         {
             Respuesta oRespuesta = new Respuesta();
 
@@ -101,6 +101,8 @@ namespace ExplorArg.Controllers
                     // Ingresa ese número en la columna 'Token' de un UsuarioRegistrado y lo guarda en BD
                     Usuario oUsuario = usuarioRegistrado.FirstOrDefault();
                     oUsuario.Token = oRespuesta.Datos.ToString();
+                    oRespuesta.DatosUsuario = oUsuario;
+                    oRespuesta.FechaExpiracion = DateTime.Now.AddDays(1);
                     db.Entry(oUsuario).State = System.Data.Entity.EntityState.Modified;
                     db.SaveChanges();
                 } 
@@ -108,13 +110,14 @@ namespace ExplorArg.Controllers
                 {
                     oRespuesta.Resultado = 0;
                     oRespuesta.Mensaje = "Ocurrió un error";
+                    oRespuesta.DatosUsuario = null;
                 }
-                return oRespuesta;
+                return Ok(oRespuesta);
             }
             catch (Exception ex)
             {
                 oRespuesta.Mensaje = "Ocurrió un error. Intente más tarde. Detalles del error:" + ex.Message;
-                return oRespuesta;
+                return BadRequest();
             }     
             
         }
