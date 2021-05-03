@@ -5,17 +5,19 @@
     <h1 class="text-center">Inicio de sesión</h1>
 </div>
 
-<br><br>
 <div class="container mx-1 mx-auto">
   <div class="row ingresoRow">
-    <div class="col">
-      <div class="container">
-        <form [formGroup]="ingresoForm">
+    <div class="col-sm col-md col-lg col-xl">
+      <div class="card">
 
+
+        <form [formGroup]="ingresoForm">
           <!-- Campo Email -->
           <div>
+            <div class="card-header text-white bg-dark">
           <label for="emailLogin"> Email</label>
-          <input type="email" id="emailLogin" class="form-control" formControlName="emailLogin"
+          </div>
+          <input type="email" id="emailLogin" class="form-control card-body" formControlName="emailLogin"
              placeholder="ejemplo@ejemplo.com" autofocus>
              <small class="form-text text-danger"
               *ngIf="CampoValido('emailLogin')">
@@ -25,8 +27,11 @@
 
           <!-- Campo password -->
           <div>
-          <label for="passwLogin"> Contraseña </label>
-          <input type="password" id="passwLogin" class="form-control" formControlName="passwLogin"
+            <div class="card-header text-white bg-dark">
+              <label for="passwLogin"> Contraseña </label>
+            </div>
+
+          <input type="password" id="passwLogin" class="form-control card-body" formControlName="passwLogin"
              placeholder="Debe tener al menos 8 caracteres">
              <small class="form-text text-danger"
               *ngIf="CampoValido('passwLogin')">
@@ -35,7 +40,6 @@
             </div><br>
 
           <!-- Botón -->
-
             <hr>
             <div class="row">
               <div class="col">
@@ -45,20 +49,22 @@
               </div>
             </div>
             <hr>
-            <div class="row sinotienecuenta">
-             <p>
-              ¿No tenés cuenta?
-              <a (click)="registrate()" href="registro">
-                ¡REGISTRATE!
-              </a>
-             </p>
-
+            <div class="row ">
+              <div class="col-sm col-md col-lg col-xl sinotienecuenta card-footer bg-info">
+                <p>
+                  ¿No tenés cuenta?
+                  <a (click)="registrate()" href="registro">
+                    ¡REGISTRATE!
+                  </a>
+                 </p>
+              </div>
             </div>
         </form>
       </div>
+      </div>
     </div>
   </div>
-</div>
+
 
 <div class="neccesarySpace">
   <br><br>

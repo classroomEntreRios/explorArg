@@ -3,8 +3,7 @@ h1 {
 }
 
 label {
-    color:black;
-    text-align: center;
+    /* color:black; */
     font-family: Verdana;
     font-weight: 700;
   }
@@ -28,15 +27,15 @@ input {
     box-shadow: 3px 3px 8px rgba(0,0,0,.5);
     border-radius: 3em;
     padding: 15px;
-    background: linear-gradient(90deg, rgba(238,179,125, .5)  0%, rgba(247, 178, 75, .5) 100%);
+    /* background: linear-gradient(90deg, rgba(238,179,125, .5)  0%, rgba(247, 178, 75, .5) 100%); */
   }
 
   a {
-    color:rgb(226, 126, 3);
+    color:rgb(3, 226, 114);
   }
 
   .btn-primary {
-    background: darkorange;
+    background: grey;
     border: transparent;
   }
 

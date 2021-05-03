@@ -37,6 +37,7 @@ export class ForomainComponent implements OnInit {
     userInfo: any = JSON.parse(this.localInfo);
     fechaActual: any = 0;
     fechaExp: any = 0;
+    showAdmBtn: boolean = false;
 
 
     putForm : FormGroup = this.fb.group({
@@ -47,15 +48,15 @@ export class ForomainComponent implements OnInit {
     });
 
     postForm : FormGroup = this.fb.group({
-      Usuario: [this.userInfo.Nombre, [Validators.required]],
-      fk_id_usuarioReg: [this.userInfo.id_usuarioReg, [Validators.required]],
+      Usuario: [this.userInfo.DatosUsuario.Nombre, [Validators.required]],
+      fk_id_usuarioReg: [this.userInfo.DatosUsuario.id_usuarioReg, [Validators.required]],
       Titulo: ['', [Validators.required]],
       Contenido: ['', [Validators.required]],
     });
 
   ngOnInit(): void {
     this.getTemas();
-    // this.checkExpiration();
+    this.adminStatus();
   }
 
 
@@ -141,20 +142,14 @@ export class ForomainComponent implements OnInit {
     this.show = true;
   }
 
-  // checkExpiration(){
-  //   let TTE = this.userInfo.FechaExpiracion;
-  //   let fecha = new Date();
-  //   this.fechaActual = this.datepipe.transform(fecha, "yyyy-MM-dd");
-  //   this.fechaExp = this.datepipe.transform(TTE, "yyyy-MM-dd")
+  adminStatus(){
+    if (this.userInfo.DatosUsuario.isAdmin){
+      this.showAdmBtn = true;
+    }
+    else {
+      this.showAdmBtn = false;
+    }
+  }
 
-  //   // fechaActual : fecha de hoy
-  //   // fechaExp: fecha de vencimiento de la sesión
-  //   if (this.fechaActual > this.fechaExp){
-  //       console.log("la sesión expiró");
-  //       localStorage.clear();
-  //       this.route.navigateByUrl("/ingreso");
-  //   } else {
-  //       console.log("Sesión válida")
-  //   }
-  // }
+
 }
