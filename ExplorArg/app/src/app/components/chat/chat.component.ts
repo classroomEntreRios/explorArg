@@ -12,7 +12,7 @@ export class ChatComponent implements OnInit {
 
   constructor(
     private fb: FormBuilder,
-    private chatS: ChatService
+    private chatS: ChatService,
   ) { }
 
   consultaForm : FormGroup = this.fb.group({
