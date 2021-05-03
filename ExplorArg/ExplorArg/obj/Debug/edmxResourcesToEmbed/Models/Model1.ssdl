@@ -48,10 +48,10 @@
       <PropertyRef Name="id_topico" />
     </Key>
     <Property Name="id_topico" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="fk_id_usuarioReg" Type="int" />
-    <Property Name="nombreTopico" Type="varchar" MaxLength="30" Nullable="false" />
-    <Property Name="fechaTopico" Type="date" />
-    <Property Name="contenidoTopico" Type="varchar" MaxLength="900" Nullable="false" />
+    <Property Name="fk_id_usuarioReg" Type="int" Nullable="false" />
+    <Property Name="Titulo" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="FechaCreacion" Type="date" />
+    <Property Name="Contenido" Type="varchar(max)" Nullable="false" />
   </EntityType>
   <EntityType Name="Usuario">
     <Key>
@@ -77,7 +77,7 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK__Foro__fk_id_usua__3D5E1FD2">
-    <End Role="Usuario" Type="Self.Usuario" Multiplicity="0..1" />
+    <End Role="Usuario" Type="Self.Usuario" Multiplicity="1" />
     <End Role="Foro" Type="Self.Foro" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Usuario">

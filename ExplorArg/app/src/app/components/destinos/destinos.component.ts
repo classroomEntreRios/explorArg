@@ -25,10 +25,10 @@ export class DestinosComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.datosU = this.datos.mostrarDatos();
+    // this.datosU = this.datos.mostrarDatos();
     this.getDestinos();
     this.mostrarAtracciones()
-    this.verificarRol();
+    // this.verificarRol();
 
   }
 

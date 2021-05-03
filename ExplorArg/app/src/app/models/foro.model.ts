@@ -1,7 +1,6 @@
 export class Foro {
-    Id : any;
-    nombreTopico : any;
-    fechaTopico : any;
-    contenidoTopico : any;
-    comentariosTopico : any;
+    id_topico : any;
+    fk_id_usuarioReg: any;
+    Titulo : any;
+    Contenido : any;
 }

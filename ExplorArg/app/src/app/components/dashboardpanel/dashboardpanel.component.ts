@@ -38,12 +38,7 @@ export class DashboardpanelComponent implements OnInit {
     private cookieSvc : CookieService,
     private ingreso: IngresoService,
     private router: Router
-  ) {
-    let cookieString = this.cookieSvc.get('userCookie')
-    let tokenString = this.datos.mostrarToken()
-    console.log('El valor de cookie es: ' + cookieString)
-    console.log('El valor del token es: ' + tokenString)
-  }
+  ) {}
 
   ngOnInit(): void {
     // obtiene datos del usuario logeado
@@ -64,7 +59,8 @@ export class DashboardpanelComponent implements OnInit {
 
 
   buscarDatos(){
-    this.usuario = this.datos.mostrarDatos();
+    let datos: any = localStorage.getItem("Usuario");
+    this.usuario = JSON.parse(datos);
   }
 
   alerta(){
@@ -74,12 +70,13 @@ export class DashboardpanelComponent implements OnInit {
 
   putNombre(form: FormGroup){
       this.serv.modifNombre(
-        this.usuario[0].id_usuarioReg,
+        this.usuario.DatosUsuario.id_usuarioReg,
         form.value.Nombre
       ).subscribe(resp =>
         {
-          console.log(resp);
           this.modalClose.nativeElement.click();
+          localStorage.clear();
+          this.router.navigateByUrl('/ingreso');;
 
         }, error => {
           console.log(error)
@@ -90,11 +87,12 @@ export class DashboardpanelComponent implements OnInit {
 
   putEmail(form: FormGroup){
     this.serv.modifEmail(
-      this.usuario[0].id_usuarioReg,
+      this.usuario.DatosUsuario.id_usuarioReg,
       form.value.Email
     ).subscribe(resp => {
-      console.log(resp);
       this.modalClose.nativeElement.click();
+      localStorage.clear();
+      this.router.navigateByUrl('/ingreso');
 
     }, error => {
       console.log(error)
@@ -103,19 +101,19 @@ export class DashboardpanelComponent implements OnInit {
 
   putPassword(form: FormGroup){
     this.serv.modifPassw(
-      this.usuario[0].id_usuarioReg,
+      this.usuario.DatosUsuario.id_usuarioReg,
       form.value.Password
     ).subscribe(resp => {
-      console.log(resp)
       this.modalClose.nativeElement.click();
+      localStorage.clear();
+      this.router.navigateByUrl('/ingreso');
     }, error => {
       console.log(error)
     })
   }
 
   cerrarSesion() {
-    this.cookieSvc.get('userCookie');
-    this.cookieSvc.delete('userCookie');
+    localStorage.removeItem("Usuario");
     this.router.navigate(['ingreso']);
   }
 
@@ -128,7 +126,7 @@ export class DashboardpanelComponent implements OnInit {
   // }
 
   verificarRol(){
-    let status = this.usuario[0].isAdmin;
+    let status = this.usuario.DatosUsuario.isAdmin;
     if (status == true){
       this.isAdmin = true;
     }else{

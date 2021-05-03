@@ -5,6 +5,7 @@ import { DatosService } from './../../services/datos.service';
 import { Component, OnInit, NgModule, ViewChild } from '@angular/core';
 import { FormsModule, NgModel, FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms';
 import { CookieService } from 'ngx-cookie-service';
+import { DatePipe } from '@angular/common';
 
 
 
@@ -18,11 +19,11 @@ export class DashboardComponent implements OnInit {
 
   @ViewChild('myModalClose') modalClose: any;
 
-  usuario: any = [];
+  usuario: any = "";
   isAdmin: boolean = false;
   mostrarPanel: boolean = false;
-
-
+  fechaActual: any = 0;
+  fechaExp: any = 0;
 
   modifNombre: FormGroup = this.fb.group({
     Nombre: [[''], [Validators.required]]
@@ -36,32 +37,23 @@ export class DashboardComponent implements OnInit {
     private fb: FormBuilder,
     private serv: DatosUsuarioService,
     private cookieSvc : CookieService,
-    private router: Router
+    private router: Router,
+    private datepipe: DatePipe
     ) { }
 
   ngOnInit(): void {
     // obtiene datos del usuario logeado
     this.buscarDatos();
+    // this.checkExpiration();
 
-    // rellena los campos del form
-    this.modifNombre = this.fb.group({
-      Nombre: [[this.usuario[0].Nombre], [Validators.required]],
-    });
-    this.modifEmail = this.fb.group({
-      Email: [[this.usuario[0].Email], [Validators.required]],
-    });
-    this.modifPassw = this.fb.group({
-      Password: [[''], [Validators.required]],
-    });
 
-    // muestra las opciones de administrador
-    this.checkAdminstatus();
-
-    this.userLog();
+    // this.userLog();
   }
 
   buscarDatos(){
-    this.usuario = this.datos.mostrarDatos();
+    // this.usuario = this.datos.mostrarDatos();
+    let datos: any = localStorage.getItem("Usuario");
+    this.usuario = JSON.parse(datos);
   }
 
   alerta(){
@@ -69,76 +61,25 @@ export class DashboardComponent implements OnInit {
   }
 
 
-  putNombre(form: FormGroup){
-      this.serv.modifNombre(
-        this.usuario[0].id_usuarioReg,
-        form.value.Nombre
-      ).subscribe(resp =>
-        {
-          console.log(resp);
-          this.modalClose.nativeElement.click();
-
-        }, error => {
-          console.log(error)
-        }
-        );
-
-  }
-
-  putEmail(form: FormGroup){
-    this.serv.modifEmail(
-      this.usuario[0].id_usuarioReg,
-      form.value.Email
-    ).subscribe(resp => {
-      console.log(resp);
-      this.modalClose.nativeElement.click();
-
-    }, error => {
-      console.log(error)
-    })
-  }
-
-  putPassword(form: FormGroup){
-    this.serv.modifPassw(
-      this.usuario[0].id_usuarioReg,
-      form.value.Password
-    ).subscribe(resp => {
-      console.log(resp)
-      this.modalClose.nativeElement.click();
-    }, error => {
-      console.log(error)
-    })
-  }
-
-  cerrarSesion() {
-    this.cookieSvc.delete('userCookie');
-  }
-
-  checkAdminstatus(){
-    if (this.usuario[0].isAdmin === true){
-      this.isAdmin = true;
-    } else {
-      this.isAdmin = false;
-    }
-  }
-
   switchPanel(){
     this.mostrarPanel = !this.mostrarPanel;
   }
 
-  userLog() {
-    let cookieString = this.cookieSvc.get('userCookie')
-    let tokenString = this.datos.mostrarToken()
-    if(tokenString == cookieString){
-      console.log('Sesión de usuario ON')
-    }else{
-      this.cookieSvc.delete('userCookie')
-      console.log('Sesión de usuario OFF')
-      alert('Sesión de usuario expirada')
-      setTimeout(() => {
-        this.router.navigate(['ingreso'])
-      }, 2000)
+  checkExpiration(){
+    let TTE = this.usuario.FechaExpiracion;
+    let fecha = new Date();
+    // fecha.setDate(4);
+    this.fechaActual = this.datepipe.transform(fecha, "yyyy-MM-dd");
+    this.fechaExp = this.datepipe.transform(TTE, "yyyy-MM-dd")
+
+    // fechaActual : fecha de hoy
+    // fechaExp: fecha de vencimiento de la sesión
+    if (this.fechaActual > this.fechaExp){
+        console.log("la sesión expiró");
+        localStorage.clear();
+        this.router.navigateByUrl("/ingreso");
+    } else {
+        console.log("Sesión válida")
     }
   }
-
 }

@@ -11,14 +11,15 @@ namespace ExplorArg.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class Foro
     {
         public int id_topico { get; set; }
-        public Nullable<int> fk_id_usuarioReg { get; set; }
-        public string nombreTopico { get; set; }
-        public Nullable<System.DateTime> fechaTopico { get; set; }
-        public string contenidoTopico { get; set; }
+        public int fk_id_usuarioReg { get; set; }
+        public string Titulo { get; set; }
+        public Nullable<System.DateTime> FechaCreacion { get; set; }
+        public string Contenido { get; set; }
     
         public virtual Usuario Usuario { get; set; }
     }

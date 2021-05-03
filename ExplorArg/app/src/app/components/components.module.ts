@@ -13,7 +13,6 @@ import { ForotopicComponent } from './foro/forotopic/forotopic.component';
 import { ForocrudComponent } from './foro/forocrud/forocrud.component';
 import { FooterComponent } from './footer/footer.component';
 import { FooterabsoluteComponent } from './footer/footerabsolute/footerabsolute.component';
-import { ChatComponent } from './chat/chat.component';
 
 
 
@@ -22,23 +21,7 @@ import { ChatComponent } from './chat/chat.component';
 
   declarations: [
 
-  AtraccionesComponent,
-
-  AgregardestComponent,
-
-  AgregarAComponent,
-
-  ForomainComponent,
-
-  ForotopicComponent,
-
-  ForocrudComponent,
-
-  FooterComponent,
-
-  FooterabsoluteComponent,
-
-  ChatComponent],
+],
 
   imports: [
     CommonModule

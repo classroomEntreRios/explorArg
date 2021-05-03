@@ -21,17 +21,6 @@
     <Property Name="TempMin" Type="Int32" Nullable="false" />
     <Property Name="Condicion" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
   </EntityType>
-  <EntityType Name="Foro">
-    <Key>
-      <PropertyRef Name="id_topico" />
-    </Key>
-    <Property Name="id_topico" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="fk_id_usuarioReg" Type="Int32" />
-    <Property Name="nombreTopico" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="fechaTopico" Type="DateTime" Precision="0" />
-    <Property Name="contenidoTopico" Type="String" MaxLength="900" FixedLength="false" Unicode="false" Nullable="false" />
-    <NavigationProperty Name="Usuario" Relationship="Self.FK__Foro__fk_id_usua__3D5E1FD2" FromRole="Foro" ToRole="Usuario" />
-  </EntityType>
   <EntityType Name="Usuario">
     <Key>
       <PropertyRef Name="id_usuarioReg" />
@@ -41,9 +30,9 @@
     <Property Name="Password" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="Email" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
     <NavigationProperty Name="Chat" Relationship="Self.FK__Chat__fk_id_usua__3A81B327" FromRole="Usuario" ToRole="Chat" />
-    <NavigationProperty Name="Foro" Relationship="Self.FK__Foro__fk_id_usua__3D5E1FD2" FromRole="Usuario" ToRole="Foro" />
     <Property Name="Token" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
     <Property Name="isAdmin" Type="Boolean" />
+    <NavigationProperty Name="Foro" Relationship="ExplorArgModel.FK__Foro__fk_id_usua__3D5E1FD2" FromRole="Usuario" ToRole="Foro" />
   </EntityType>
   <Association Name="FK__Chat__fk_id_usua__3A81B327">
     <End Role="Usuario" Type="Self.Usuario" Multiplicity="0..1" />
@@ -57,36 +46,24 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__Foro__fk_id_usua__3D5E1FD2">
-    <End Role="Usuario" Type="Self.Usuario" Multiplicity="0..1" />
-    <End Role="Foro" Type="Self.Foro" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Usuario">
-        <PropertyRef Name="id_usuarioReg" />
-      </Principal>
-      <Dependent Role="Foro">
-        <PropertyRef Name="fk_id_usuarioReg" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <EntityContainer Name="ExplorArgEntities" annotation:LazyLoadingEnabled="true">
     <EntitySet Name="Chat" EntityType="Self.Chat" />
     <EntitySet Name="Clima" EntityType="Self.Clima" />
-    <EntitySet Name="Foro" EntityType="Self.Foro" />
     <EntitySet Name="Usuario" EntityType="Self.Usuario" />
     <AssociationSet Name="FK__Chat__fk_id_usua__3A81B327" Association="Self.FK__Chat__fk_id_usua__3A81B327">
       <End Role="Usuario" EntitySet="Usuario" />
       <End Role="Chat" EntitySet="Chat" />
-    </AssociationSet>
-    <AssociationSet Name="FK__Foro__fk_id_usua__3D5E1FD2" Association="Self.FK__Foro__fk_id_usua__3D5E1FD2">
-      <End Role="Usuario" EntitySet="Usuario" />
-      <End Role="Foro" EntitySet="Foro" />
     </AssociationSet>
     <EntitySet Name="Atracciones" EntityType="ExplorArgModel.Atracciones" />
     <EntitySet Name="Destino" EntityType="ExplorArgModel.Destino" />
     <AssociationSet Name="Destinos_Atracciones" Association="ExplorArgModel.Destinos_Atracciones">
       <End Role="Atracciones" EntitySet="Atracciones" />
       <End Role="Destino" EntitySet="Destino" />
+    </AssociationSet>
+    <EntitySet Name="Foro" EntityType="ExplorArgModel.Foro" />
+    <AssociationSet Name="FK__Foro__fk_id_usua__3D5E1FD2" Association="ExplorArgModel.FK__Foro__fk_id_usua__3D5E1FD2">
+      <End Role="Usuario" EntitySet="Usuario" />
+      <End Role="Foro" EntitySet="Foro" />
     </AssociationSet>
   </EntityContainer>
   <EntityType Name="Atracciones">
@@ -110,5 +87,28 @@
   <Association Name="Destinos_Atracciones">
     <End Type="ExplorArgModel.Atracciones" Role="Atracciones" Multiplicity="*" />
     <End Type="ExplorArgModel.Destino" Role="Destino" Multiplicity="0..1" />
+  </Association>
+  <EntityType Name="Foro">
+    <Key>
+      <PropertyRef Name="id_topico" />
+    </Key>
+    <Property Name="id_topico" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="fk_id_usuarioReg" Type="Int32" Nullable="false" />
+    <Property Name="Titulo" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="FechaCreacion" Type="DateTime" Precision="0" />
+    <Property Name="Contenido" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Usuario" Relationship="ExplorArgModel.FK__Foro__fk_id_usua__3D5E1FD2" FromRole="Foro" ToRole="Usuario" />
+  </EntityType>
+  <Association Name="FK__Foro__fk_id_usua__3D5E1FD2">
+    <End Type="ExplorArgModel.Usuario" Role="Usuario" Multiplicity="1" />
+    <End Type="ExplorArgModel.Foro" Role="Foro" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Usuario">
+        <PropertyRef Name="id_usuarioReg" />
+      </Principal>
+      <Dependent Role="Foro">
+        <PropertyRef Name="fk_id_usuarioReg" />
+      </Dependent>
+    </ReferentialConstraint>
   </Association>
 </Schema>
