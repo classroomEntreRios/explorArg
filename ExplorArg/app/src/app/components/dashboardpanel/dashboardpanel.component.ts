@@ -30,7 +30,6 @@ export class DashboardpanelComponent implements OnInit {
   modifPassw: FormGroup = this.fb.group({});
 
 
-
   constructor(
     private datos: DatosService,
     private fb: FormBuilder,

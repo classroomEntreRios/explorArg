@@ -49,9 +49,25 @@ textarea {
   text-align: left;
   color: black;
   margin-top: 2em;
+  display: inline-block;
 }
 .backArrow:hover{
-  color:grey;
+  color:white;
+}
+.foroHeader{
+  display: inline-block;
+  text-align: center;
+}
+.addbtn{
+float: right;
 }
 
-
+button{
+  margin: 5px;
+}
+.dangerBtn:hover{
+  color: red;
+}
+.safeBtn:hover{
+  color: green;
+}
