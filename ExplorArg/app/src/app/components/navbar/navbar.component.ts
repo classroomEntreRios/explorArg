@@ -10,10 +10,12 @@ import { DatosUsuarioService } from 'src/app/services/datosUsuario/datos-usuario
 })
 export class NavbarComponent implements OnInit {
 
-  islogged: boolean = false;
-  isAdmin: boolean = false;
-  datosU: any;
-  token: any = '';
+  isLogged: boolean = false;
+  localInfo: any = localStorage.getItem("Usuario");
+  parsedData: any;
+
+
+
 
   constructor(
     private datos: DatosService,
@@ -22,23 +24,20 @@ export class NavbarComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.datosU = this.datos.mostrarDatos();
-    // this.checkStatus()
+    this.check();
   }
 
-  checkStatus(){
-    let token = this.datos.mostrarToken();
-    let cookie = this.cookie.get('userCookie');
 
-    if (token = cookie){
-      this.islogged = true;
-    }
-    else if (this.datosU[0].isAdmin = true){
-      this.isAdmin = true;
-    }
-    else{
-      this.islogged = false;
+  check(){
+    this.parsedData = JSON.parse(this.localInfo);
+    console.log(this.parsedData);
+    if (this.parsedData != null){
+      this.isLogged = true; // mostrá foro, dashboard y boton inicio
+    }else {
+      this.isLogged = false; // mostrá boton de iniciar sesión
     }
   }
+
+
 
 }
