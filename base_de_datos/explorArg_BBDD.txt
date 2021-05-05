@@ -1,6 +1,6 @@
 ﻿USE [master]
 GO
-/****** Object:  Database [ExplorArg]    Script Date: 18/04/2021 12:47:53 ******/
+/****** Object:  Database [ExplorArg]    Script Date: 04/05/2021 21:38:15 ******/
 CREATE DATABASE [ExplorArg]
  CONTAINMENT = NONE
  ON  PRIMARY 
@@ -80,7 +80,7 @@ ALTER DATABASE [ExplorArg] SET QUERY_STORE = OFF
 GO
 USE [ExplorArg]
 GO
-/****** Object:  Table [dbo].[Atracciones]    Script Date: 18/04/2021 12:47:54 ******/
+/****** Object:  Table [dbo].[Atracciones]    Script Date: 04/05/2021 21:38:15 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -95,7 +95,7 @@ CREATE TABLE [dbo].[Atracciones](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Chat]    Script Date: 18/04/2021 12:47:54 ******/
+/****** Object:  Table [dbo].[Chat]    Script Date: 04/05/2021 21:38:15 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -112,7 +112,7 @@ CREATE TABLE [dbo].[Chat](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Clima]    Script Date: 18/04/2021 12:47:54 ******/
+/****** Object:  Table [dbo].[Clima]    Script Date: 04/05/2021 21:38:15 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -129,7 +129,7 @@ CREATE TABLE [dbo].[Clima](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Destino]    Script Date: 18/04/2021 12:47:54 ******/
+/****** Object:  Table [dbo].[Destino]    Script Date: 04/05/2021 21:38:15 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -144,7 +144,7 @@ CREATE TABLE [dbo].[Destino](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Destinos_Atracciones]    Script Date: 18/04/2021 12:47:54 ******/
+/****** Object:  Table [dbo].[Destinos_Atracciones]    Script Date: 04/05/2021 21:38:15 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -158,24 +158,24 @@ CREATE TABLE [dbo].[Destinos_Atracciones](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Foro]    Script Date: 18/04/2021 12:47:54 ******/
+/****** Object:  Table [dbo].[Foro]    Script Date: 04/05/2021 21:38:15 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
 GO
 CREATE TABLE [dbo].[Foro](
 	[id_topico] [int] IDENTITY(1,1) NOT NULL,
-	[fk_id_usuarioReg] [int] NULL,
-	[nombreTopico] [varchar](30) NOT NULL,
-	[fechaTopico] [date] NULL,
-	[contenidoTopico] [varchar](900) NOT NULL,
-PRIMARY KEY CLUSTERED 
+	[fk_id_usuarioReg] [int] NOT NULL,
+	[Titulo] [varchar](50) NOT NULL,
+	[FechaCreacion] [date] NULL,
+	[Contenido] [varchar](max) NOT NULL,
+ CONSTRAINT [PK__Foro__C013E49E0696FE5F] PRIMARY KEY CLUSTERED 
 (
 	[id_topico] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
-) ON [PRIMARY]
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Usuario]    Script Date: 18/04/2021 12:47:54 ******/
+/****** Object:  Table [dbo].[Usuario]    Script Date: 04/05/2021 21:38:15 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
