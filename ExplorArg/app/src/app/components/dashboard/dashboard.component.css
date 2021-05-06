@@ -45,6 +45,15 @@
   /* min-height: calc(150vh - 200px); */
 }
 
+.instrucciones{
+  color: white;
+}
+
+h1 {
+  margin-top: 10px;
+  margin-bottom: 20px;
+}
+
 /* MEDIA QUERIES */
 
 @media screen and (max-width: 990px){
@@ -54,6 +63,14 @@
     margin: auto;
   }
 
+  .logo {
+    margin: 0px 15px 0px 35px;
+}
+
+  .logo img {
+    width: 260px;
+    margin-bottom: 20px;
+}
 
 }
 
@@ -72,6 +89,8 @@
   width: 340px;
   height: 202px;
 }
+
+
 /* CAROUSEL */
 
 .cont {
@@ -88,8 +107,4 @@
 .carousel-item {
   max-width: 100%;
   height: auto;
-}
-
-.instrucciones{
-  color: white;
 }
