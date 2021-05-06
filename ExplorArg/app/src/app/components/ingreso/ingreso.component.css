@@ -53,6 +53,22 @@ h1 {
     border: transparent;
   }
 
+  .card-footer {
+    border: 1px solid yellow;
+    border-radius: 5px;
+    max-width: 500px;
+    height: 50px;
+    margin: auto;
+  }
+
+  button {
+    margin: 0px 3px;
+  }
+
+  .finalButton {
+    margin-bottom: 30px;
+  }
+
   /* MEDIA QUERIES */
 
 @media screen and (max-width: 990px){
@@ -62,4 +78,22 @@ h1 {
     display: flex;
     justify-content: center;
   }
+
+  .card-footer {
+    border: 1px solid yellow;
+    border-radius: 5px;
+    max-width: 250px;
+    height: 75px;
+    margin: auto;
+  }
+
+  p {
+    margin: 2px;
+    padding: 2px;
+  }
+
+  input[placeholder] {
+    font-size: 13px;
+  }
+
 }

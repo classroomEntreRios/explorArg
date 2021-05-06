@@ -56,6 +56,11 @@ input {
     margin: auto;
   }
 
+  .smallSpace {
+    margin-top: 10px;
+    text-align: center;
+  }
+
     /* MEDIA QUERIES */
 
 @media screen and (max-width: 990px){
@@ -64,5 +69,9 @@ input {
     margin-right: 1px;
     display: flex;
     justify-content: center;
+  }
+
+  input[placeholder] {
+    font-size: 13px;
   }
 }
