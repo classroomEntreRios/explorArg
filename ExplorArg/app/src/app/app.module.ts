@@ -26,6 +26,7 @@ import { ForocrudComponent } from './components/foro/forocrud/forocrud.component
 import { FooterComponent } from './components/footer/footer.component';
 import { FooterabsoluteComponent } from './components/footer/footerabsolute/footerabsolute.component';
 import { DatePipe } from '@angular/common';
+import { TerminosComponent } from './components/terminos/terminos.component';
 
 
 
@@ -49,7 +50,8 @@ import { DatePipe } from '@angular/common';
     ForocrudComponent,
     FooterComponent,
     FooterabsoluteComponent,
-    ChatComponent
+    ChatComponent,
+    TerminosComponent
   ],
   imports: [
     BrowserModule,
