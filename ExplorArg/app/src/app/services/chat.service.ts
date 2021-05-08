@@ -8,12 +8,14 @@ import { UrlService } from './url.service';
 })
 export class ChatService {
 
+datosUsuario : Chat = new Chat
+
   constructor(
     private url : UrlService,
     private http : HttpClient
   ) { }
 
-  obtenerUsuarios(){
+  obtenerDatos(){
     return this.http.get(this.url.urlChat)
   }
 

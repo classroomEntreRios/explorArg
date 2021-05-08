@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Chat } from 'src/app/models/chat';
+import { DatosUsuarioService } from 'src/app/services/datosUsuario/datos-usuario.service';
 import { ChatService } from './../../services/chat.service';
 
 @Component({
@@ -10,9 +11,27 @@ import { ChatService } from './../../services/chat.service';
 })
 export class ChatComponent implements OnInit {
 
-  email : any;
+  email : any = 'todos putos'
   mensaje : any;
   usuario: any = '';
+
+  mensajeList : Array<any> = [
+    {mensajeChat: 'Mensaje random'},
+    {mensajeChat2: 'Otro mensaje'}
+    ]
+  respuestaList : Array<any> = [
+    {respuestaChat: 'Respuesta uno'}
+    ]
+
+    consultaList : Array<any> = [
+      {mensaje: 'Recibir mensaje', respuesta: 'Recibir respuesta'},
+      {mensaje: 'Segundo mensaje', respuesta: 'Segunda respuesta'}
+    ]
+
+  alternativeList : Array<any> = [
+    {men1: 'Mensaje', men2: 'otra cosa'}
+    // {res1: 'Respuesta'}
+  ]
 
   datosChat : Chat[] = []
 
@@ -27,6 +46,7 @@ export class ChatComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private chatS: ChatService,
+    private DatosUsuario: DatosUsuarioService,
   ) { }
 
   consultaForm : FormGroup = this.fb.group({
@@ -37,9 +57,10 @@ export class ChatComponent implements OnInit {
 
 
   ngOnInit(): void {
-    this.adminStatus();
+    // this.adminStatus(); Comentado porque me tira error
     this.mostrarInfo();
   }
+
 
   // COMPROBAR SI ES ADMIN
   adminStatus(){
@@ -51,19 +72,17 @@ export class ChatComponent implements OnInit {
     }
   }
 
-  // XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
-  // CLICK EN 'ENVIAR CONSULTA'
-  consulta(consultaForm : FormGroup){
-    this.email = this.consultaForm.value;
-    this.consultaForm.reset();
 
-    this.chatS.registraroNuevoUsuario(this.email).subscribe(resp => {
-      console.log(resp);
+  // CLICK EN 'ENVIAR CONSULTA' (NO FUNCIONAAAAAAAAAAAAAAAAAAAAAAA)
+  consulta(consultaForm : FormGroup){
+    this.usuarioChat = this.consultaForm.value;
+    this.consultaForm.reset();
+ 
 
     // this.chatS.registraroNuevoUsuario(this.datosChat[0]).subscribe(resp => {
     //   console.log(resp);
-    })
-  }
+    }
+
 
   // USUARIO REQUERIDO (Porque era un buen usuario, ciertamente)
   CampoValido(campo: string){
@@ -71,6 +90,23 @@ export class ChatComponent implements OnInit {
            this.consultaForm.controls[campo].touched;
   }
 
+
+  // Obtiene objeto Email y Mensaje (vacíos)
+  obtenerEmail(){
+    // no anda
+  }
+
+  obtenerMensaje(){
+    // 
+  }
+
+  postRespuesta(){
+
+  }
+
+  getRespuesta(){
+
+  }
 
   async mostrarInfo(){
       this.datosChat = this.consultaForm.value
