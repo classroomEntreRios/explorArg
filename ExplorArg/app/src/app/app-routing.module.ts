@@ -1,3 +1,4 @@
+import { TerminosComponent } from './components/terminos/terminos.component';
 import { DestinosComponent } from './components/destinos/destinos.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
@@ -24,7 +25,8 @@ const routes: Routes = [
 { path: 'foro', canActivate: [AuthGuardService], component: ForomainComponent},
 { path: 'agregarTema', component: ForocrudComponent},
 { path: 'foroTopic', component: ForotopicComponent},
-{ path: 'contacto', component: ChatComponent}
+{ path: 'contacto', component: ChatComponent},
+{ path: 'terminos', component: TerminosComponent}
 ];
 
 @NgModule({

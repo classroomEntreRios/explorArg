@@ -20,7 +20,12 @@ export class RegistroComponent implements OnInit {
   registroForm : FormGroup = this.fb.group({
       Nombre: ["", [Validators.required, Validators.minLength(5), Validators.pattern("[a-zA-Z ]*")]],
       Password: ["", [Validators.required, Validators.minLength(8)]],
+      Password2: ["", [Validators.required, Validators.minLength(8)]],
       Email: ["", [Validators.required, Validators.pattern('^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,}$')]],
+      TyC: [null, [Validators.required]]
+  },
+  {
+    validators: [this.registroS.clavesiguales('Password','Password2')]
   });
 
   nuevoUsuario: Usuario = new Usuario;
@@ -32,6 +37,7 @@ export class RegistroComponent implements OnInit {
 
   ngOnInit(): void {
   }
+
 
   registro(registroForm : FormGroup){
      this.nuevoUsuario = this.registroForm.value;

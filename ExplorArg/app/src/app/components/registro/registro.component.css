@@ -8,7 +8,7 @@ label {
     font-weight: 700;
   }
 
-input {
+  .inputRegistroForm {
     width: 100%;
     height: 100%;
     justify-content: center;
@@ -71,7 +71,17 @@ input {
     justify-content: center;
   }
 
-  input[placeholder] {
+  /* input[placeholder] {
     font-size: 13px;
+  } */
+
+  .inputTYC{
+    margin: 0 auto;
   }
+
+  .inputTerminos{
+    width: 100%;
+    margin: 0 auto;
+  }
+
 }

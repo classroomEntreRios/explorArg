@@ -13,6 +13,7 @@ import { ForotopicComponent } from './foro/forotopic/forotopic.component';
 import { ForocrudComponent } from './foro/forocrud/forocrud.component';
 import { FooterComponent } from './footer/footer.component';
 import { FooterabsoluteComponent } from './footer/footerabsolute/footerabsolute.component';
+import { TerminosComponent } from './terminos/terminos.component';
 
 
 
@@ -21,7 +22,7 @@ import { FooterabsoluteComponent } from './footer/footerabsolute/footerabsolute.
 
   declarations: [
 
-],
+TerminosComponent],
 
   imports: [
     CommonModule
