@@ -15,23 +15,10 @@ export class ChatComponent implements OnInit {
   mensaje : any;
   usuario: any = '';
 
-  mensajeList : Array<any> = [
-    {mensajeChat: 'Mensaje random'},
-    {mensajeChat2: 'Otro mensaje'}
+  consultaList : Array<any> = [
+    {mensaje: 'Recibir mensaje', respuesta: 'Recibir respuesta'},
+    {mensaje: 'Segundo mensaje', respuesta: 'Segunda respuesta'}
     ]
-  respuestaList : Array<any> = [
-    {respuestaChat: 'Respuesta uno'}
-    ]
-
-    consultaList : Array<any> = [
-      {mensaje: 'Recibir mensaje', respuesta: 'Recibir respuesta'},
-      {mensaje: 'Segundo mensaje', respuesta: 'Segunda respuesta'}
-    ]
-
-  alternativeList : Array<any> = [
-    {men1: 'Mensaje', men2: 'otra cosa'}
-    // {res1: 'Respuesta'}
-  ]
 
   datosChat : Chat[] = []
 
