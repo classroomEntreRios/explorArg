@@ -40,7 +40,7 @@
 
 <br><br>
 
-<div class="container">
+<div class="container" *ngIf="consultaExist; else consultaNoExist">
     <div>
         <br>
         <div class="recuadro-user">
@@ -54,7 +54,21 @@
     </div>
 </div>
 
-<div class="container">
+<ng-template #consultaNoExist>
+    <div class="container">
+        <br>
+        <div class="recuadro-user">
+            <h5>
+                Consulta inexistente
+            </h5>
+            <p class="user-p">
+                No se ha registrado ninguna consulta para el e-mail ingresado.
+            </p>
+        </div>
+    </div>
+</ng-template>
+
+<div class="container" *ngIf="respuestaExist">
     <div>
         <br>
         <div class="recuadro-admin">

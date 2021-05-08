@@ -10,10 +10,9 @@ import { ChatService } from './../../services/chat.service';
 })
 export class ChatComponent implements OnInit {
 
-
+  email : any;
+  mensaje : any;
   usuario: any = '';
-
-
 
   constructor(
     private fb: FormBuilder,
@@ -26,19 +25,19 @@ export class ChatComponent implements OnInit {
   })
 
   usuarioChat: Chat = new Chat;
-  usuarioCreado: boolean = false;
+  consultaExist : boolean = true;
+  respuestaExist : boolean = true;
 
   ngOnInit(): void {
-    this.buscarDatos();
+    this.mostrarInfo();
   }
 
   consulta(consultaForm : FormGroup){
-    this.usuarioChat = this.consultaForm.value;
+    this.email = this.consultaForm.value;
     this.consultaForm.reset();
 
     this.chatS.registraroNuevoUsuario(this.usuarioChat).subscribe(resp => {
       console.log(resp);
-      this.usuarioCreado = true;
     })
   }
 
@@ -47,8 +46,10 @@ export class ChatComponent implements OnInit {
            this.consultaForm.controls[campo].touched;
   }
 
-  buscarDatos(){
-    let request: any = localStorage.getItem("Usuario");
-    this.usuario = JSON.parse(request);
+  async mostrarInfo(){
+      this.mensaje = this.consultaForm.value
+      console.log(this.mensaje)
   }
+
+
 }
