@@ -17,7 +17,7 @@
               <label for="nombreU"> Nombre de usuario</label>
             </div>
 
-            <input type="text" id="nombreU" class="form-control card-body" formControlName="Nombre"
+            <input type="text" id="nombreU" class="form-control card-body inputRegistroForm" formControlName="Nombre"
               placeholder="Debe tener al menos 5 caracteres" autofocus>
               <small class="form-text text-danger"
               *ngIf="CampoValido('Nombre')">
@@ -25,14 +25,12 @@
               </small>
             </div><br>
 
+           <!-- Campo password -->
             <div>
-            <!-- Campo password -->
             <div class="card-header text-white bg-dark">
               <label for="passU"> Contraseña </label>
             </div>
-
-
-            <input type="password" id="passU" class="form-control card-body" formControlName="Password"
+            <input type="password" id="passU" class="form-control card-body inputRegistroForm" formControlName="Password"
                placeholder="Debe tener al menos 8 caracteres">
                <small class="form-text text-danger"
                *ngIf="CampoValido('Password')">
@@ -40,13 +38,27 @@
                </small>
             </div><br>
 
+
+            <!-- Campo password2 -->
+            <div>
+              <div class="card-header text-white bg-dark">
+                <label for="passU2"> Repetir contraseña </label>
+              </div>
+              <input type="password" id="passU2" class="form-control card-body inputRegistroForm" formControlName="Password2"
+                 placeholder="Debe tener al menos 8 caracteres">
+                 <small class="form-text text-danger"
+                 *ngIf="CampoValido('Password2')">
+                  <i>-- Dato requerido --</i>
+                 </small>
+              </div><br>
+
             <div>
             <!-- Campo Email -->
             <div class="card-header text-white bg-dark">
               <label for="emailU"> Email</label>
             </div>
 
-            <input type="email" id="emailU" class="form-control card-body" formControlName="Email"
+            <input type="email" id="emailU" class="form-control card-body inputRegistroForm" formControlName="Email"
                placeholder="ejemplo@ejemplo.com">
                <small class="form-text text-danger"
                *ngIf="CampoValido('Email')">
@@ -54,6 +66,17 @@
                </small>
             </div><br>
 
+            <!-- Campo TyC -->
+            <div>
+            <div class="card-header text-white bg-dark inputTerminos">
+              <label for="TyC"> Términos y condiciones </label>
+            </div>
+            <div>
+              <input type="checkbox" class="inputTYC" id="TyC" value="true" formControlName="TyC">
+              Acepto los <a routerLink="/terminos">Terminos y condiciones</a>
+              </div>
+
+            </div><br>
 
             <!-- Botón -->
             <div class="container">
@@ -61,7 +84,7 @@
               <div class="row">
                 <div class="col">
                   <button type="submit" class="btn btn-primary" (click)="registro(registroForm.value)"
-                    [disabled]="registroForm.invalid" style="float: right;"> Registrarme </button>
+                    [disabled]="registroForm.invalid && registroForm.touched" style="float: right;"> Registrarme </button>
                   <button class="btn btn-danger" routerLink="" style="float: left;" > Cancelar </button>
                 </div>
               </div>
