@@ -11,25 +11,25 @@ import { ChatService } from './../../services/chat.service';
 })
 export class ChatComponent implements OnInit {
 
-  email : any = 'todos putos'
-  mensaje : any;
-  usuario: any = '';
+  email : any
+  mensaje : any = 'Chespirito'
+  usuario: any
 
   datosChat : Chat[] = []
 
   usuarioChat: Chat = new Chat;
   consultaExist : boolean = true;
   respuestaExist : string = 'algo';
-  isAdmin : boolean = false;
+  isAdmin : boolean = true;
 
   localInfo: any = localStorage.getItem("Usuario");
   userInfo: any = JSON.parse(this.localInfo);
 
   consultaList : Array<any> = [
-    {mensaje: 'Recibir mensaje', respuesta: 'Recibir respuesta'},
-    {mensaje: 'Segundo mensaje', respuesta: 'Segunda respuesta'},
-    {mensaje: 'Tercer mensaje'}
+    {mensaje: this.mensaje, respuesta: 'Recibir respuesta'},
+    {mensaje: 'Segundo mensaje', respuesta: 'Segunda respuesta'}
     ]
+
 
   constructor(
     private fb: FormBuilder,
@@ -45,8 +45,8 @@ export class ChatComponent implements OnInit {
 
 
   ngOnInit(): void {
-    // this.adminStatus(); Comentado porque me tira error
-    this.mostrarInfo();
+    // this.adminStatus()
+    // Comentado porque me tira error
   }
 
 
@@ -64,22 +64,24 @@ export class ChatComponent implements OnInit {
   // CLICK EN 'ENVIAR CONSULTA' (NO FUNCIONAAAAAAAAAAAAAAAAAAAAAAA)
   consulta(consultaForm : FormGroup){
     this.usuarioChat = this.consultaForm.value;
-    this.consultaForm.reset();
- 
-
-    // this.chatS.registraroNuevoUsuario(this.datosChat[0]).subscribe(resp => {
-    //   console.log(resp);
+    this.mostrarInfo();
+    alert('Esta mierda que no la puedo enviar a DB')
     }
+  
 
-
-  // USUARIO REQUERIDO (Porque era un buen usuario, ciertamente)
+  // USUARIO REQUERIDO
   CampoValido(campo: string){
     return this.consultaForm.controls[campo].errors &&
            this.consultaForm.controls[campo].touched;
   }
 
+  mostrarInfo(){
+    this.datosChat = this.consultaForm.value
+    console.log(this.datosChat)
+}
 
-  // Obtiene objeto Email y Mensaje (vacíos)
+
+  // Obtiene objeto Email y Mensaje
   obtenerEmail(){
     // 
   }
@@ -88,17 +90,20 @@ export class ChatComponent implements OnInit {
     // 
   }
 
-  postRespuesta(){
-    // 
-  }
-
   getRespuesta(){
     // Si existe, retorna: respuestaExist = true
   }
 
-  async mostrarInfo(){
-      this.datosChat = this.consultaForm.value
-      console.log(this.datosChat)
+  postRespuesta(){
+    // conectado
+  }
+
+  deleteMensaje(){
+    // conectado
+  }
+
+  deleteRespuesta(){
+    // conectado
   }
 
   // CLICK EN 'VER CONSULTAS REALIZADAS'

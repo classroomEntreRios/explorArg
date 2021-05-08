@@ -42,25 +42,7 @@
     </div>
 </div>
 
-<br><br>
 
-<div class="container" *ngIf="consultaExist; else consultaNoExist">
-    <div>
-        <br>
-        <div class="recuadro-user">
-            <h5>
-                Consulta
-            </h5>
-            <p class="user-p">
-                Esto recibe la consulta insertada en el textarea, que a su vez se envía a la DB.
-            </p>
-            <div class="b-buttons" *ngIf="isAdmin">
-                <button class="btn btn-outline-danger">Eliminar</button>
-                <button class="btn btn-outline-primary float-right">Responder</button>
-            </div>
-        </div>
-    </div>
-</div>
 
 <ng-template #consultaNoExist>
     <div class="container">
@@ -75,23 +57,6 @@
         </div>
     </div>
 </ng-template>
-
-<div class="container" *ngIf="respuestaExist">
-    <div>
-        <br>
-        <div class="recuadro-admin">
-            <h5>
-                Administrador
-            </h5>
-            <p class="admin-p">
-                Y acá el Admin responde.
-            </p>
-            <div class="b-buttons" *ngIf="isAdmin">
-                <button class="btn btn-outline-danger">Eliminar</button>
-            </div>
-        </div>
-    </div>
-</div>
 
 
 <!-- CONSULTA BLOQUE -->
@@ -108,8 +73,10 @@
                         {{cons.mensaje}}
                     </p>
                     <div class="b-buttons" *ngIf="isAdmin">
-                        <button class="btn btn-outline-danger">Eliminar</button>
-                        <button class="btn btn-outline-primary float-right">Responder</button>
+                        <button class="btn btn-outline-danger"  (click)="deleteMensaje()">Eliminar</button>
+                        <button type="button" class="btn btn-outline-primary float-right" data-bs-toggle="modal" data-bs-target="#respConsulta">
+                            Responder
+                          </button>
                     </div>
                 </div>
             </div>
@@ -126,14 +93,31 @@
                         {{cons.respuesta}}
                     </p>
                     <div class="b-buttons" *ngIf="isAdmin">
-                        <button class="btn btn-outline-danger">Eliminar</button>
+                        <button class="btn btn-outline-danger" (click)="deleteRespuesta()">Eliminar</button>
                     </div>
                 </div>
             </div>
         </div>
 </div>
 
-
+<!-- MODAL DE RESPUESTA -->
+<div class="modal" tabindex="-1" id="respConsulta">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Responder</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            <textarea name="" id="" cols="20" rows="5"></textarea>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Anular</button>
+          <button type="button" class="btn btn-primary" (click)="postRespuesta()">Enviar</button>
+        </div>
+      </div>
+    </div>
+  </div>
 
 
 <div class="neccesarySpace">

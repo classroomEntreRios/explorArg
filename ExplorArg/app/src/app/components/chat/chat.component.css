@@ -70,6 +70,13 @@ button {
     text-align: right;
 }
 
+.modal h5 {
+    color: black;
+}
+
+hr {
+    color: white;
+}
 
 /* MEDIA QUERIES */
 
