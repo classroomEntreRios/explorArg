@@ -15,20 +15,21 @@ export class ChatComponent implements OnInit {
   mensaje : any;
   usuario: any = '';
 
-  consultaList : Array<any> = [
-    {mensaje: 'Recibir mensaje', respuesta: 'Recibir respuesta'},
-    {mensaje: 'Segundo mensaje', respuesta: 'Segunda respuesta'}
-    ]
-
   datosChat : Chat[] = []
 
   usuarioChat: Chat = new Chat;
   consultaExist : boolean = true;
-  respuestaExist : boolean = true;
+  respuestaExist : string = 'algo';
   isAdmin : boolean = false;
 
   localInfo: any = localStorage.getItem("Usuario");
   userInfo: any = JSON.parse(this.localInfo);
+
+  consultaList : Array<any> = [
+    {mensaje: 'Recibir mensaje', respuesta: 'Recibir respuesta'},
+    {mensaje: 'Segundo mensaje', respuesta: 'Segunda respuesta'},
+    {mensaje: 'Tercer mensaje'}
+    ]
 
   constructor(
     private fb: FormBuilder,
@@ -80,7 +81,7 @@ export class ChatComponent implements OnInit {
 
   // Obtiene objeto Email y Mensaje (vacíos)
   obtenerEmail(){
-    // no anda
+    // 
   }
 
   obtenerMensaje(){
@@ -88,11 +89,11 @@ export class ChatComponent implements OnInit {
   }
 
   postRespuesta(){
-
+    // 
   }
 
   getRespuesta(){
-
+    // Si existe, retorna: respuestaExist = true
   }
 
   async mostrarInfo(){
@@ -102,7 +103,7 @@ export class ChatComponent implements OnInit {
 
   // CLICK EN 'VER CONSULTAS REALIZADAS'
   // 1. Toma el email ingresado
-  // 2. Compara si para ese email respuestaChat != ''
+  // 2. Compara si para ese email respuestaChat != '' (o sea, si contiene algo)
   // 3. Si es verdadero, hace un ngFor con las consultas y respuestas (si las hubiera)
 
 }
