@@ -81,5 +81,40 @@ namespace ExplorArg.Controllers
             return Ok(request);
         }
 
+
+        // DELETE mensaje
+        [HttpDelete]
+        [ResponseType(typeof(Chat))]
+        public IHttpActionResult DeleteMensaje(string mensaje)
+        {
+            Chat mess = db.Chat.Find(mensaje);
+            if (mess == null)
+            {
+                return NotFound();
+            }
+
+            db.Chat.Remove(mess);
+            db.SaveChanges();
+
+            return Ok(mess);
+        }
+
+
+        // DELETE respuesta
+        [HttpDelete]
+        [ResponseType(typeof(Chat))]
+        public IHttpActionResult DeleteRespuesta(string respuesta)
+        {
+            Chat res = db.Chat.Find(respuesta);
+            if (res == null)
+            {
+                return NotFound();
+            }
+
+            db.Chat.Remove(res);
+            db.SaveChanges();
+
+            return Ok(res);
+        }
     }
 }
