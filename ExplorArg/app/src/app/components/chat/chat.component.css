@@ -74,10 +74,6 @@ button {
     color: black;
 }
 
-hr {
-    color: white;
-}
-
 /* MEDIA QUERIES */
 
 @media screen and (max-width: 990px){
