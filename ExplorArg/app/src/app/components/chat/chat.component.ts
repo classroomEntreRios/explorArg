@@ -17,7 +17,7 @@ export class ChatComponent implements OnInit {
 
   datosChat : Chat[] = []
 
-  nuevoUsuario: Chat = new Chat;
+  consultante: Chat = new Chat;
   consultaExist : boolean = true;
   respuestaExist : string = 'algo';
   isAdmin : boolean = false;
@@ -38,8 +38,8 @@ export class ChatComponent implements OnInit {
   ) { }
 
   consultaForm : FormGroup = this.fb.group({
-    Email: ["", [Validators.required, Validators.pattern('^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,}$')]],
-    Mensaje: ["", [Validators.maxLength(250)]]
+    emailChat: ["", [Validators.required, Validators.pattern('^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,}$')]],
+    mensajeChat: ["", [Validators.maxLength(250)]]
   })
 
 
@@ -66,12 +66,14 @@ export class ChatComponent implements OnInit {
 
   // CLICK EN 'ENVIAR CONSULTA' (NO FUNCIONAAAAAAAAAAAAAAAAAAAAAAA)
   consulta(consultaForm : FormGroup){
-    this.nuevoUsuario = this.consultaForm.value;
+    this.consultante = this.consultaForm.value;
     this.consultaForm.reset();
 
-    this.chatS.PostChat(this.nuevoUsuario).subscribe(resp=>{
-      console.log(resp);
+    this.chatS.PostChat(this.consultante).subscribe(post=>{
+      consultaForm.value;
       })
+
+    // console.log(consultaForm.value)
     }
   
 
