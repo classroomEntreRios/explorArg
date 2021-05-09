@@ -20,7 +20,7 @@ export class ChatComponent implements OnInit {
   usuarioChat: Chat = new Chat;
   consultaExist : boolean = true;
   respuestaExist : string = 'algo';
-  isAdmin : boolean = true;
+  isAdmin : boolean = false;
 
   localInfo: any = localStorage.getItem("Usuario");
   userInfo: any = JSON.parse(this.localInfo);
@@ -46,7 +46,9 @@ export class ChatComponent implements OnInit {
 
   ngOnInit(): void {
     // this.adminStatus()
-    // Comentado porque me tira error
+    this.chatS.obtenerDatos().subscribe(resp => {
+      console.log(resp)
+    })
   }
 
 
@@ -82,13 +84,11 @@ export class ChatComponent implements OnInit {
 
 
   // Obtiene objeto Email y Mensaje
-  obtenerEmail(){
-    // 
+    getMensaje(){
+     
   }
 
-  obtenerMensaje(){
-    // 
-  }
+ 
 
   getRespuesta(){
     // Si existe, retorna: respuestaExist = true
