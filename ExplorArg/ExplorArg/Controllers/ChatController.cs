@@ -4,36 +4,82 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using System.Data;
+using System.Web.Http.Description;
+using ExplorArg.Models;
 
 namespace ExplorArg.Controllers
 {
     public class ChatController : ApiController
     {
-        // GET: api/Chat
-        public IEnumerable<string> Get()
+
+        private ExplorArgEntities db = new ExplorArgEntities();
+
+
+        // GET: api/Foro
+        public IHttpActionResult Get()
         {
-            return new string[] { "value1", "value2" };
+            var list = db.Chat.ToList();
+            return Ok(list);
         }
 
-        // GET: api/Chat/5
-        public string Get(int id)
+
+        // GET Emails
+        [Route("api/chat/emails")]
+        public IHttpActionResult getEmails(string emails)
         {
-            return "value";
+            try
+            {
+                var emailString = db.Chat.Where(d => d.emailChat == emails).FirstOrDefault();
+                var respuesta = emailString.emailChat.ToList();
+                return Ok(respuesta);
+            }
+            catch (Exception ex)
+            {
+
+                throw new Exception("Ocurrió un error inesperado. Código de error: " + ex.Message);
+            }
         }
+
+
+        // Dieguito Code
+        [HttpGet]
+        [Route("getByEmail")]
+        public IHttpActionResult Get(string email)
+        {
+            var count = db.Chat.Where(c => c.emailChat == email).Count();
+            if (count > 0)
+            {
+                var request = db.Chat.Where(c => c.emailChat == email).ToList();
+                return Ok(request);
+            }
+            else
+            {
+                return NotFound();
+            }
+        }
+
 
         // POST: api/Chat
-        public void Post([FromBody]string value)
+        [HttpPost]
+        public IHttpActionResult PostForo(Chat post)
         {
+            db.Chat.Add(post);
+            db.SaveChanges();
+            return Ok(post);
         }
 
-        // PUT: api/Chat/5
-        public void Put(int id, [FromBody]string value)
+
+        // PUT: api/Chat
+        [HttpPut]
+        public IHttpActionResult PutResp(Chat resp)
         {
+            var request = db.Chat.Where(f => f.respuestaChat == resp.respuestaChat).FirstOrDefault();
+            request.respuestaChat = resp.respuestaChat;
+
+            db.SaveChanges();
+            return Ok(request);
         }
 
-        // DELETE: api/Chat/5
-        public void Delete(int id)
-        {
-        }
     }
 }
