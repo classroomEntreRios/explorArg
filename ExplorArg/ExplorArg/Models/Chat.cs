@@ -14,13 +14,9 @@ namespace ExplorArg.Models
     
     public partial class Chat
     {
-        public Nullable<int> fk_id_usuarioReg { get; set; }
-        public Nullable<System.DateTime> fechaChat { get; set; }
-        public string usuarioChat { get; set; }
         public string emailChat { get; set; }
         public string mensajeChat { get; set; }
         public string respuestaChat { get; set; }
-    
-        public virtual Usuario Usuario { get; set; }
+        public int idChat { get; set; }
     }
 }

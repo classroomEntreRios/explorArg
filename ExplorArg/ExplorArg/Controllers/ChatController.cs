@@ -1,55 +1,39 @@
-﻿using ExplorArg.Models;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
-using System.Web.Http.Description;
 
 namespace ExplorArg.Controllers
 {
     public class ChatController : ApiController
     {
-
-        ExplorArgEntities db = new ExplorArgEntities();
-
-        // Obtener lista de todos los usuarios registrados
-        [HttpGet]
-        public IHttpActionResult ObtenerConsultas()
+        // GET: api/Chat
+        public IEnumerable<string> Get()
         {
-            var consultas = db.Chat.ToList();
-            return Ok(consultas);
+            return new string[] { "value1", "value2" };
         }
 
-
-        // GET: api/Foro/5
-        [ResponseType(typeof(Chat))]
-        public IHttpActionResult GetChat(int id)
+        // GET: api/Chat/5
+        public string Get(int id)
         {
-            Chat consulta = db.Chat.Find(id);
-            if (consulta == null)
-            {
-                return NotFound();
-            }
-
-            return Ok(consulta);
+            return "value";
         }
 
-
-        // POST: api/Foro
-        [HttpPost]
-        public IHttpActionResult PostConsulta(string consulta)
+        // POST: api/Chat
+        public void Post([FromBody]string value)
         {
-            var mensaje = db.Chat.Where(u => u.mensajeChat == consulta);
-            db.SaveChanges();
-            return Ok(consulta);
         }
 
+        // PUT: api/Chat/5
+        public void Put(int id, [FromBody]string value)
+        {
+        }
+
+        // DELETE: api/Chat/5
+        public void Delete(int id)
+        {
+        }
     }
 }
-
-
-
-
-

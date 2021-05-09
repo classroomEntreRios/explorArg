@@ -15,13 +15,12 @@
         </EntityType>
         <EntityType Name="Chat">
           <Key>
-            <PropertyRef Name="usuarioChat" />
+            <PropertyRef Name="idChat" />
           </Key>
-          <Property Name="fk_id_usuarioReg" Type="int" />
-          <Property Name="fechaChat" Type="date" />
-          <Property Name="usuarioChat" Type="varchar" MaxLength="30" Nullable="false" />
           <Property Name="emailChat" Type="varchar" MaxLength="30" Nullable="false" />
           <Property Name="mensajeChat" Type="varchar" MaxLength="250" Nullable="false" />
+          <Property Name="respuestaChat" Type="varchar" MaxLength="250" />
+          <Property Name="idChat" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
         </EntityType>
         <EntityType Name="Clima">
           <Key>
@@ -69,18 +68,6 @@
           <Property Name="Token" Type="varchar" MaxLength="250" />
           <Property Name="isAdmin" Type="bit" />
         </EntityType>
-        <Association Name="FK__Chat__fk_id_usua__3A81B327">
-          <End Role="Usuario" Type="Self.Usuario" Multiplicity="0..1" />
-          <End Role="Chat" Type="Self.Chat" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Usuario">
-              <PropertyRef Name="id_usuarioReg" />
-            </Principal>
-            <Dependent Role="Chat">
-              <PropertyRef Name="fk_id_usuarioReg" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK__Foro__fk_id_usua__3D5E1FD2">
           <End Role="Usuario" Type="Self.Usuario" Multiplicity="1" />
           <End Role="Foro" Type="Self.Foro" Multiplicity="*" />
@@ -129,10 +116,6 @@
           <EntitySet Name="Destinos_Atracciones" EntityType="Self.Destinos_Atracciones" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Foro" EntityType="Self.Foro" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Usuario" EntityType="Self.Usuario" Schema="dbo" store:Type="Tables" />
-          <AssociationSet Name="FK__Chat__fk_id_usua__3A81B327" Association="Self.FK__Chat__fk_id_usua__3A81B327">
-            <End Role="Usuario" EntitySet="Usuario" />
-            <End Role="Chat" EntitySet="Chat" />
-          </AssociationSet>
           <AssociationSet Name="FK__Foro__fk_id_usua__3D5E1FD2" Association="Self.FK__Foro__fk_id_usua__3D5E1FD2">
             <End Role="Usuario" EntitySet="Usuario" />
             <End Role="Foro" EntitySet="Foro" />
@@ -150,17 +133,6 @@
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="ExplorArgModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
-        <EntityType Name="Chat">
-          <Key>
-            <PropertyRef Name="usuarioChat" />
-          </Key>
-          <Property Name="fk_id_usuarioReg" Type="Int32" />
-          <Property Name="fechaChat" Type="DateTime" Precision="0" />
-          <Property Name="usuarioChat" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="emailChat" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="mensajeChat" Type="String" MaxLength="250" FixedLength="false" Unicode="false" Nullable="false" />
-          <NavigationProperty Name="Usuario" Relationship="Self.FK__Chat__fk_id_usua__3A81B327" FromRole="Chat" ToRole="Usuario" />
-        </EntityType>
         <EntityType Name="Clima">
           <Key>
             <PropertyRef Name="Id" />
@@ -179,31 +151,13 @@
           <Property Name="Nombre" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Password" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Email" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
-          <NavigationProperty Name="Chat" Relationship="Self.FK__Chat__fk_id_usua__3A81B327" FromRole="Usuario" ToRole="Chat" />
           <Property Name="Token" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
           <Property Name="isAdmin" Type="Boolean" />
           <NavigationProperty Name="Foro" Relationship="ExplorArgModel.FK__Foro__fk_id_usua__3D5E1FD2" FromRole="Usuario" ToRole="Foro" />
         </EntityType>
-        <Association Name="FK__Chat__fk_id_usua__3A81B327">
-          <End Role="Usuario" Type="Self.Usuario" Multiplicity="0..1" />
-          <End Role="Chat" Type="Self.Chat" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Usuario">
-              <PropertyRef Name="id_usuarioReg" />
-            </Principal>
-            <Dependent Role="Chat">
-              <PropertyRef Name="fk_id_usuarioReg" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <EntityContainer Name="ExplorArgEntities" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="Chat" EntityType="Self.Chat" />
           <EntitySet Name="Clima" EntityType="Self.Clima" />
           <EntitySet Name="Usuario" EntityType="Self.Usuario" />
-          <AssociationSet Name="FK__Chat__fk_id_usua__3A81B327" Association="Self.FK__Chat__fk_id_usua__3A81B327">
-            <End Role="Usuario" EntitySet="Usuario" />
-            <End Role="Chat" EntitySet="Chat" />
-          </AssociationSet>
           <EntitySet Name="Atracciones" EntityType="ExplorArgModel.Atracciones" />
           <EntitySet Name="Destino" EntityType="ExplorArgModel.Destino" />
           <AssociationSet Name="Destinos_Atracciones" Association="ExplorArgModel.Destinos_Atracciones">
@@ -215,6 +169,7 @@
             <End Role="Usuario" EntitySet="Usuario" />
             <End Role="Foro" EntitySet="Foro" />
           </AssociationSet>
+          <EntitySet Name="Chat" EntityType="ExplorArgModel.Chat" />
         </EntityContainer>
         <EntityType Name="Atracciones">
           <Key>
@@ -261,23 +216,21 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="Chat">
+          <Key>
+            <PropertyRef Name="idChat" />
+          </Key>
+          <Property Name="emailChat" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="mensajeChat" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="respuestaChat" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="idChat" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
         <EntityContainerMapping StorageEntityContainer="ExplorArgModelStoreContainer" CdmEntityContainer="ExplorArgEntities">
-          <EntitySetMapping Name="Chat">
-            <EntityTypeMapping TypeName="ExplorArgModel.Chat">
-              <MappingFragment StoreEntitySet="Chat">
-                <ScalarProperty Name="fk_id_usuarioReg" ColumnName="fk_id_usuarioReg" />
-                <ScalarProperty Name="fechaChat" ColumnName="fechaChat" />
-                <ScalarProperty Name="usuarioChat" ColumnName="usuarioChat" />
-                <ScalarProperty Name="emailChat" ColumnName="emailChat" />
-                <ScalarProperty Name="mensajeChat" ColumnName="mensajeChat" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="Clima">
             <EntityTypeMapping TypeName="ExplorArgModel.Clima">
               <MappingFragment StoreEntitySet="Clima">
@@ -336,6 +289,16 @@
                 <ScalarProperty Name="Titulo" ColumnName="Titulo" />
                 <ScalarProperty Name="fk_id_usuarioReg" ColumnName="fk_id_usuarioReg" />
                 <ScalarProperty Name="id_topico" ColumnName="id_topico" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Chat">
+            <EntityTypeMapping TypeName="ExplorArgModel.Chat">
+              <MappingFragment StoreEntitySet="Chat">
+                <ScalarProperty Name="idChat" ColumnName="idChat" />
+                <ScalarProperty Name="respuestaChat" ColumnName="respuestaChat" />
+                <ScalarProperty Name="mensajeChat" ColumnName="mensajeChat" />
+                <ScalarProperty Name="emailChat" ColumnName="emailChat" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
