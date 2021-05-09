@@ -19,8 +19,8 @@ datosUsuario : Chat = new Chat
     return this.http.get(this.url.urlChat)
   }
 
-  registraroNuevoUsuario(datos: Chat){
-    return this.http.post(this.url.urlChat, datos)
+  PostChat(resp: Chat){
+    return this.http.post(this.url.urlChat, resp)
   }
 
   

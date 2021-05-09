@@ -17,7 +17,7 @@ export class ChatComponent implements OnInit {
 
   datosChat : Chat[] = []
 
-  usuarioChat: Chat = new Chat;
+  nuevoUsuario: Chat = new Chat;
   consultaExist : boolean = true;
   respuestaExist : string = 'algo';
   isAdmin : boolean = false;
@@ -49,6 +49,7 @@ export class ChatComponent implements OnInit {
     this.chatS.obtenerDatos().subscribe(resp => {
       console.log(resp)
     })
+    this.getDatos()
   }
 
 
@@ -65,9 +66,12 @@ export class ChatComponent implements OnInit {
 
   // CLICK EN 'ENVIAR CONSULTA' (NO FUNCIONAAAAAAAAAAAAAAAAAAAAAAA)
   consulta(consultaForm : FormGroup){
-    this.usuarioChat = this.consultaForm.value;
-    this.mostrarInfo();
-    alert('Esta mierda que no la puedo enviar a DB')
+    this.nuevoUsuario = this.consultaForm.value;
+    this.consultaForm.reset();
+
+    this.chatS.PostChat(this.nuevoUsuario).subscribe(resp=>{
+      console.log(resp);
+      })
     }
   
 
@@ -84,11 +88,15 @@ export class ChatComponent implements OnInit {
 
 
   // Obtiene objeto Email y Mensaje
-    getMensaje(){
-     
+  getDatos(){
+      this.chatS.obtenerDatos().subscribe(resp=>{
+      console.log(resp)
+     })
   }
 
- 
+  getEmail(){
+    
+  }
 
   getRespuesta(){
     // Si existe, retorna: respuestaExist = true
