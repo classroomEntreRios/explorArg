@@ -20,7 +20,7 @@ export class ChatComponent implements OnInit {
   nuevoUsuario: Chat = new Chat;
   consultaExist : boolean = true;
   respuestaExist : string = 'algo';
-  isAdmin : boolean = true;
+  isAdmin : boolean = false;
 
   localInfo: any = localStorage.getItem("Usuario");
   userInfo: any = JSON.parse(this.localInfo);

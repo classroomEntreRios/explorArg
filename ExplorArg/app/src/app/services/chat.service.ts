@@ -23,6 +23,4 @@ datosUsuario : Chat = new Chat
     return this.http.post(this.url.urlChat, resp)
   }
 
-  
-
 }

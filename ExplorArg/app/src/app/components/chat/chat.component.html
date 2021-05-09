@@ -21,7 +21,7 @@
 
 <div class="container col-md-12"  *ngIf="!isAdmin">
     <div class="consulta-container col-md-7">
-        <form class="container" [formGroup]="consultaForm">
+        <form class="container" [formGroup]="consultaForm" (ngSubmit)="consulta(consultaForm)">
             <div class="mb-3 emailSize">
                 <label for="emailAddress">Ingrese su e-mail</label>
                 <input type="email" class="form-control" id="emailAddress" formControlName="Email" aria-describedby="emailHelp">
@@ -36,7 +36,8 @@
 
             </div>
             <button type="submit" class="btn btn-outline-primary" style="float: left">Ver consultas realizadas</button>
-            <button type="submit" class="btn btn-outline-primary" style="float: right" (click)="consulta(consultaForm.value)" [disabled]="consultaForm.invalid">Enviar nueva consulta</button>
+            <button type="submit" class="btn btn-outline-primary" style="float: right" (click)="consultaForm"
+            [disabled]="consultaForm.invalid">Enviar nueva consulta</button>
             <br><br><br>
         </form>
     </div>
