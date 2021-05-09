@@ -1,12 +1,12 @@
 ﻿USE [master]
 GO
-/****** Object:  Database [ExplorArg]    Script Date: 04/05/2021 21:38:15 ******/
+/****** Object:  Database [ExplorArg]    Script Date: 09/05/2021 12:05:48 ******/
 CREATE DATABASE [ExplorArg]
  CONTAINMENT = NONE
  ON  PRIMARY 
-( NAME = N'ExplorArg', FILENAME = N'C:\Program Files\Microsoft SQL Server\MSSQL15.MSSQLSERVER\MSSQL\DATA\ExplorArg.mdf' , SIZE = 8192KB , MAXSIZE = UNLIMITED, FILEGROWTH = 65536KB )
+( NAME = N'ExplorArg', FILENAME = N'E:\Program Files\Microsoft SQL Server\MSSQL15.SQLEXPRESS\MSSQL\DATA\ExplorArg.mdf' , SIZE = 8192KB , MAXSIZE = UNLIMITED, FILEGROWTH = 65536KB )
  LOG ON 
-( NAME = N'ExplorArg_log', FILENAME = N'C:\Program Files\Microsoft SQL Server\MSSQL15.MSSQLSERVER\MSSQL\DATA\ExplorArg_log.ldf' , SIZE = 8192KB , MAXSIZE = 2048GB , FILEGROWTH = 65536KB )
+( NAME = N'ExplorArg_log', FILENAME = N'E:\Program Files\Microsoft SQL Server\MSSQL15.SQLEXPRESS\MSSQL\DATA\ExplorArg_log.ldf' , SIZE = 8192KB , MAXSIZE = 2048GB , FILEGROWTH = 65536KB )
  WITH CATALOG_COLLATION = DATABASE_DEFAULT
 GO
 ALTER DATABASE [ExplorArg] SET COMPATIBILITY_LEVEL = 150
@@ -80,7 +80,7 @@ ALTER DATABASE [ExplorArg] SET QUERY_STORE = OFF
 GO
 USE [ExplorArg]
 GO
-/****** Object:  Table [dbo].[Atracciones]    Script Date: 04/05/2021 21:38:15 ******/
+/****** Object:  Table [dbo].[Atracciones]    Script Date: 09/05/2021 12:05:48 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -95,24 +95,23 @@ CREATE TABLE [dbo].[Atracciones](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Chat]    Script Date: 04/05/2021 21:38:15 ******/
+/****** Object:  Table [dbo].[Chat]    Script Date: 09/05/2021 12:05:48 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
 GO
 CREATE TABLE [dbo].[Chat](
-	[fk_id_usuarioReg] [int] NULL,
-	[fechaChat] [date] NULL,
-	[usuarioChat] [varchar](30) NOT NULL,
 	[emailChat] [varchar](30) NOT NULL,
 	[mensajeChat] [varchar](250) NOT NULL,
- CONSTRAINT [PK_Chat] PRIMARY KEY CLUSTERED 
+	[respuestaChat] [varchar](250) NULL,
+	[idChat] [int] IDENTITY(1,1) NOT NULL,
+ CONSTRAINT [PK_Chat_1] PRIMARY KEY CLUSTERED 
 (
-	[usuarioChat] ASC
+	[idChat] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Clima]    Script Date: 04/05/2021 21:38:15 ******/
+/****** Object:  Table [dbo].[Clima]    Script Date: 09/05/2021 12:05:48 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -129,7 +128,7 @@ CREATE TABLE [dbo].[Clima](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Destino]    Script Date: 04/05/2021 21:38:15 ******/
+/****** Object:  Table [dbo].[Destino]    Script Date: 09/05/2021 12:05:48 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -144,7 +143,7 @@ CREATE TABLE [dbo].[Destino](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Destinos_Atracciones]    Script Date: 04/05/2021 21:38:15 ******/
+/****** Object:  Table [dbo].[Destinos_Atracciones]    Script Date: 09/05/2021 12:05:48 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -158,7 +157,7 @@ CREATE TABLE [dbo].[Destinos_Atracciones](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Foro]    Script Date: 04/05/2021 21:38:15 ******/
+/****** Object:  Table [dbo].[Foro]    Script Date: 09/05/2021 12:05:48 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -175,7 +174,7 @@ CREATE TABLE [dbo].[Foro](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Usuario]    Script Date: 04/05/2021 21:38:15 ******/
+/****** Object:  Table [dbo].[Usuario]    Script Date: 09/05/2021 12:05:48 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -192,11 +191,6 @@ CREATE TABLE [dbo].[Usuario](
 	[id_usuarioReg] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
-GO
-ALTER TABLE [dbo].[Chat]  WITH CHECK ADD  CONSTRAINT [FK__Chat__fk_id_usua__3A81B327] FOREIGN KEY([fk_id_usuarioReg])
-REFERENCES [dbo].[Usuario] ([id_usuarioReg])
-GO
-ALTER TABLE [dbo].[Chat] CHECK CONSTRAINT [FK__Chat__fk_id_usua__3A81B327]
 GO
 ALTER TABLE [dbo].[Destinos_Atracciones]  WITH CHECK ADD  CONSTRAINT [FK_Destinos_Atracciones_Atracciones] FOREIGN KEY([Id_Atraccion])
 REFERENCES [dbo].[Atracciones] ([Id])
