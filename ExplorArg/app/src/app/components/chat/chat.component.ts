@@ -96,8 +96,8 @@ export class ChatComponent implements OnInit {
      })
   }
 
-  getEmail(){
-    
+  getEmails(){
+    // 
   }
 
   getRespuesta(){

@@ -23,4 +23,8 @@ datosUsuario : Chat = new Chat
     return this.http.post(this.url.urlChat, resp)
   }
 
+  getEmail(emailChat : string){
+    return this.http.get(this.url.urlChat + "?emailChat=" + emailChat)
+  }
+
 }
