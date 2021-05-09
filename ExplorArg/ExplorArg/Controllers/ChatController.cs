@@ -62,7 +62,7 @@ namespace ExplorArg.Controllers
 
         // POST: api/Chat
         [HttpPost]
-        public IHttpActionResult PostForo(Chat post)
+        public IHttpActionResult PostChat(Chat post)
         {
             db.Chat.Add(post);
             db.SaveChanges();
