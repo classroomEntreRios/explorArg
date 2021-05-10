@@ -40,7 +40,12 @@
 
 
         <!-- DASHBOARD -->
-
+<div class="container-fluid dashboard" *ngIf="!isLogged">
+  <div class="weather">
+    {{climaLocal.name}}: {{climaLocal.main.temp | number: '1.0-1'}}°C
+    <img [src]="'http://openweathermap.org/img/wn/' +  climaLocal.weather[0].icon  + '.png'" alt="">
+  </div>
+</div>
     <div class="container-fluid dashboard" *ngIf="isLogged">
       <div class="weather">
         {{climaLocal.name}}: {{climaLocal.main.temp | number: '1.0-1'}}°C
