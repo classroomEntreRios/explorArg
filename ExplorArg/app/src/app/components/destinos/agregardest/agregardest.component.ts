@@ -31,6 +31,7 @@ export class AgregardestComponent implements OnInit {
   dest: any;
 
   destinosPosibles: Destino[] = [
+    {Id: 0, Nombre: "Paraná", Id_destino: 3841956},
     {Id: 0, Nombre: "Villa Paranacito", Id_destino: 3427386},
     {Id: 0, Nombre: "Federal", Id_destino: 3433956},
     {Id: 0, Nombre: "Rosario del Tala", Id_destino: 3429439},

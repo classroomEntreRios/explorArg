@@ -75,10 +75,10 @@
         <hr>
           <strong>Destino: </strong>  {{infoClima.name}} <br>
           <strong>Humedad: </strong> {{infoClima.main.humidity}} % <br>
-          <strong>Temperatura: </strong> {{ infoClima.main.temp  }} °C <br>
-          <strong>Sensación térmica: </strong> {{ infoClima.main.feels_like }} °C <br>
-          <strong>Temp máx: </strong> {{ infoClima.main.temp_max }} °C <br>
-          <strong>Temp min: </strong> {{ infoClima.main.temp_min }} °C <br>
+          <strong>Temperatura: </strong> {{ infoClima.main.temp  | number: '1.0-1'}} °C <br>
+          <strong>Sensación térmica: </strong> {{ infoClima.main.feels_like | number: '1.0-1'}} °C <br>
+          <strong>Temp máx: </strong> {{ infoClima.main.temp_max | number: '1.0-1'}} °C <br>
+          <strong>Temp min: </strong> {{ infoClima.main.temp_min | number: '1.0-1'}} °C <br>
       </div>
     </div>
     </div>

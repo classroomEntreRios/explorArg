@@ -64,14 +64,23 @@ export class ChatComponent implements OnInit {
   }
   // COMPROBAR SI ES ADMIN
   adminStatus(){
-    console.log("ADMIN STATUS:" + this.userInfo.DatosUsuario.isAdmin)
-    if (this.userInfo.DatosUsuario.isAdmin == true){
-      this.isAdmin = true;
-    }
-    else {
+    console.log(this.userInfo);
+    if (this.userInfo == null){
       this.isUser = true;
+    }else{
+       if (this.userInfo.DatosUsuario.isAdmin = true){
+         this.isAdmin = true;
+       }else {
+         this.isUser = true;
+       }
     }
-    console.log("ADMIN STATUS POST CHECK:" + this.isAdmin);
+    // if (this.userInfo.DatosUsuario.isAdmin == true){
+    //   this.isAdmin = true;
+    // }
+    // else {
+    //   this.isUser = true;
+    // }
+
   }
 
   adminList(){

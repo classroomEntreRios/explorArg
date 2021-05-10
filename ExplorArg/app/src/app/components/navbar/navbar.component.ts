@@ -1,3 +1,4 @@
+import { ApiService } from './../../services/openWeather/api.service';
 import { CookieService } from 'ngx-cookie-service';
 import { DatosService } from 'src/app/services/datos.service';
 import { Component, OnInit } from '@angular/core';
@@ -13,6 +14,7 @@ export class NavbarComponent implements OnInit {
   isLogged: boolean = false;
   localInfo: any = localStorage.getItem("Usuario");
   parsedData: any;
+  climaLocal: any;
 
 
 
@@ -20,11 +22,13 @@ export class NavbarComponent implements OnInit {
   constructor(
     private datos: DatosService,
     private cookie: CookieService,
-    private usuario: DatosUsuarioService
+    private usuario: DatosUsuarioService,
+    private climaserv: ApiService
   ) { }
 
   ngOnInit(): void {
     this.check();
+    this.clima();
   }
 
 
@@ -38,6 +42,12 @@ export class NavbarComponent implements OnInit {
     }
   }
 
+  clima(){
+    this.climaserv.getClima('3841956').subscribe(resp =>{
+      this.climaLocal = resp;
+    })
+    ;
+  }
 
 
 }
