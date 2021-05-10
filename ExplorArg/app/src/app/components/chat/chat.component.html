@@ -19,23 +19,31 @@
 
 <br>
 
-<div class="container col-md-12"  *ngIf="!isAdmin">
+<div class="container col-md-12"  *ngIf="isUser">
     <div class="consulta-container col-md-7">
         <form class="container" [formGroup]="consultaForm" (ngSubmit)="consulta(consultaForm)">
             <div class="mb-3 emailSize">
                 <label>Ingrese su e-mail</label>
                 <input type="email" class="form-control" id="emailChat" formControlName="emailChat" aria-describedby="emailHelp">
+                <button class="btn btn-outline-primary" type="button"
+                [disabled]="consultaForm.value.emailChat == ''"
+                (click)="getConsulta(consultaForm.value.emailChat)"
+                >
+                  Ver solo mis consultas
+                </button>
                 <small class="form-text text-danger"
                 *ngIf="CampoValido('emailChat')">
                  <i>-- Dato requerido --</i>
                 </small>
             </div>
             <div class="mb-3">
-                <br>
+                <label>Ingrese su consulta</label>
                 <textarea name="mensajeChat" id="mensajeChat" cols="" rows="10" formControlName="mensajeChat"></textarea>
 
             </div>
-            <button type="submit" class="btn btn-outline-primary" style="float: left">Ver consultas realizadas</button>
+            <button class="btn btn-outline-primary" type="button" style="float: left" (click)="getDatos()">
+              Ver todas las consultas realizadas
+            </button>
             <button type="submit" class="btn btn-outline-primary" style="float: right"
             [disabled]="consultaForm.invalid">Enviar nueva consulta</button>
             <br><br><br>
@@ -43,9 +51,8 @@
     </div>
 </div>
 
-<br><br>
 
-<ng-template #consultaNoExist>
+<div class="container" *ngIf="!consultaExist">
     <div class="container">
         <br>
         <div class="recuadro-user">
@@ -57,25 +64,27 @@
             </p>
         </div>
     </div>
-</ng-template>
+  </div>
 
 
 <!-- CONSULTA BLOQUE -->
-<div class="consultaBloque" *ngFor="let cons of consultaList">
-
-        <div class="container" *ngIf="consultaExist; else consultaNoExist" >
+<div #targetdiv class="consultaBloque" *ngFor="let cons of consultaList">
+        <div class="container" *ngIf="consultaExist">
             <div>
                 <br>
                 <div class="recuadro-user">
                     <h5>
-                        Consulta
+                      {{cons.emailChat}}:
                     </h5>
                     <p class="user-p">
-                        {{cons.mensaje}}
+                        {{cons.mensajeChat}}
                     </p>
                     <div class="b-buttons" *ngIf="isAdmin">
-                        <button class="btn btn-outline-danger">Eliminar</button>
-                        <button type="button" class="btn btn-outline-primary float-right" data-bs-toggle="modal" data-bs-target="#chatModal">
+                        <button class="btn btn-outline-danger" (click)="deleteMensaje(cons.idChat)">Eliminar</button>
+                        <button type="button" class="btn btn-outline-primary float-right"
+                        data-bs-toggle="modal" data-bs-target="#chatModal"
+                        (click)="putModal(cons.idChat)"
+                        >
                             Responder
                         </button>
                     </div>
@@ -83,18 +92,24 @@
             </div>
         </div>
 
-        <div class="container" *ngIf="respuestaExist">
+        <div class="container" *ngIf="cons.Estado">
             <div>
                 <br>
                 <div class="recuadro-admin">
                     <h5>
-                        Administrador
+                        Administrador:
                     </h5>
                     <p class="admin-p">
-                        {{cons.respuesta}}
+                        {{cons.respuestaChat}}
                     </p>
+                    <ng-template #elseBlock>
+                      <p class="admin-p">
+                        Todavia no hay respuesta a esta consulta...
+                    </p>
+                    </ng-template>
+
                     <div class="b-buttons" *ngIf="isAdmin">
-                        <button class="btn btn-outline-danger">Eliminar</button>
+                        <button class="btn btn-outline-danger" (click)="deleteRespuesta(cons.idChat)">Eliminar</button>
                     </div>
                 </div>
             </div>
@@ -103,7 +118,6 @@
 
 
 <!-- MODAL -->
-
 <div class="modal fade" id="chatModal" tabindex="-1" aria-labelledby="chatModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
@@ -112,16 +126,20 @@
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
           <div class="modal-body">
-            <textarea name="" id="" cols="20" rows="5"></textarea>
-          </div>
+            <form [formGroup]="putForm" (ngSubmit)="postRespuesta(putForm)">
+
+
+            <textarea name="" id="" cols="20" rows="5" formControlName="respuestaChat"></textarea>
+
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Anular</button>
-            <button type="button" class="btn btn-primary">Enviar</button>
+            <button type="submit" class="btn btn-primary">Enviar</button>
           </div>
+        </form>
         </div>
       </div>
     </div>
-    
+
 
 
 <div class="neccesarySpace">

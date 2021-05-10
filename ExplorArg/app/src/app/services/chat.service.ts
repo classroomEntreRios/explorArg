@@ -24,7 +24,21 @@ datosUsuario : Chat = new Chat
   }
 
   getEmail(emailChat : string){
-    return this.http.get(this.url.urlChat + "?emailChat=" + emailChat)
+    return this.http.get(this.url.urlChat + "?email=" + emailChat)
   }
 
+  delete(id: number){
+    return this.http.delete(this.url.urlChat + "?id=" + id)
+  }
+
+  responderConsulta(id: number, respuesta:any){
+    return this.http.put(this.url.urlChat + "/responder" + "?id=" + id + "&resp=" + respuesta, {})
+  }
+
+  eliminarRespuesta(id: number){
+    return this.http.delete(this.url.urlChat + "/delResp" + "?id=" + id)
+  }
 }
+
+
+

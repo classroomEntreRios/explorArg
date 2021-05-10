@@ -30,7 +30,7 @@ export class NavbarComponent implements OnInit {
 
   check(){
     this.parsedData = JSON.parse(this.localInfo);
-    console.log(this.parsedData);
+
     if (this.parsedData != null){
       this.isLogged = true; // mostrá foro, dashboard y boton inicio
     }else {

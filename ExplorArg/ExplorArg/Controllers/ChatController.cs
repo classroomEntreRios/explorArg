@@ -19,32 +19,42 @@ namespace ExplorArg.Controllers
         // GET: api/Foro
         public IHttpActionResult Get()
         {
-            var list = db.Chat.ToList();
-            return Ok(list);
+            var count = db.Chat.ToList().Count();
+            if (count > 0 )
+            {
+                var list = db.Chat.ToList();
+                return Ok(list);
+            }
+            else
+            {
+                var resp = 0;
+                return Ok(resp);
+            }
+            
         }
 
 
         // GET Emails
-        [Route("api/chat/emails")]
-        public IHttpActionResult getEmails(string emails)
-        {
-            try
-            {
-                var emailString = db.Chat.Where(d => d.emailChat == emails).FirstOrDefault();
-                var respuesta = emailString.emailChat.ToList();
-                return Ok(respuesta);
-            }
-            catch (Exception ex)
-            {
+        //[Route("api/chat/emails")]
+        //public IHttpActionResult getEmails(string emails)
+        //{
+        //    try
+        //    {
+        //        var emailString = db.Chat.Where(d => d.emailChat == emails).FirstOrDefault();
+        //        var respuesta = emailString.emailChat.ToList();
+        //        return Ok(respuesta);
+        //    }
+        //    catch (Exception ex)
+        //    {
 
-                throw new Exception("Ocurrió un error inesperado. Código de error: " + ex.Message);
-            }
-        }
+        //        throw new Exception("Ocurrió un error inesperado. Código de error: " + ex.Message);
+        //    }
+        //}
 
 
         // Dieguito Code
         [HttpGet]
-        [Route("getByEmail")]
+        //[Route("getByEmail")]
         public IHttpActionResult Get(string email)
         {
             var count = db.Chat.Where(c => c.emailChat == email).Count();
@@ -64,6 +74,7 @@ namespace ExplorArg.Controllers
         [HttpPost]
         public IHttpActionResult PostChat(Chat post)
         {
+            post.Estado = false;
             db.Chat.Add(post);
             db.SaveChanges();
             return Ok(post);
@@ -72,10 +83,12 @@ namespace ExplorArg.Controllers
 
         // PUT: api/Chat
         [HttpPut]
-        public IHttpActionResult PutResp(Chat resp)
+        [Route("api/chat/responder")]
+        public IHttpActionResult PutResp(int id, string resp)
         {
-            var request = db.Chat.Where(f => f.respuestaChat == resp.respuestaChat).FirstOrDefault();
-            request.respuestaChat = resp.respuestaChat;
+            var request = db.Chat.Where(f => f.idChat == id).FirstOrDefault();
+            request.respuestaChat = resp;
+            request.Estado = true;
 
             db.SaveChanges();
             return Ok(request);
@@ -85,9 +98,9 @@ namespace ExplorArg.Controllers
         // DELETE mensaje
         [HttpDelete]
         [ResponseType(typeof(Chat))]
-        public IHttpActionResult DeleteMensaje(string mensaje)
+        public IHttpActionResult DeleteMensaje(int id)
         {
-            Chat mess = db.Chat.Find(mensaje);
+            var mess = db.Chat.Find(id);
             if (mess == null)
             {
                 return NotFound();
@@ -102,19 +115,21 @@ namespace ExplorArg.Controllers
 
         // DELETE respuesta
         [HttpDelete]
+        [Route("api/chat/delResp")]
         [ResponseType(typeof(Chat))]
-        public IHttpActionResult DeleteRespuesta(string respuesta)
+        public IHttpActionResult DeleteRespuesta(int id)
         {
-            Chat res = db.Chat.Find(respuesta);
-            if (res == null)
+            var mess = db.Chat.Find(id);
+            if (mess == null)
             {
                 return NotFound();
             }
 
-            db.Chat.Remove(res);
+            mess.respuestaChat = null;
+            mess.Estado = false;
             db.SaveChanges();
 
-            return Ok(res);
+            return Ok(mess);
         }
     }
 }

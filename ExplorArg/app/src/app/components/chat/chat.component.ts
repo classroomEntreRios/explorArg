@@ -19,16 +19,16 @@ export class ChatComponent implements OnInit {
 
   consultante: Chat = new Chat;
   consultaExist : boolean = true;
-  respuestaExist : string = 'algo';
+  respuestaExist : boolean = false;
   isAdmin : boolean = false;
+  isUser: boolean = false;
+  respExist: boolean = false;
 
   localInfo: any = localStorage.getItem("Usuario");
   userInfo: any = JSON.parse(this.localInfo);
 
-  consultaList : Array<any> = [
-    {mensaje: this.mensaje, respuesta: 'Recibir respuesta'},
-    {mensaje: 'Segundo mensaje', respuesta: 'Segunda respuesta'}
-    ]
+  consultaList: any;
+  idChat: any;
 
 
   constructor(
@@ -39,32 +39,47 @@ export class ChatComponent implements OnInit {
 
   consultaForm : FormGroup = this.fb.group({
     emailChat: ["", [Validators.required, Validators.pattern('^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,}$')]],
-    mensajeChat: ["", [Validators.maxLength(250)]]
+    mensajeChat: ["", [Validators.required, Validators.maxLength(250), Validators.minLength(10)]]
   })
 
-
+  putForm: FormGroup = this.fb.group({
+    respuestaChat: ["", [Validators.required]]
+  })
 
   ngOnInit(): void {
-    // this.adminStatus()
-    this.chatS.obtenerDatos().subscribe(resp => {
-      console.log(resp)
-    })
-    this.getDatos()
+     this.adminStatus()
+    // this.chatS.obtenerDatos().subscribe(resp => {
+    //   console.log(resp)
+    // })
+    this.adminList();
   }
 
 
+
+  getConsulta(email: any){
+    this.chatS.getEmail(email).toPromise()
+    .then(resp => {
+      this.consultaList = resp;
+    })
+  }
   // COMPROBAR SI ES ADMIN
   adminStatus(){
-    if (this.userInfo.DatosUsuario.isAdmin){
+    console.log("ADMIN STATUS:" + this.userInfo.DatosUsuario.isAdmin)
+    if (this.userInfo.DatosUsuario.isAdmin == true){
       this.isAdmin = true;
     }
     else {
-      this.isAdmin = false;
+      this.isUser = true;
     }
+    console.log("ADMIN STATUS POST CHECK:" + this.isAdmin);
   }
 
-
-  // CLICK EN 'ENVIAR CONSULTA' (NO FUNCIONAAAAAAAAAAAAAAAAAAAAAAA)
+  adminList(){
+    if (this.isAdmin == true){
+      this.getDatos();
+    }
+  }
+  // Post
   consulta(consultaForm : FormGroup){
     this.consultante = this.consultaForm.value;
     this.consultaForm.reset();
@@ -75,7 +90,7 @@ export class ChatComponent implements OnInit {
 
     // console.log(consultaForm.value)
     }
-  
+
 
   // USUARIO REQUERIDO
   CampoValido(campo: string){
@@ -85,35 +100,49 @@ export class ChatComponent implements OnInit {
 
   mostrarInfo(){
     this.datosChat = this.consultaForm.value
-    console.log(this.datosChat)
 }
 
 
   // Obtiene objeto Email y Mensaje
-  getDatos(){
-      this.chatS.obtenerDatos().subscribe(resp=>{
-      console.log(resp)
+    getDatos(){
+      this.chatS.obtenerDatos().subscribe( resp=>{
+      this.consultaList = resp;
      })
   }
 
-  getEmails(){
-    // 
+  getEmails(email: string){
+    this.chatS.getEmail(email).subscribe(resp =>{
+      this.consultaList = resp;
+    })
   }
 
   getRespuesta(){
     // Si existe, retorna: respuestaExist = true
   }
 
-  postRespuesta(){
-    // conectado
+  putModal(id: number){
+    this.idChat = id;
+  }
+  postRespuesta(resp: FormGroup){
+    let respuesta: string = resp.value.respuestaChat;
+    console.log(respuesta);
+    this.chatS.responderConsulta(this.idChat, respuesta).subscribe
+    (resp => {
+      window.location.reload();
+    })
   }
 
-  deleteMensaje(){
-    // conectado
+  deleteMensaje(id: number){
+    this.chatS.delete(id).toPromise()
+    .finally(() => {
+      window.location.reload()
+    })
   }
 
-  deleteRespuesta(){
-    // conectado
+  deleteRespuesta(id: number){
+    this.chatS.eliminarRespuesta(id).subscribe(resp => {
+      window.location.reload();
+    })
   }
 
   // CLICK EN 'VER CONSULTAS REALIZADAS'

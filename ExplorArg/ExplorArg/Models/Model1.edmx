@@ -21,6 +21,7 @@
           <Property Name="mensajeChat" Type="varchar" MaxLength="250" Nullable="false" />
           <Property Name="respuestaChat" Type="varchar" MaxLength="250" />
           <Property Name="idChat" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Estado" Type="bit" />
         </EntityType>
         <EntityType Name="Clima">
           <Key>
@@ -224,6 +225,7 @@
           <Property Name="mensajeChat" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="false" />
           <Property Name="respuestaChat" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
           <Property Name="idChat" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Estado" Type="Boolean" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -295,6 +297,7 @@
           <EntitySetMapping Name="Chat">
             <EntityTypeMapping TypeName="ExplorArgModel.Chat">
               <MappingFragment StoreEntitySet="Chat">
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
                 <ScalarProperty Name="idChat" ColumnName="idChat" />
                 <ScalarProperty Name="respuestaChat" ColumnName="respuestaChat" />
                 <ScalarProperty Name="mensajeChat" ColumnName="mensajeChat" />
