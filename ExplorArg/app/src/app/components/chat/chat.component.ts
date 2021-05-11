@@ -68,8 +68,9 @@ export class ChatComponent implements OnInit {
     if (this.userInfo == null){
       this.isUser = true;
     }else{
-       if (this.userInfo.DatosUsuario.isAdmin = true){
+       if (this.userInfo.DatosUsuario.isAdmin == true){
          this.isAdmin = true;
+         console.log(this.isAdmin);
        }else {
          this.isUser = true;
        }
