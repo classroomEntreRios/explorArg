@@ -20,7 +20,7 @@ gettingToken = 'https://explorargdb.somee.com/api/usuario/token';
 
 // destinos
 urlDestinos = 'https://explorargdb.somee.com/api/destinos';
-urlDestino_Atraccion = 'http://explorargdb.somee.com/api/destino_atraccion';
+urlDestino_Atraccion = 'https://explorargdb.somee.com/api/destino_atraccion';
 
 // atracciones
 urlAtracciones = 'https://explorargdb.somee.com/api/atracciones';
